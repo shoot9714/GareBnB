@@ -3,14 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 						http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
-						
+		
+		<!-- 각자 알맞은 코드로 수정하면 됩니다. -->				
 	<bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="url" value="jdbc:oracle:thin:@db202204251731_high?TNS_ADMIN=/Users/jinkim/Documents/Wallet_DB202204251731" />
 	<property name="username" value="gare" />
 	<property name="password" value="BnB20222022" />
     </bean>
-    
+    <!-- 저랑은 코드가 다를거에요 ~~~ -->
     <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
 		<constructor-arg ref="dataSourceSpied" />
 		<property name="logFormatter">
