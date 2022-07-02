@@ -320,7 +320,7 @@
     <build>
     	<defaultGoal>install</defaultGoal>
 		<directory>${basedir}/target</directory>
-		<finalName>GareBnB</finalName>
+		<finalName>first</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-eclipse-plugin</artifactId>
