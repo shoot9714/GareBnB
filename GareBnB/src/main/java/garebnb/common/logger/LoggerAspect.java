@@ -13,7 +13,7 @@ public class LoggerAspect {
 	static String name = "";
 	static String type = "";
 	
-	@Around("execution(* first..controller.*Controller.*(..)) or execution(* first..service.*Impl.*(..)) or execution(* first..dao.*DAO.*(..))")
+	@Around("execution(* garebnb..controller.*Controller.*(..)) or execution(* garebnb..service.*Impl.*(..)) or execution(* garebnb..dao.*DAO.*(..))")
 	public Object logPrint(ProceedingJoinPoint joinPoint) throws Throwable{
 		if(type.indexOf("Controller")>-1) {
 			name = "Controller \t: ";
