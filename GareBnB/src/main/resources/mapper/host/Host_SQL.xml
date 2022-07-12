@@ -34,7 +34,7 @@
 	</insert>
 <!-- 호스트 정보 수 -->
 	<update id="updateOneHost" parameterType="hashmap">
-
+<![CDATA[
 	UPDATE	HOST_MEMBER
 	SET	
 		HOST_EMAIL = #{HOST_EMAIL},
@@ -47,13 +47,16 @@
 		HOST_ACCOUNT = #{HOST_ACCOUNT},
 		HOST_BANK = #{HOST_BANK}
 	WHERE 	MEM_IDX = #{MEM_IDX}
+	]]>
 </update>
 	
 <!-- 호스트 삭제 -->
 <update id="updateOneHostDelete" parameterType="hashmap">
+<![CDATA[
 	UPDATE	MEMBER
 	SET	MEM_LEVEL = 1
 	WHERE	MEM_IDX=#{MEM_IDX}
+	]]>
 </update>
 
 
