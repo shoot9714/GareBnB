@@ -44,7 +44,7 @@
 	</update>
 	
 	
-	<!-- 호스트-내 게시글 등록 -->
+	<!-- 호스트-내 게시글 등록,게시글 수정 -->
 	<insert id="insertOneBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
 		<selectKey keyProperty="BOARD_NO" resultType="string" order="BEFORE">
 			SELECT BOARD_NO_SEQ.NEXTVAL FROM DUAL
@@ -121,27 +121,6 @@
 	</select>
 
 	
-	<!-- 호스트- 게시글 수정-->
-	<update id="updateOneBoard" parameterType="hashmap">
-		<![CDATA[
-			UPDATE	BOARD
-			SET	
-				BOARD_TITLE=#{BOARD_TITLE},
-				BOARD_CONTENT=#{BOARD_CONTENT},
-				BOARD_ADDR1=#{BOARD_ADDR1},
-				BOARD_ADDR2=#{BOARD_ADDR2},
-				BOARD_POST=#{BOARD_POST},
-				BOARD_PRICE=#{BOARD_PRICE},
-				BOARD_CARE_NO=#{BOARD_CARE_NO},
-				BOARD_DATE_START=#{BOARD_DATE_START},
-				BOARD_DATE_END=#{BOARD_DATE_END},
-				BOARD_CONFIRM=3
-			WHERE	BOARD_NO=#{BOARD_NO};
-		]]>
-	
-	</update>
-	
-	
 	<!-- 전체 게시글 리스트 -->
 	<select id="selectBoardList" resultType="hashmap">
 		<![CDATA[
@@ -163,6 +142,47 @@
 		]]>
 
 	</select>
+	
+	
+	<!-- selectBoardDetail : 게시글 상세 보기, 리뷰보기 -->
+	<select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
+	
+	<![CDATA[
+		SELECT	
+				BOARD_NO,
+				BOARD_HOST_ID,
+				BOARD_HOST_IDX,
+				BOARD_TITLE,
+				BOARD_CONTENT,
+				BOARD_ADDR1,
+				BOARD_ADDR2,
+				BOARD_POST,
+				BOARD_PRICE,
+				BOARD_CARE_NO,
+				BOARD_DATE_START,
+				BOARD_DATE_END,
+				(CASE
+					WHEN BOARD_CONFIRM = '0' THEN '등록요청'
+					WHEN BOARD_CONFIRM = '1' THEN '등록완료'
+                    WHEN BOARD_CONFIRM = '2' THEN '등록거절'
+					WHEN BOARD_CONFIRM = '3' THEN '수정요청'
+					WHEN BOARD_CONFIRM = '4' THEN '삭제완료'
+				END)
+				AS BOARD_CONFIRM,
+				REVIEW_IDX,
+				HOST_IDX,
+				REVIEW_MEM_ID,
+				REVIEW_DATE,
+				SCORE,
+				REVIEW_CONTENT
+
+			FROM	BOARD LEFT JOIN REVIEW
+			ON BOARD.BOARD_HOST_IDX = REVIEW.HOST_IDX
+			WHERE	BOARD_NO=#{BOARD_NO}
+	]]>
+
+	</select>
+	
 	
 	
 	<!-- 호스트 글 리스트 -->
