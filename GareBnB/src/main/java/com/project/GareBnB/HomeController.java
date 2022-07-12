@@ -3,18 +3,17 @@ package com.project.GareBnB;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Handles requests for the application home page.
  */
-@Controller
+@RestController
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -34,6 +33,11 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "home";
+	}
+	
+	@RequestMapping(value="/api/hello", method = RequestMethod.GET)
+	public String hello() {
+		return "안녕하세요. 현재 서버시간은 "+new Date()+"입니다. \n";
 	}
 	
 }
