@@ -19,14 +19,15 @@ public class HostController {
 	Logger log = Logger.getLogger(this.getClass());
 
 	@Resource(name="hostService")
-	private HostService hostService;
+	private HostService HostService;
 	
 	@ResponseBody
 	@RequestMapping(value="/myPage/hostDetail.do" )
     public Map<String, Object> hostDetail(CommandMap commandMap) throws Exception{
 		Map<String, Object> Json = new HashMap<String, Object>();
-    	
+    	Map<String , Object> resultMap = HostService.selectHostDetail(commandMap.getMap());
 		
+    	Json.put("map", resultMap);
     	return Json;
     }
 	
@@ -34,7 +35,7 @@ public class HostController {
 	@RequestMapping(value="/myPage/hostInfo.do" )
     public Map<String, Object> hostInfo(CommandMap commandMap) throws Exception{
 		Map<String, Object> Json = new HashMap<String, Object>();
-    	
+		
 		
     	return Json;
     }
@@ -60,42 +61,6 @@ public class HostController {
 	@ResponseBody
 	@RequestMapping(value="/myPage/hostDelete.do" )
     public Map<String, Object> hostModifyDelete(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-    	
-		
-    	return Json;
-    }
-	
-	@ResponseBody
-	@RequestMapping(value="/admin/hostConfirmList.do" )
-    public Map<String, Object> hostConfirmList(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-    	
-		
-    	return Json;
-    }
-	
-	@ResponseBody
-	@RequestMapping(value="/admin/hostConfirmDetail.do" )
-    public Map<String, Object> hostConfirmDetail(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-    	
-		
-    	return Json;
-    }
-	
-	@ResponseBody
-	@RequestMapping(value="/admin/HostConfirm.do" )
-    public Map<String, Object> HostConfirm(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-    	
-		
-    	return Json;
-    }
-	
-	@ResponseBody
-	@RequestMapping(value="/admin/hostConfirmDeny.do" )
-    public Map<String, Object> hostConfirmDeny(CommandMap commandMap) throws Exception{
 		Map<String, Object> Json = new HashMap<String, Object>();
     	
 		

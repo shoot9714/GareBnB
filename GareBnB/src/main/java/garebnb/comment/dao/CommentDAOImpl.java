@@ -6,9 +6,10 @@ import org.apache.commons.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 
 
-@Controller
+@Repository("commentDAO")
 public class CommentDAOImpl implements CommentDAO{
 	
 	protected Log log = LogFactory.getLog(CommentDAO.class);

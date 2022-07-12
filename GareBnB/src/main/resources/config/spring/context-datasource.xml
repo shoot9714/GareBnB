@@ -7,14 +7,9 @@
 		<!-- 각자 알맞은 코드로 수정하면 됩니다. -->				
 	<bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-
-
-        <property name="url" value="jdbc:oracle:thin:@DB20220512111319_high?TNS_ADMIN=/Users/a_ram/Desktop/snejob/Wallet_DB20220512111319" />
-	<property name="username" value="admin" />
-	<property name="password" value="Oracle123456789" />
-
-
-
+        <property name="url" value="jdbc:oracle:thin:@db202204251731_high?TNS_ADMIN=/Users/jinkim/Documents/Wallet_DB202204251731" />
+	<property name="username" value="gare" />
+	<property name="password" value="BnB20222022" />
     </bean>
     <!-- 저랑은 코드가 다를거에요 ~~~ -->
     <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">

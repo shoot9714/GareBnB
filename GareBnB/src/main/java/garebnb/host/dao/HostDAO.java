@@ -1,7 +1,11 @@
 package garebnb.host.dao;
 
-public interface HostDAO {
+import java.util.Map;
 
+public interface HostDAO {
+	
+	public Map<String, Object> selectHostDetail(Map<String,Object> map) throws Exception;
+	
 	
 	
 }

@@ -10,18 +10,15 @@
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-
 	<context:component-scan base-package="garebnb" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-	
 	
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
 			<bean class="garebnb.common.resolver.CustomMapArgumentResolver"></bean>		
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
-	
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -32,6 +29,7 @@
 	
 	<aop:aspectj-autoproxy/>
 	<bean id="loggerAspect" class="garebnb.common.logger.LoggerAspect"/>
+	
     <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
     
     <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
@@ -43,3 +41,5 @@
     	p:prefix="/WEB-INF/jsp/" p:suffix=".jsp">
    	</bean>
 </beans>
+
+

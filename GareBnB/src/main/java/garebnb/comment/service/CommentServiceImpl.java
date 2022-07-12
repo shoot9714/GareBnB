@@ -12,6 +12,6 @@ public class CommentServiceImpl implements CommentService{
 	
 	Logger log = Logger.getLogger(this.getClass());
 
-	@Resource(name="CommentDAO")
+	@Resource(name="commentDAO")
 	private CommentDAO commentDAO;
 }

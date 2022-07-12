@@ -15,7 +15,7 @@ import garebnb.board.service.BoardService;
 public class BoardController {
 	Logger log = Logger.getLogger(this.getClass());
 
-	@Resource(name="BoardService")
+	@Resource(name="boardService")
 	private BoardService boardService;
 	
 	@RequestMapping(value="/host/mypage/myboardList")
