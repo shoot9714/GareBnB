@@ -18,11 +18,17 @@
 				BOARD_CARE_NO,
 				BOARD_DATE_START,
 				BOARD_DATE_END,
-				BOARD_CONFIRM
+				(CASE
+						WHEN BOARD_CONFIRM = '0' THEN '등록요청'
+						WHEN BOARD_CONFIRM = '1' THEN '등록완료'
+                        WHEN BOARD_CONFIRM = '2' THEN '등록거절'
+						WHEN BOARD_CONFIRM = '3' THEN '수정요청'
+						WHEN BOARD_CONFIRM = '4' THEN '삭제완료'
+				END)
+				AS BOARD_CONFIRM
 	
 			FROM	BOARD
-			WHERE	BOARD_HOST_ID=#{MEM_ID}
-			AND	BOARD_CONFIRM IN (0, 1, 2, 3)
+			WHERE	BOARD_HOST_ID=#{MEM_ID};
 		]]>
 	
 	</select>
@@ -99,10 +105,17 @@
 				BOARD_CARE_NO,
 				BOARD_DATE_START,
 				BOARD_DATE_END,
-				BOARD_CONFIRM
+				(CASE
+						WHEN BOARD_CONFIRM = '0' THEN '등록요청'
+						WHEN BOARD_CONFIRM = '1' THEN '등록완료'
+                        WHEN BOARD_CONFIRM = '2' THEN '등록거절'
+						WHEN BOARD_CONFIRM = '3' THEN '수정요청'
+				END)
+				AS BOARD_CONFIRM
 	
 			FROM	BOARD B
 			WHERE	BOARD_NO=#{BOARD_NO}
+			AND		BOARD_CONFIRM IN (0, 1, 2, 3)
 		]]>
 	
 	</select>
