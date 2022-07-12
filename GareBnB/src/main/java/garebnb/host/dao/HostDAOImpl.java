@@ -20,4 +20,10 @@ public class HostDAOImpl implements HostDAO{
 			log.debug("\t QueryId \t:  " + queryId);
 		}
 	}
+	
+	
+	
+
+	
+	
 }

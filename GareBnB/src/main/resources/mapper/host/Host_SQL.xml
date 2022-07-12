@@ -1,1 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<mapper namespace="host_member">
+<!-- 호스트 정보 보기 -->
+	<insert id="insertHostMem" parameterType="hashmap">
+
+	<![CDATA[
+		INSERT INTO HOST_MEMBER
+		(
+			MEM_IDX,
+			HOST_EMAIL,
+			HOST_POSTCODE,
+			HOST_ADDR1,
+			HOST_ADDR2,
+			HOST_JUMIN1,
+			HOST_JUMIN2,
+			HOST_INTRO,
+			HOST_ACCOUNT,
+			HOST_BANK
+		)
+		VALUES
+		(
+			#{MEM_IDX},
+			#{HOST_EMAIL},
+			#{HOST_POST},
+			#{HOST_ADDR1},
+			#{HOST_ADDR2},
+			#{HOST_JUMIN1},
+			#{HOST_JUMIN2},
+			#{HOST_INTRO},
+			#{HOST_ACCOUNT},
+			#{HOST_BANK}
+		)
+	]]>
+	</insert>
+<!-- 호스트 정보 수 -->
+	<update id="updateOneHost" parameterType="hashmap">
+
+	UPDATE	HOST_MEMBER
+	SET	
+		HOST_EMAIL = #{HOST_EMAIL},
+		HOST_POSTCODE = #{HOST_POSTCODE},
+		HOST_ADDR1 = #{HOST_ADDR1},
+		HOST_ADDR2 = #{HOST_ADDR2},
+		HOST_JUMIN1 = #{HOST_JUMIN1},
+		HOST_JUMIN2 = #{HOST_JUMIN2},
+		HOST_INTRO = #{HOST_INTRO},
+		HOST_ACCOUNT = #{HOST_ACCOUNT},
+		HOST_BANK = #{HOST_BANK}
+	WHERE 	MEM_IDX = #{MEM_IDX}
+</update>
+	
+<!-- 호스트 삭제 -->
+<update id="updateOneHostDelete" parameterType="hashmap">
+	UPDATE	MEMBER
+	SET	MEM_LEVEL = 1
+	WHERE	MEM_IDX=#{MEM_IDX}
+</update>
+
+
+</mapper>
