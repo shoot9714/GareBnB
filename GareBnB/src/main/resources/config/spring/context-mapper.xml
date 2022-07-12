@@ -13,7 +13,7 @@
 </bean>
 
 <bean id="sqlSesstionTemplate"
-	class ="org.mybatis.spring.SqlSessionTemplate">
+	class ="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 	<constructor-arg index="0" ref="sqlSession"/>	
 </bean>
 

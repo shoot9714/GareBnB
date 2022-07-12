@@ -206,23 +206,28 @@
 	
 	
 	<!-- 호스트 게시글 등록 승인 -->
-	<update id="updateHostBoardConfirm" parameterType="hashmap">		
+	<update id="updateHostBoardConfirm" parameterType="hashmap">
+		<![CDATA[
+			
 			UPDATE 
 				BOARD
 			SET
 				BOARD_CONFIRM = '1'
 			WHERE
 				BOARD_NO = #{BOARD_NO}
+				]]>
 	</update>
 
 
 	<!-- 호스트 게시글 등록 거절 --> 
 	<update id="updateHostBoardDeny" parameterType="hashmap">
+	<![CDATA[
 			UPDATE 
 				BOARD
 			SET
 				BOARD_CONFIRM = '2'      
 			WHERE 
 				BOARD_NO = #{BOARD_NO}
+				]]>
 	</update>
 </mapper>
