@@ -7,7 +7,7 @@
 		<!-- 각자 알맞은 코드로 수정하면 됩니다. -->				
 	<bean id="dataSourceSpied" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@db202204251731_high?TNS_ADMIN=C:\Users\Jack\Desktop\빅데이터수업자료\프로젝트\Wallet_DB202204251731" />
+        <property name="url" value="jdbc:oracle:thin:@db202204251731_high?TNS_ADMIN=C://Users//Jack//Desktop//빅데이터수업자료//프로젝트//Wallet_DB202204251731" />
 	<property name="username" value="gare" />
 	<property name="password" value="BnB20222022" />
     </bean>

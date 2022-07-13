@@ -8,12 +8,12 @@
 	<select id="selectReviewOneMember" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT 
-				REVIEW_IDX, HOST_IDX, REVIEW_MEM_ID, REVIEW_DATE, SCORE, REVIEW_CONTENT
+				REVIEW_IDX, BOARD_NO, REVIEW_MEM_ID, REVIEW_DATE, SCORE, REVIEW_CONTENT
 			FROM 
 				REVIEW
 			WHERE 
-				REVIEW_MEM_ID = #{MEM_ID} <!-- 작성자ID-->
-				AND HOST_IDX=#{MEM_IDX} <!--호스트IDX-->
+				BOARD_NO=#{BOARD_NO}
+				AND REVIEW_MEM_ID = #{MEM_ID} <!-- 작성자ID-->
 		]]>
 	</select>
 	
@@ -24,7 +24,7 @@
 			INSERT INTO REVIEW
 				(
 					REVIEW_IDX,
-					HOST_IDX,
+					BOARD_NO,
 					REVIEW_MEM_ID,
 					REVIEW_DATE,
 					SCORE,
@@ -33,7 +33,7 @@
 			VALUES
 			 	( 
 					REVIEW_IDX_SEQ.NEXTVAL,
-					#{MEM_IDX},
+					#{BOARD_NO},
 					#{MEM_ID},
 					SYSDATE,
 					#{SCORE},
@@ -52,4 +52,20 @@
 		]]>
 	</delete>
 
+
+	<!-- selectReviewList: 게시글 하나에 대한 리뷰리스트-->
+	<select id="selectReviewList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+				SELECT
+					REVIEW_IDX
+					BOARD_NO
+					REVIEW_MEM_ID
+					REVIEW_DATE
+					SCORE
+					REVIEW_CONTENT
+				FROM 
+					REVIEW
+				WHERE	BOARD_NO=#{BOARD_NO}
+		]]>
+	</select>
 </mapper>
