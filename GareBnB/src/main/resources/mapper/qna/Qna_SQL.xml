@@ -21,11 +21,11 @@
 		(
 			QNA_IDX_SEQ.NEXTVAL, 
 			#{QNA_TITLE}, 
-			#{QNA_ID},
+			#{MEM_ID},
 			#{QNA_CONTENT},
 			SYSDATE,
 		 	#{QNA_STATE},
-			#{QNACOMMENTT}
+			#{QNA_COMMENT}
 	
 		)
 	]]>
@@ -91,5 +91,14 @@
 	]]>
 		
 </update>
+
+
+<!-- 문의 삭제  -->
+<delete id ="deleteQna" parameterType ="hashmap">
+	<![CDATA[
+		DELETE FROM QNA
+			WHERE QNA_IDX=#{QNA_IDX}
+	]]>	
+</delete>
 
 </mapper>
