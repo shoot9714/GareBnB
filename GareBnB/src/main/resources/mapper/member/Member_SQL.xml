@@ -4,10 +4,10 @@
 <mapper namespace="member">
 
 <!-- selectMemberDetail(아이디 중복확인, 회원정보 수정 폼, 회원정보 기본 페이지, 회원 상세 보기) -->
-<select id="selectMemberDetail" parameterType="hashmap" resultType="hashmap">
+<select id="selectMemberDetail" parameterType="hashmap" resultType="int">
 <![CDATA[
 	SELECT
-		MEM_LEVEL, MEM_IDX, MEM_ID, MEM_PW, MEM_NAME, MEM_PHONE
+		COUNT(MEM_ID)
 	FROM 
 		MEMBER
 	WHERE 
@@ -15,12 +15,14 @@
 ]]>
 </select>
 
+
 <!-- insertMember (회원가입 성공기능) -->
 <insert id="insertMember" parameterType="hashmap">
 <![CDATA[
 	INSERT INTO
 		MEMBER
 		(
+			MEM_LEVEL,
 			MEM_IDX,
 			MEM_ID,
 			MEM_PW,
@@ -29,7 +31,8 @@
 		)
 	VALUES
 	 	(	
-			MEM_IDX_SEQ.NEXTVAL,
+	 		1,
+			#{MEM_IDX},
 			#{MEM_ID},
 			#{MEM_PW},
 			#{MEM_NAME},
@@ -38,19 +41,6 @@
 ]]>
 </insert>
 
-<!-- selectOneIdPw (아이디 찾기, 비밀번호 찾기) -->
-<select id="selectOneIdPw" parameterType="hashmap" resultType="hashmap">
-<![CDATA[
-	SELECT 
-		MEM_IDX, MEM_ID, MEM_PW, MEM_NAME, MEM_PHONE
-	FROM 
-		MEMBER
-	WHERE 
-		MEM_ID = #{MEM_ID}
-		AND
-		MEM_PHONE = #{MEM_PHONE}
-]]>
-</select>
 
 <!-- updateOneMember (회원정보 수정 기능(일반회원)) -->
 <update id="updateOneMember" parameterType="hashmap">
@@ -130,21 +120,16 @@
 </select>
 
 <!-- updateMemberDeny (회원 정지 확인) -->
-<select id="updateMemberDeny" parameterType="hashmap" resultType="hashmap">
+<update id="updateMemberDeny" parameterType="hashmap">
 		<![CDATA[
-			SELECT
-				MEM_IDX,
-				MEM_LEVEL,
-				MEM_NAME,
-				MEM_ID,
-				MEM_PW,
-				MEM_PHONE
-			FROM
-				MEMBER	
+			UPDATE
+				MEMBER
+			SET
+				MEM_LEVEL = '5'	
 			WHERE
-				MEM_LEVEL = '5'		
+				MEM_IDX = #{MEM_IDX}
 		]]>
-</select>
+</update>
 
 <!-- updateMemberDelete (회원 삭제 확인) -->
 <select id="updateMemberDelete" parameterType="hashmap" resultType="hashmap">
@@ -165,21 +150,27 @@
 
 <!-- updateHostConfirm (호스트 등록 승인) -->
 <update id="updateHostConfirm" parameterType="hashmap">
-		UPDATE 
+		<![CDATA[
+		UPDATE
 			MEMBER
 		SET
 			MEM_LEVEL = '2'
 		WHERE 
 			MEM_IDX = #{MEM_IDX}
+		]]>
 </update>
+
 
 <!-- updateHostDeny (호스트 등록 거절) -->
 <update id="updateHostDeny" parameterType="hashmap">
+		<![CDATA[
 		UPDATE 
 			MEMBER
 		SET
 			MEM_LEVEL = '4'
 		WHERE
 			MEM_IDX = #{MEM_IDX}
+		]]>
 </update>
+
 </mapper>

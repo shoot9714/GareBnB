@@ -1,5 +1,8 @@
 package garebnb.member.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,4 +23,74 @@ public class MemberDAOImpl implements MemberDAO{
 			log.debug("\t QueryId \t:  " + queryId);
 		}
 	}
+	
+	@Override
+	public int selectMemberDetail(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.selectMemberDetail", map); 
+	
+	}
+
+	@Override
+	public void insertMember(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.insert("member.insertMember", map);
+	}
+
+	@Override
+	public void updateOneMember(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("member.updateOneMember", map);
+	}
+
+
+	@Override
+	public void updateOneMemberDelete(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("member.updateOneMemberDelete", map);
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Map<String, Object>> selectMemberList(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("member.selectMemberList", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Map<String, Object>> selectHostConfirmList(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("member.selectHostConfirmList", map);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> selectConfirmMemberDetail(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return (Map<String, Object>) sqlSession.selectList("member.selectConfirmMemberDetail", map);
+	}
+
+	@Override
+	public void updateMemberDeny(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("member.updateMemberDeny", map);
+	}
+
+
+	@Override
+	public void updateHostConfirm(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("member.updateHostConfirm", map);
+	}
+
+
+	@Override
+	public void updateHostDeny(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("member.updateHostDeny", map);
+	}
 }
+	
+	
