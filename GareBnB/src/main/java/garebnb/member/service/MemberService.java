@@ -1,5 +1,32 @@
 package garebnb.member.service;
 
-public interface MemberService {
+import java.util.List;
+import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
+@Service("memberService")
+public interface MemberService {
+	
+	int selectMemberDetail(Map<String, Object> map) throws Exception;
+	
+	void insertMember(Map<String, Object> map) throws Exception;
+	
+	
+	void updateOneMember(Map<String, Object> map) throws Exception;
+
+	void updateOneMemberDelete(Map<String, Object> map) throws Exception;
+
+	List<Map<String, Object>> selectMemberList(Map<String, Object> map) throws Exception;
+	
+	List<Map<String, Object>> selectHostConfirmList(Map<String, Object> map) throws Exception;
+
+	Map<String, Object> selectConfirmMemberDetail(Map<String, Object> map) throws Exception;
+
+	void updateMemberDeny(Map<String, Object> map) throws Exception;
+	
+	void updateHostConfirm(Map<String, Object> map) throws Exception;
+	
+	void updateHostDeny(Map<String, Object> map) throws Exception;
+	
 }
