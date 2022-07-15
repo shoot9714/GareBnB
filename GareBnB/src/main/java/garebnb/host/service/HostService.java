@@ -11,13 +11,11 @@ public interface HostService {
 	
 	Map<String, Object> selectHostDetail(Map<String, Object> map) throws Exception;
 	
-	void insertHost(Map<String,Object> map, HttpServletRequest request) throws Exception;
+	void insertHost(Map<String,Object> map) throws Exception;
 	
-	void updateHost(Map<String, Object> map, HttpServletRequest request) throws Exception;
+	void updateHost(Map<String, Object> map) throws Exception;
 	
 	void deleteHost(Map<String, Object> map) throws Exception;
-	
-	Map<String, Object> selectHostList(Map<String, Object> map) throws Exception;
 	
 
 }

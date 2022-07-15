@@ -29,26 +29,24 @@ public class HostServiceImpl implements HostService{
 	}
 
 	@Override
-	public void insertHost(Map<String, Object> map, HttpServletRequest request) throws Exception {
+	public void insertHost(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
+		hostDAO.insertHost(map);
 		
 	}
 
 	@Override
-	public void updateHost(Map<String, Object> map, HttpServletRequest request) throws Exception {
+	public void updateHost(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
+		hostDAO.updateHost(map);
 		
 	}
 
 	@Override
 	public void deleteHost(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
+		hostDAO.deleteHost(map);
 		
 	}
 
-	@Override
-	public Map<String, Object> selectHostList(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
