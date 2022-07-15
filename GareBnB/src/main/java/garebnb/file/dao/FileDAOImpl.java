@@ -1,5 +1,7 @@
 package garebnb.file.dao;
 
+import java.util.Map;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -18,5 +20,31 @@ public class FileDAOImpl implements FileDAO{
 		if(log.isDebugEnabled()) {
 			log.debug("\t QueryId \t:  " + queryId);
 		}
+	}
+
+	@Override
+	public Map<String, Object> selectFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.selectList("file.selectFile",map);
+		return null;
+
+	}
+
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.insert("file.insertFile",map);
+	}
+
+	@Override
+	public void deleteFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("file.deleteFile", map);
+	}
+
+	@Override
+	public void updateFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("file.updateFile", map);
 	}
 }
