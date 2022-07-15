@@ -3,8 +3,8 @@
 
 <mapper namespace = "report">
 
-<!-- 신고내역보기 일반 -->
-<select id="selectOneReport" parameterType="hashmap" resultType="hashmap">
+<!-- 신고내역보기 (일반 회원)- MEM_ID 세션에서 -->
+<select id="selectOneReportList" parameterType="hashmap" resultType="hashmap">
 <![CDATA[
 	SELECT
 		REPORT_IDX,
@@ -17,13 +17,62 @@
 		REPORT_MEM_IDX,
 		REPORT_RES_NO
 	FROM 
-		REPORT;
+		REPORT
 	WHERE 
-		REPORT_ID = #{MEM_ID}	 
+		REPORT_ID = #{MEM_ID}
 ]]>
 </select>
 
 
+
+<!-- 신고내용 입력 -일반회원인경우 -->
+<insert id = "insertReport" parameterType="hashmap">
+
+<selectKey keyProperty="RES_MEM_IDX" resultType="string" order="BEFORE">
+			SELECT RES_HOST_ID FROM RESERVATION
+			WHERE RES_IDX = #{RES_IDX}
+	</selectKey>
+
+
+<!-- 예약번호 -->	
+<selectKey keyProperty="REPORT_RES_NO" resultType="string" order="BEFORE">
+			SELECT RES_IDX FROM RESERVATION
+			WHERE 
+	</selectKey>
+	
+	<![CDATA[
+		INSERT INTO REPORT
+			(
+				REPORT_IDX,
+				REPORT_TITLE,
+				REPORT_ID,
+				REPORT_CONTENT,
+				REPORT_DATE,
+				REPORT_STATE,
+				REPORT_MEM_IDX,
+       		    REPORT_RES_NO
+			)
+			VALUES
+			(
+				REPORT_IDX_SEQ.NEXTVAL, 
+				#{REPORT_TITLE}, 
+				#{REPORT_ID},
+				#{REPORT_CONTENT},
+				SYSDATE,
+			 	'0',
+				#{REPORT_MEM_IDX}
+				#{REPORT_RES_NO}
+			)
+		]]>
+</insert>
+
+<!-- 	<selectKey keyProperty="REPORT_MEM_IDX,RES_NO" resultType="string" order="BEFORE">
+	신고할 HOST의 ID와 RES_NO를 찾는거니깐 게시글 번호 
+			SELECT A.RES_HOST_ID, A.RES_IDX
+			FROM RESERVATION R INNER JOIN BOARD B
+			ON 	R.RES_BOARD_NO=B.BOARD_NO
+       	     		WHERE R.RES_CLI_ID= #{MEM_ID}
+	</selectKey> -->
 
 <!-- 신고내용 리스트보기 -->
 	<select id="selectReportList" parameterType="hashmap" resultType="hashmap">
