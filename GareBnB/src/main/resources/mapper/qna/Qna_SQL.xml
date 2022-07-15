@@ -49,6 +49,8 @@
 
 <!-- 문의내용 리스트보기 관리자 -->
 <select id ="selectQNAList" parameterType ="hashmap" resultType = "hashmap">
+	<![CDATA[
+
 		SELECT
 			QNA_IDX, QNA_TITLE, QNA_ID, QNA_DATE,
 			(CASE
@@ -59,12 +61,16 @@
 		FROM
 			QNA
 		ORDER BY QNA_DATE DESC		
+			]]>	
+		
 </select>	
 
 
 
 <!-- 문의내용 상세보기 관리자 -->
 <select id ="selectAdminOneQNA" parameterType ="hashmap" resultType = "hashmap">
+	<![CDATA[
+
 		SELECT
 			QNA_IDX,
 			QNA_TITLE,
@@ -74,6 +80,8 @@
 		FROM
 			QNA
 		WHERE QNA_IDX = #{QNA_IDX}
+					]]>	
+		
 </select>
 
 

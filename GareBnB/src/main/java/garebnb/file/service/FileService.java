@@ -1,12 +1,13 @@
 package garebnb.file.service;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 public interface FileService {
 	
-	Map<String,Object> selectFile(Map<String,Object> map) throws Exception;
+	List<Map<String, Object>> selectFile(Map<String,Object> map) throws Exception;
 
 	void updateFile(Map<String,Object> map) throws Exception;
 		

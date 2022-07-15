@@ -24,7 +24,7 @@ public class FileServiceImpl implements FileService{
 	private fileUtils fileUtils;
 
 	@Override
-	public Map<String, Object> selectFile(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectFile(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return fileDAO.selectFile(map); 
 	}
