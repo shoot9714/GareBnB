@@ -1,5 +1,6 @@
 package garebnb.review.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
@@ -25,11 +26,11 @@ public class ReviewDAOImpl implements ReviewDAO{
     
     
 	
-	
+    @SuppressWarnings("unchecked")
     @Override
-	public Map<String, Object> selectReviewOneMember(Map<String, Object> map) throws Exception {
+	public Map<String, Object> selectmyReview(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-    	return (Map<String , Object>) sqlSession.selectOne("review.selectReviewOneMember", map);
+    	return (Map<String , Object>) sqlSession.selectOne("review.selectmyReview", map);
 	}
 
 
@@ -39,7 +40,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 	@Override
 	public void insertReview(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		
+		sqlSession.insert("review.insertReview",map);
 	}
 
 
@@ -49,7 +50,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 	@Override
 	public void deleteReview(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		
+		sqlSession.delete("review.deleteReview",map);
 	}
 
 
@@ -57,9 +58,9 @@ public class ReviewDAOImpl implements ReviewDAO{
 
 
 	@Override
-	public Map<String, Object> selectReviewList(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("review.selectReviewList", map);
 	}
 
 

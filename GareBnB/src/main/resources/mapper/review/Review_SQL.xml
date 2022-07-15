@@ -5,7 +5,7 @@
 
 
 	<!-- selectReviewOneMember(내 리뷰) -->
-	<select id="selectReviewOneMember" parameterType="hashmap" resultType="hashmap">
+	<select id="selectmyReview" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT 
 				REVIEW_IDX, BOARD_NO, REVIEW_MEM_ID, REVIEW_DATE, SCORE, REVIEW_CONTENT
@@ -13,7 +13,7 @@
 				REVIEW
 			WHERE 
 				BOARD_NO=#{BOARD_NO}
-				AND REVIEW_MEM_ID = #{MEM_ID} <!-- 작성자ID-->
+				AND REVIEW_MEM_ID = #{MEM_ID}
 		]]>
 	</select>
 	
