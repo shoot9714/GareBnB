@@ -16,8 +16,8 @@
 				BOARD_ADDR1,
 				BOARD_PRICE,
 				BOARD_CARE_NO,
-				BOARD_DATE_START,
-				BOARD_DATE_END,
+				TO_CHAR(BOARD_DATE_START,'YYYY/MM/DD') BOARD_DATE_START,
+					TO_CHAR(BOARD_DATE_END,'YYYY/MM/DD') BOARD_DATE_END,
 				(CASE
 						WHEN BOARD_CONFIRM = '0' THEN '등록요청'
 						WHEN BOARD_CONFIRM = '1' THEN '등록완료'
@@ -28,7 +28,7 @@
 				AS BOARD_CONFIRM
 	
 			FROM	BOARD
-			WHERE	BOARD_HOST_ID=#{MEM_ID};
+			WHERE	BOARD_HOST_ID=#{MEM_ID}
 		]]>
 	
 	</select>
@@ -44,7 +44,7 @@
 	</update>
 	
 	
-	<!-- 호스트-내 게시글 등록,게시글 수정 -->
+	<!-- 호스트-새로운 내 게시글 등록 -->
 	<insert id="insertOneBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
 		<selectKey keyProperty="BOARD_NO" resultType="string" order="BEFORE">
 			SELECT BOARD_NO_SEQ.NEXTVAL FROM DUAL
@@ -69,7 +69,7 @@
 			)
 			VALUES
 			(
-				#{BOARD_NO}, 
+				#{BOARD_NO},
 				#{BOARD_HOST_ID},
 				#{BOARD_HOST_IDX},
 				#{BOARD_TITLE},
@@ -87,8 +87,67 @@
 	</insert>
 
 
+	<!-- 호스트-내 수정게시글 등록 -->
+	<insert id="insertOneBoardModify" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+		<selectKey keyProperty="BOARD_MODIFY_NO" resultType="integer" order="BEFORE">
+			SELECT NVL(MAX(BOARD_MODIFY_NO),0)+1 FROM BOARD WHERE BOARD_NO=#{BOARD_NO}
+		</selectKey>
+	
+		<![CDATA[
+			INSERT INTO BOARD
+			(
+				BOARD_NO,
+				BOARD_MODIFY_NO,
+				BOARD_HOST_ID,
+				BOARD_HOST_IDX,
+				BOARD_TITLE,
+				BOARD_CONTENT,
+				BOARD_ADDR1,
+				BOARD_ADDR2,
+				BOARD_POST,
+				BOARD_PRICE,
+				BOARD_CARE_NO,
+				BOARD_DATE_START,
+				BOARD_DATE_END,
+				BOARD_CONFIRM
+			)
+			VALUES
+			(
+				#{BOARD_NO}, 
+				#{BOARD_MODIFY_NO},
+				#{BOARD_HOST_ID},
+				#{BOARD_HOST_IDX},
+				#{BOARD_TITLE},
+				#{BOARD_CONTENT},
+				#{BOARD_ADDR1},
+				#{BOARD_ADDR2},
+				#{BOARD_POST},
+				#{BOARD_PRICE},
+				#{BOARD_CARE_NO},
+				#{BOARD_DATE_START},
+				#{BOARD_DATE_END},
+				3
+			)
+		]]>
+	</insert>
+	
 
-	<!-- 게시글 정보 불러오기-->
+	<!-- 호스트 게시글 수정 취소 -->
+	<update id="updateOneBoardModifyCancel" parameterType="hashmap">
+		<![CDATA[
+				
+				UPDATE 
+						BOARD
+				SET
+						BOARD_CONFIRM = 5
+				WHERE
+						BOARD_NO = #{BOARD_NO}
+				AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO}
+				
+		]]>
+	</update>
+	
+	<!-- 호스트 게시글 정보 불러오기(삭제된 글은 보여주지 않음)-->
 	<select id="selectOneBoard" parameterType="hashmap" resultType="hashmap">
 		
 		<![CDATA[
@@ -125,19 +184,19 @@
 	<select id="selectBoardList" resultType="hashmap">
 		<![CDATA[
 			SELECT	BOARD_NO,
-				BOARD_HOST_ID,
-				BOARD_HOST_IDX,
-				BOARD_TITLE,
-				BOARD_CONTENT,
-				BOARD_ADDR1,
-				BOARD_ADDR2,
-				BOARD_POST,
-				BOARD_PRICE,
-				BOARD_CARE_NO,
-				BOARD_DATE_START,
-				BOARD_DATE_END,
-				BOARD_CONFIRM,
-			FROM	BOARD B
+					BOARD_HOST_ID,
+					BOARD_HOST_IDX,
+					BOARD_TITLE,
+					BOARD_CONTENT,
+					BOARD_ADDR1,
+					BOARD_ADDR2,
+					BOARD_POST,
+					BOARD_PRICE,
+					BOARD_CARE_NO,
+					BOARD_DATE_START,
+					BOARD_DATE_END,
+					BOARD_CONFIRM
+			FROM	BOARD
 			WHERE	BOARD_CONFIRM =1
 		]]>
 
@@ -147,39 +206,32 @@
 	<!-- selectBoardDetail : 게시글 상세 보기, 리뷰보기 -->
 	<select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap">
 	
-	<![CDATA[
-		SELECT	
-				BOARD_NO,
-				BOARD_HOST_ID,
-				BOARD_HOST_IDX,
-				BOARD_TITLE,
-				BOARD_CONTENT,
-				BOARD_ADDR1,
-				BOARD_ADDR2,
-				BOARD_POST,
-				BOARD_PRICE,
-				BOARD_CARE_NO,
-				BOARD_DATE_START,
-				BOARD_DATE_END,
-				(CASE
-					WHEN BOARD_CONFIRM = '0' THEN '등록요청'
-					WHEN BOARD_CONFIRM = '1' THEN '등록완료'
-                    WHEN BOARD_CONFIRM = '2' THEN '등록거절'
-					WHEN BOARD_CONFIRM = '3' THEN '수정요청'
-					WHEN BOARD_CONFIRM = '4' THEN '삭제완료'
-				END)
-				AS BOARD_CONFIRM,
-				REVIEW_IDX,
-				HOST_IDX,
-				REVIEW_MEM_ID,
-				REVIEW_DATE,
-				SCORE,
-				REVIEW_CONTENT
-
-			FROM	BOARD LEFT JOIN REVIEW
-			ON BOARD.BOARD_HOST_IDX = REVIEW.HOST_IDX
-			WHERE	BOARD_NO=#{BOARD_NO}
-	]]>
+		<![CDATA[
+			SELECT	
+					BOARD_NO,
+					BOARD_HOST_ID,
+					BOARD_HOST_IDX,
+					BOARD_TITLE,
+					BOARD_CONTENT,
+					BOARD_ADDR1,
+					BOARD_ADDR2,
+					BOARD_POST,
+					BOARD_PRICE,
+					BOARD_CARE_NO,
+					TO_CHAR(BOARD_DATE_START,'YYYY/MM/DD') BOARD_DATE_START,
+					TO_CHAR(BOARD_DATE_END,'YYYY/MM/DD') BOARD_DATE_END,
+					(CASE
+						WHEN BOARD_CONFIRM = '0' THEN '등록요청'
+						WHEN BOARD_CONFIRM = '1' THEN '등록완료'
+	                    WHEN BOARD_CONFIRM = '2' THEN '등록거절'
+						WHEN BOARD_CONFIRM = '3' THEN '수정요청'
+						WHEN BOARD_CONFIRM = '4' THEN '삭제완료'
+					END)
+					AS BOARD_CONFIRM
+					
+				FROM	BOARD
+				WHERE	BOARD_NO=#{BOARD_NO}
+		]]>
 
 	</select>
 	
@@ -193,7 +245,7 @@
 					BOARD_HOST_ID,
 					BOARD_TITLE,
 					(CASE
-						WHEN BOARD_CONFIRM = '0' THEN '등록요청
+						WHEN BOARD_CONFIRM = '0' THEN '등록요청'
 						WHEN BOARD_CONFIRM = '1' THEN '등록완료'
 						WHEN BOARD_CONFIRM = '3' THEN '수정요청'
 						WHEN BOARD_CONFIRM = '4' THEN '삭제완료'
@@ -208,14 +260,20 @@
 	<!-- 호스트 게시글 등록 승인 -->
 	<update id="updateHostBoardConfirm" parameterType="hashmap">
 		<![CDATA[
-			
-			UPDATE 
-				BOARD
-			SET
-				BOARD_CONFIRM = '1'
-			WHERE
-				BOARD_NO = #{BOARD_NO}
-				]]>
+			BEGIN	
+				UPDATE 
+						BOARD
+				SET
+						BOARD_CONFIRM = 4
+				WHERE
+						BOARD_NO = #{BOARD_NO};
+	
+				UPDATE	BOARD
+				SET		BOARD_CONFIRM = 1
+				WHERE	BOARD_NO=#{BOARD_NO}
+				AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO};
+			END;
+		]]>
 	</update>
 
 
