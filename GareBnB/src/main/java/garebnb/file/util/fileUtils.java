@@ -74,4 +74,69 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         }
 		return list;
 	}
+	
+	public List<Map<String, Object>> parseUpdateFileInfo(Map<String, Object> map, HttpServletRequest request) throws Exception{
+		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+    	Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
+    	
+    	MultipartFile multipartFile = null;
+    	String originalFileName = null;
+    	String originalFileExtension = null;
+    	String storedFileName = null;
+    	
+    	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+        Map<String, Object> listMap = null; 
+        
+        String fileBoardIdx = null;
+        String fileBoardLevel = "0";
+        String fileBoardType = (String)map.get("FILE_BOARD_TYPE");
+        
+        if(map.get("BOARD_IDX")==null) {
+        	fileBoardIdx = (String)map.get("MEM_IDX");
+        } else {
+        	fileBoardIdx = (String)map.get("BOARD_IDX");
+        }
+        
+        if(map.get("FILE_LEVEL") != null) {
+        	fileBoardLevel = (String)map.get("FILE_LEVEL");
+        }
+        
+        
+        String requestName = null;
+        String idx = null;
+        
+        
+        while(iterator.hasNext()){
+        	multipartFile = multipartHttpServletRequest.getFile(iterator.next());
+        	if(multipartFile.isEmpty() == false){
+        		originalFileName = multipartFile.getOriginalFilename();
+        		originalFileExtension = originalFileName.substring(originalFileName.lastIndexOf("."));
+        		storedFileName = CommonUtils.getRandomString() + originalFileExtension;
+        		
+        		multipartFile.transferTo(new File(filePath + storedFileName));
+        		
+        		listMap = new HashMap<String,Object>();
+        		listMap.put("IS_NEW", "Y");
+        		listMap.put("FILE_BOARD_IDX", fileBoardIdx);
+        		listMap.put("FILE_LEVEL", fileBoardLevel);
+        		listMap.put("FILE_BOARD_TYPE", fileBoardType);
+        		listMap.put("FILE_ORGNAME", originalFileName);
+        		listMap.put("FILE_STDNAME", storedFileName);
+        		listMap.put("FILE_SIZE", multipartFile.getSize());
+        		list.add(listMap);
+        	}
+        	else{
+        		requestName = multipartFile.getName();
+            	idx = "IDX_"+requestName.substring(requestName.indexOf("_")+1);
+            	if(map.containsKey(idx) == true && map.get(idx) != null){
+            		listMap = new HashMap<String,Object>();
+            		listMap.put("IS_NEW", "N");
+            		listMap.put("FILE_IDX", map.get(idx));
+            		list.add(listMap);
+            	}
+        	}
+        }
+		return list;
+	}
+
 }

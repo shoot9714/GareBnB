@@ -2,6 +2,7 @@ package garebnb.file.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,15 +27,23 @@ public class FileController {
 	
 	@ResponseBody
 	@RequestMapping(value="/file/download.do")
-	public List<Object> img(CommandMap commandMap) throws Exception{
+	public List<Map<String,Object>> downloadFile(CommandMap commandMap) throws Exception{
 		List<Map<String, Object>> list = fileService.selectFile(commandMap.getMap());
-		List<Object> returnList = new ArrayList<Object>();
+		List<Map<String,Object>> returnList = new ArrayList<Map<String,Object>>();
 		
 		for(int i = 0; i<list.size(); i++) {
+			Map<String,Object> returnMap = new HashMap<String, Object>();
 			Map<String,Object> map = list.get(i);
-			String storedFileName = (String)map.get("STORED_FILE_NAME");
+			String storedFileName = (String)map.get("FILE_STDNAME");
+			String File_Level = null;
+			if(map.get("FILE_LEVEL").equals("0")) {
+				File_Level = "main";
+			} else {
+				File_Level = "sub";
+			}
 			byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/jinkim/Documents/upload/"+storedFileName));
-			returnList.add(fileByte);
+			returnMap.put(File_Level, fileByte);
+			returnList.add(returnMap);
 			
 		}
 		return returnList;
@@ -42,8 +51,8 @@ public class FileController {
 
 	@ResponseBody
 	@RequestMapping(value="/file/update.do")
-	public void updateFile(CommandMap commandMap) throws Exception{
-		fileService.updateFile(commandMap.getMap());
+	public void updateFile(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		fileService.updateFile(commandMap.getMap(),request);
 	}
 	@ResponseBody
 	@RequestMapping(value="/file/delete.do")

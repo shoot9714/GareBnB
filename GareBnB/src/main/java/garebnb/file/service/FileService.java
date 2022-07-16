@@ -9,7 +9,7 @@ public interface FileService {
 	
 	List<Map<String, Object>> selectFile(Map<String,Object> map) throws Exception;
 
-	void updateFile(Map<String,Object> map) throws Exception;
+	void updateFile(Map<String,Object> map, HttpServletRequest request) throws Exception;
 		
 	void deleteFile(Map<String,Object> map) throws Exception;
 
