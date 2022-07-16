@@ -30,6 +30,14 @@ public class FileDAOImpl implements FileDAO{
 		return sqlSession.selectList("file.selectFile",map);
 
 	}
+	
+	@Override
+	public Map<String, Object> selectOneFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.selectOne("file.selectOneFile",map);
+
+	}
 
 	@Override
 	public void insertFile(Map<String, Object> map) throws Exception {

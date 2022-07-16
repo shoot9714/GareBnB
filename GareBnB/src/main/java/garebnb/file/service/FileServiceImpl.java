@@ -28,6 +28,12 @@ public class FileServiceImpl implements FileService{
 		// TODO Auto-generated method stub
 		return fileDAO.selectFile(map); 
 	}
+	
+	@Override
+	public Map<String,Object> selectOneFile(Map<String,Object> map) throws Exception{
+		
+		return fileDAO.selectOneFile(map);
+	}
 
 	@Override
 	public void updateFile(Map<String, Object> map ,HttpServletRequest request) throws Exception {

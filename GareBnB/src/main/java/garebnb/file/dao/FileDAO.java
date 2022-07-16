@@ -14,4 +14,6 @@ public interface FileDAO {
 	public void deleteFile(Map<String,Object> map) throws Exception;
 	
 	public void updateFile(Map<String,Object> map) throws Exception;
+
+	Map<String, Object> selectOneFile(Map<String, Object> map) throws Exception;
 }

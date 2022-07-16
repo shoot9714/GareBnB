@@ -26,8 +26,8 @@ public class FileController {
 	private FileService  fileService;
 	
 	@ResponseBody
-	@RequestMapping(value="/file/download.do")
-	public List<Map<String,Object>> downloadFile(CommandMap commandMap) throws Exception{
+	@RequestMapping(value="/file/selectFiles.do")
+	public List<Map<String,Object>> selectFiles(CommandMap commandMap) throws Exception{
 		List<Map<String, Object>> list = fileService.selectFile(commandMap.getMap());
 		List<Map<String,Object>> returnList = new ArrayList<Map<String,Object>>();
 		
@@ -46,6 +46,20 @@ public class FileController {
 			returnList.add(returnMap);
 			
 		}
+		return returnList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/file/selectOneFile.do")
+	public List<Map<String,Object>> selectOneFile(CommandMap commandMap) throws Exception{
+		Map<String,Object> file = fileService.selectOneFile(commandMap.getMap());
+		List<Map<String,Object>> returnList = new ArrayList<Map<String,Object>>();
+		Map<String,Object> returnMap = new HashMap<String, Object>();
+		String storedFileName = (String)file.get("FILE_STDNAME");
+		byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/jinkim/Documents/upload/"+storedFileName));
+		returnMap.put("main", fileByte);
+		returnList.add(returnMap);
+
 		return returnList;
 	}
 

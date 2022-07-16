@@ -14,4 +14,6 @@ public interface FileService {
 	void deleteFile(Map<String,Object> map) throws Exception;
 
 	void insertFile(Map<String, Object> map, HttpServletRequest request) throws Exception;
+
+	Map<String, Object> selectOneFile(Map<String, Object> map) throws Exception;
 }
