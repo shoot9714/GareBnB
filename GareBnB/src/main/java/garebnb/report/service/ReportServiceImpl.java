@@ -30,6 +30,13 @@ public class ReportServiceImpl implements ReportService{
 		// TODO Auto-generated method stub
 		reportDAO.insertReport(map);
 	}
+	
+	
+	@Override
+	public void insertHostReport(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		reportDAO.insertHostReport(map);
+	}
 
 	@Override
 	public List<Map<String, Object>> selectAdminReportList(Map<String, Object> map) throws Exception {
@@ -49,4 +56,7 @@ public class ReportServiceImpl implements ReportService{
 		reportDAO.updateReportComment(map);
 		
 	}
+
+
+
 }

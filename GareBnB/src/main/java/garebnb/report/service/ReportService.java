@@ -8,8 +8,11 @@ public interface ReportService {
 	//report One list
 	List<Map<String, Object>> selectOneReportList(Map<String, Object> map) throws Exception;
 	
-	//report insert
+	//mem -> host report insert
 	void insertReport(Map<String, Object> map) throws Exception;
+	
+	//host -> mem report insert
+	void insertHostReport(Map<String, Object> map) throws Exception;
 		
 	//Admin report list
 	List<Map<String, Object>> selectAdminReportList(Map<String, Object> map) throws Exception;
@@ -19,6 +22,8 @@ public interface ReportService {
 
 	//Admin report comment
 	void updateReportComment(Map<String, Object> map) throws Exception;
+
+	
 
 
 

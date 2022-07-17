@@ -36,8 +36,6 @@ public class QnaController {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
 		commandMap.put("USER_MEM_ID", id);
-		//String id = (String) session.getAttribute("USERID");
-		//commandMap.put("MEM_USERID", id);
 		
         List<Map<String, Object>> resultMap = qnaService.selectOneQnaList(commandMap.getMap());
         Json.put("map", resultMap);
