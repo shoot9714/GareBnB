@@ -1,5 +1,6 @@
 package garebnb.file.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
@@ -23,10 +24,18 @@ public class FileDAOImpl implements FileDAO{
 	}
 
 	@Override
-	public Map<String, Object> selectFile(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectFile(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		sqlSession.selectList("file.selectFile",map);
-		return null;
+		
+		return sqlSession.selectList("file.selectFile",map);
+
+	}
+	
+	@Override
+	public Map<String, Object> selectOneFile(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.selectOne("file.selectOneFile",map);
 
 	}
 

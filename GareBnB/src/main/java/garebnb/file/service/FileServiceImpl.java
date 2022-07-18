@@ -24,16 +24,32 @@ public class FileServiceImpl implements FileService{
 	private fileUtils fileUtils;
 
 	@Override
-	public Map<String, Object> selectFile(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectFile(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return fileDAO.selectFile(map); 
 	}
+	
+	@Override
+	public Map<String,Object> selectOneFile(Map<String,Object> map) throws Exception{
+		
+		return fileDAO.selectOneFile(map);
+	}
 
 	@Override
-	public void updateFile(Map<String, Object> map) throws Exception {
+	public void updateFile(Map<String, Object> map ,HttpServletRequest request) throws Exception {
 		// TODO Auto-generated method stub
-		fileDAO.updateFile(map);
-		
+		fileDAO.deleteFile(map);
+		List<Map<String,Object>> list = fileUtils.parseUpdateFileInfo(map, request);
+		Map<String,Object> tempMap = null;
+		for(int i=0, size=list.size(); i<size; i++){
+			tempMap = list.get(i);
+			if(tempMap.get("IS_NEW").equals("Y")){
+				fileDAO.insertFile(tempMap);
+			}
+			else{
+				fileDAO.updateFile(tempMap);
+			}
+		}		
 	}
 
 	@Override

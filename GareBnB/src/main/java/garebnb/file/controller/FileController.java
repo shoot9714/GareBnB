@@ -1,13 +1,13 @@
 package garebnb.file.controller;
 
 import java.io.File;
-import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -26,29 +26,57 @@ public class FileController {
 	private FileService  fileService;
 	
 	@ResponseBody
-	@RequestMapping(value="/file/download.do")
-	public byte[] img(CommandMap commandMap) throws Exception{
-		Map<String,Object> map = fileService.selectFile(commandMap.getMap());
-		String storedFileName = (String)map.get("STORED_FILE_NAME");
-		String originalFileName = (String)map.get("ORIGINAL_FILE_NAME");
+	@RequestMapping(value="/file/selectFiles.do")
+	public List<Map<String,Object>> selectFiles(CommandMap commandMap) throws Exception{
+		List<Map<String, Object>> list = fileService.selectFile(commandMap.getMap());
+		List<Map<String,Object>> returnList = new ArrayList<Map<String,Object>>();
 		
+		for(int i = 0; i<list.size(); i++) {
+			Map<String,Object> returnMap = new HashMap<String, Object>();
+			Map<String,Object> map = list.get(i);
+			String storedFileName = (String)map.get("FILE_STDNAME");
+			String File_Level = null;
+			if(map.get("FILE_LEVEL").equals("0")) {
+				File_Level = "main";
+			} else {
+				File_Level = "sub";
+			}
+			byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/jinkim/Documents/upload/"+storedFileName));
+			returnMap.put(File_Level, fileByte);
+			returnList.add(returnMap);
+			
+		}
+		return returnList;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/file/selectOneFile.do")
+	public List<Map<String,Object>> selectOneFile(CommandMap commandMap) throws Exception{
+		Map<String,Object> file = fileService.selectOneFile(commandMap.getMap());
+		List<Map<String,Object>> returnList = new ArrayList<Map<String,Object>>();
+		Map<String,Object> returnMap = new HashMap<String, Object>();
+		String storedFileName = (String)file.get("FILE_STDNAME");
 		byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/jinkim/Documents/upload/"+storedFileName));
-		
-		return fileByte;
+		returnMap.put("main", fileByte);
+		returnList.add(returnMap);
+
+		return returnList;
 	}
-	
+
+	@ResponseBody
 	@RequestMapping(value="/file/update.do")
-	public void updateFile(CommandMap commandMap) throws Exception{
-		fileService.updateFile(commandMap.getMap());
+	public void updateFile(CommandMap commandMap, HttpServletRequest request) throws Exception{
+		fileService.updateFile(commandMap.getMap(),request);
 	}
-	
+	@ResponseBody
 	@RequestMapping(value="/file/delete.do")
 	public void deleteFile(CommandMap commandMap) throws Exception{
 		fileService.deleteFile(commandMap.getMap());
 	}
-	
+	@ResponseBody
 	@RequestMapping(value="/file/insert.do")
-	public void insertFile(CommandMap commandMap, HttpServletRequest request) throws Exception{
+	public String insertFile(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		fileService.insertFile(commandMap.getMap(), request);
+		return "업로드 성공";
 	}
 }
