@@ -57,11 +57,11 @@
 	<select id="selectReviewList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 				SELECT
-					REVIEW_IDX
-					BOARD_NO
-					REVIEW_MEM_ID
-					REVIEW_DATE
-					SCORE
+					REVIEW_IDX,
+					BOARD_NO,
+					REVIEW_MEM_ID,
+					TO_CHAR(REVIEW_DATE,'YYYY/MM/DD') REVIEW_DATE,
+					SCORE,
 					REVIEW_CONTENT
 				FROM 
 					REVIEW
