@@ -31,12 +31,19 @@ public class ReportDAOImpl implements ReportDAO{
 		return sqlSession.selectList("report.selectOneReportList", map);
 	}
 
-	//신고 입력
+	//일반회원 -> 호스트 신고 입력
 	@Override
 	public void insertReport(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.insert("report.insertReport", map);		
 	}	
+	
+	//호스트 -> 일반회원 신고입력
+	@Override
+	public void insertHostReport(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.insert("report.insertHostReport", map);
+	}
 	
 	//관리자 - 신고 리스트
 	@Override
@@ -49,14 +56,15 @@ public class ReportDAOImpl implements ReportDAO{
 	@Override
 	public List<Map<String, Object>> selectAdminOneReport(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("report.selectAdminOneReoprt", map);
+		return sqlSession.selectList("report.selectAdminOneReport", map);
 	}
 
 	//관리자 - 신고 답글
 	@Override
 	public void updateReportComment(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		sqlSession.update("qna.updateReportComment", map);
+		sqlSession.update("report.updateReportComment", map);
 	}
+
 
 }

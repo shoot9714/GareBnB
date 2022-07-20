@@ -8,6 +8,8 @@ public interface ReportDAO {
 	public List<Map<String, Object>> selectOneReportList(Map<String, Object> map) throws Exception;
 	
 	public void insertReport(Map<String, Object> map) throws Exception;
+	
+	public void insertHostReport(Map<String, Object> map) throws Exception;
 
 	public List<Map<String, Object>> selectAdminReportList(Map<String, Object> map) throws Exception;
 

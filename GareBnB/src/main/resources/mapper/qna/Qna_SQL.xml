@@ -93,7 +93,7 @@
 			QNA
 		SET
 			QNA_STATE = '1',
-			QNACOMMENTT = #{QNACOMMENTT}
+			QNA_COMMENT = #{QNA_COMMENT}
 		WHERE 
 			QNA_IDX = #{QNA_IDX}
 	]]>

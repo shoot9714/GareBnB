@@ -32,9 +32,9 @@ public class ReportController {
 	public Map<String, Object> memReportList(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		Map<String, Object> Json = new HashMap<String, Object>();
 		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
-		commandMap.put("QNA_ID", id); //??
+//		HttpSession session = request.getSession();
+//		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
+//		commandMap.put("QNA_ID", id); //??
 		
         List<Map<String, Object>> resultMap = reportService.selectOneReportList(commandMap.getMap());
         Json.put("map", resultMap);
@@ -48,9 +48,9 @@ public class ReportController {
 	public Map<String, Object> hostReportList(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		Map<String, Object> Json = new HashMap<String, Object>();
 		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
-		commandMap.put("QNA_ID", id); //??
+//		HttpSession session = request.getSession();
+//		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
+//		commandMap.put("QNA_ID", id); //??
 		
         List<Map<String, Object>> resultMap = reportService.selectOneReportList(commandMap.getMap());
         Json.put("map", resultMap);
@@ -58,21 +58,8 @@ public class ReportController {
         return Json;
 	}
 	
-	//일반회원 신고하기-입력폼 (이용내역에서 신고버튼 누르면 ->)
-	@ResponseBody
-	@RequestMapping(value="/mypage/memReportForm.do")
-	public void memReportForm() throws Exception {
-
-	}
 	
-	//호스트회원 신고하기-입력폼
-	@ResponseBody
-	@RequestMapping(value="/mypage/hostReportForm.do")
-	public void hostReportForm() throws Exception {
-
-	}
-	
-	//일반회원 신고하기-입력 -> 입력할때 
+	//일반회원 -> 호스트회원 신고 - 입력
 	@RequestMapping(value="/mypage/memReportInsert.do")
 	@ResponseBody
 	public Map<String, Object> memReportInsert(CommandMap commandMap) throws Exception{
@@ -83,13 +70,14 @@ public class ReportController {
 	    return Json;
 	}
 	
-	//호스트회원 신고하기-입력
+	
+	//호스트회원 -> 일반회원 신고 - 입력
 	@RequestMapping(value="host/mypage/hostReportInsert.do")
 	@ResponseBody
 	public Map<String, Object> hostReportInsert(CommandMap commandMap) throws Exception{
 		Map<String, Object> Json = new HashMap<String, Object>();
 			
-		reportService.insertReport(commandMap.getMap());
+		reportService.insertHostReport(commandMap.getMap());
 	        
 	    return Json;
 	}
