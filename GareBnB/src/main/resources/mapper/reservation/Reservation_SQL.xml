@@ -48,7 +48,6 @@
 				ON R.RES_BOARD_NO = B.BOARD_NO
    	    		WHERE RES_CLI_ID=#{MEM_ID}
     	    		AND RES_LEVEL=3
-        			AND SYSDATE> #{RES_DATE_END}
 		]]>
 
 	</select>
