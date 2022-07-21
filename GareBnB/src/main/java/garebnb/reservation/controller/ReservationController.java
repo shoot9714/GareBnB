@@ -18,7 +18,7 @@ public class ReservationController {
 	
 	Logger log = Logger.getLogger(this.getClass());
 
-	@Resource(name="reservationService")
+	@Resource(name="ReservationService")
 	private ReservationService reservationService;
 	
 	//클라이언트가 보는 예약내역 조회

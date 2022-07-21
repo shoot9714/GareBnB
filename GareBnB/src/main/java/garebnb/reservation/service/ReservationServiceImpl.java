@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 
 import garebnb.reservation.dao.ReservationDAO;
 
-@Repository("reservationService")
+@Repository("ReservationService")
 public class ReservationServiceImpl implements ReservationService{
 
 	Logger log = Logger.getLogger(this.getClass());
 
-	@Resource(name="reservationDAO")
+	@Resource(name="ReservationDAO")
 	private ReservationDAO reservationDAO;
 	
 	@Override
