@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
@@ -28,21 +27,18 @@ public class FileController {
 	@ResponseBody
 	@RequestMapping(value="/file/selectFiles.do")
 	public List<Map<String,Object>> selectFiles(CommandMap commandMap) throws Exception{
-		List<Map<String, Object>> list = fileService.selectFile(commandMap.getMap());
+		List<Map<String, Object>> list = fileService.selectFiles(commandMap.getMap());
 		List<Map<String,Object>> returnList = new ArrayList<Map<String,Object>>();
 		
 		for(int i = 0; i<list.size(); i++) {
 			Map<String,Object> returnMap = new HashMap<String, Object>();
 			Map<String,Object> map = list.get(i);
 			String storedFileName = (String)map.get("FILE_STDNAME");
-			String File_Level = null;
-			if(map.get("FILE_LEVEL").equals("0")) {
-				File_Level = "main";
-			} else {
-				File_Level = "sub";
-			}
+			String File_Level = (String)map.get("FILE_LEVEL");
+			
 			byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/jinkim/Documents/upload/"+storedFileName));
-			returnMap.put(File_Level, fileByte);
+			returnMap.put("FILE_LEVEL",File_Level);
+			returnMap.put("URL", fileByte);
 			returnList.add(returnMap);
 			
 		}
@@ -53,14 +49,20 @@ public class FileController {
 	@RequestMapping(value="/file/selectOneFile.do")
 	public List<Map<String,Object>> selectOneFile(CommandMap commandMap) throws Exception{
 		Map<String,Object> file = fileService.selectOneFile(commandMap.getMap());
-		List<Map<String,Object>> returnList = new ArrayList<Map<String,Object>>();
-		Map<String,Object> returnMap = new HashMap<String, Object>();
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		Map<String,Object> info = new HashMap<String,Object>();
+		if(file == null) {
+			info.put("FILE_BOARD_IDX", "파일이 존재하지 않습니다.");
+			info.put("URL","파일이 존재하지 않습니다.");
+			list.add(info);
+		} else {
 		String storedFileName = (String)file.get("FILE_STDNAME");
 		byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/jinkim/Documents/upload/"+storedFileName));
-		returnMap.put("main", fileByte);
-		returnList.add(returnMap);
-
-		return returnList;
+		info.put("FILE_BOARD_IDX", file.get("FILE_BOARD_IDX"));
+		info.put("URL",fileByte);
+		list.add(info);
+		}
+		return list;
 	}
 
 	@ResponseBody

@@ -24,10 +24,10 @@ public class FileDAOImpl implements FileDAO{
 	}
 
 	@Override
-	public List<Map<String, Object>> selectFile(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectFiles(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		
-		return sqlSession.selectList("file.selectFile",map);
+		return sqlSession.selectList("file.selectFiles",map);
 
 	}
 	

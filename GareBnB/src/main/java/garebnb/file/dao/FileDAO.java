@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository("FileDAO")
 public interface FileDAO {
-	public List<Map<String, Object>> selectFile(Map<String,Object> map) throws Exception;
+	public List<Map<String, Object>> selectFiles(Map<String,Object> map) throws Exception;
 
 	public void insertFile(Map<String,Object> map) throws Exception;
 	
