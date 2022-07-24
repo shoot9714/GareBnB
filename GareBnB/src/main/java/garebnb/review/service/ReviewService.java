@@ -11,5 +11,7 @@ public interface ReviewService {
 	Map<String,Object> selectmyReview(Map<String,Object>map) throws Exception;
 	void insertReview(Map<String,Object> map) throws Exception;
 	void deleteReview(Map<String,Object> map) throws Exception;
+	void updatemyReview(Map<String, Object> map) throws Exception;
 	List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception;
+
 }

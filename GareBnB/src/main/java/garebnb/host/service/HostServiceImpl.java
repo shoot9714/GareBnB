@@ -1,6 +1,7 @@
 package garebnb.host.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -21,32 +22,45 @@ public class HostServiceImpl implements HostService{
 	@Override
 	public Map<String, Object> selectHostDetail(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		Map<String , Object> resultMap = new HashMap<String, Object>();
-		Map<String, Object> tempMap = hostDAO.selectHostDetail(map);
-		
-		resultMap.put("map", tempMap);
-		return resultMap;
+		return hostDAO.selectHostDetail(map);
 	}
 
 	@Override
-	public void insertHost(Map<String, Object> map) throws Exception {
+	public void updateOneHost(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		hostDAO.insertHost(map);
-		
+		hostDAO.updateOneHost(map);
 	}
 
 	@Override
-	public void updateHost(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectHostConfrimList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		hostDAO.updateHost(map);
-		
+		return hostDAO.selectHostConfrimList(map);
+	}
+
+	
+	@Override
+	public void updateOneMemberDelete(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		hostDAO.updateOneMemberDelete(map);
 	}
 
 	@Override
-	public void deleteHost(Map<String, Object> map) throws Exception {
+	public Map<String, Object> selectConfrimMemberDetail(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		hostDAO.deleteHost(map);
-		
+		return hostDAO.selectConfrimMemberDetail(map);
 	}
+
+	@Override
+	public void updateHostConfirm(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		hostDAO.updateHostConfirm(map);
+	}
+
+	@Override
+	public void updateHostDeny(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		hostDAO.updateHostDeny(map);
+	}
+
 
 }

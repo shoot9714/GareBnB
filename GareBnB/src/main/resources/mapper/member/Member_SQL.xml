@@ -69,6 +69,40 @@
 ]]>
 </update>
 
+	<!-- 호스트 전환 -->
+	<insert id="insertHostMem" parameterType="hashmap">
+
+	<![CDATA[
+		INSERT INTO HOST_MEMBER
+		(
+			MEM_IDX,
+			HOST_EMAIL,
+			HOST_POSTCODE,
+			HOST_ADDR1,
+			HOST_ADDR2,
+			HOST_JUMIN1,
+			HOST_JUMIN2,
+			HOST_INTRO,
+			HOST_ACCOUNT,
+			HOST_BANK
+		)
+		VALUES
+		(
+			#{MEM_IDX},
+			#{HOST_EMAIL},
+			#{HOST_POST},
+			#{HOST_ADDR1},
+			#{HOST_ADDR2},
+			#{HOST_JUMIN1},
+			#{HOST_JUMIN2},
+			#{HOST_INTRO},
+			#{HOST_ACCOUNT},
+			#{HOST_BANK}
+		)
+	]]>
+	</insert>
+	
+	
 <!-- selectMemberList (전체 회원 리스트) -->
 <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[

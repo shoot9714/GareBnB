@@ -2,27 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="reservation">
+
+	<!-- 예약 취소 -->
+	<update id="updateResCancel" parameterType="hashmap">
+		UPDATE 
+			RESERVATION
+		SET
+			RES_LEVEL = 4
+		WHERE 
+			RES_IDX = #{RES_IDX}
+	</update>
+	
+	
+	<!-- 예약 확정 -->
+	<update id="updateResConfirm" parameterType="hashmap">
+		UPDATE 
+			RESERVATION
+		SET
+			RES_LEVEL = 2
+		WHERE 
+			RES_IDX = #{RES_IDX}
+	</update>
+	
+	
+	
+	<!-- 예약 내역 -->
 	<select id="selectMemReserveList" parameterType="hashmap" resultType="hashmap">
 	
 		<![CDATA[
 			SELECT   
-				ROWNUM RM,
-				R.RES_CLI_ID,
-      				R.RES_HOST_ID,
-				R.RES_IDX,        --예약 번호
-				R.RES_BOARD_NO,    --예약된 게시글번호
- 				B.BOARD_ADDR1,
-				B.BOARD_ADDR2,
-				R.RES_DATE_START,
-				R.RES_DATE_END,
-				R.RES_LEVEL,        --예약 상태
-				R.RES_CARE_NO,
- 				R.RES_REJ,        --거절사유
-				R.RES_REQ_DETAIL
+					ROWNUM RM,
+					RES_CLI_ID CLI_ID,
+	      			RES_HOST_ID HOST_ID,
+					RES_IDX RES_IDX,        	--예약 번호
+	                RES_BOARD_NO,    	--예약된 게시글번호
+	 				BOARD_ADDR1 ADDR1,
+					BOARD_ADDR2 ADDR2,
+					TO_CHAR(RES_DATE_START,'YYYY/MM/DD') RES_DATE_START,
+					TO_CHAR(RES_DATE_END,'YYYY/MM/DD') RES_DATE_END,
+					RES_LEVEL,		--예약 상태
+					RES_CARE_NO RES_CARE_NO,
+	 				RES_REJ,        	--거절사유
+					RES_REQ_DETAIL REQ_DETAIL,
+					TO_CHAR(((RES_DATE_END - RES_DATE_START)+1)*BOARD_PRICE,'FM999,999,999') PRICE
+				
 			FROM	RESERVATION R INNER JOIN BOARD B
-			ON 	R.RES_BOARD_NO=B.BOARD_NO
-       	     		WHERE R.RES_CLI_ID= #{MEM_ID}
-			ORDER BY RES_DATE_START	
+			ON 	    R.RES_BOARD_NO=B.BOARD_NO
+            WHERE   R.RES_BOARD_MODIFY_NO = B.BOARD_MODIFY_NO
+            AND     RES_CLI_ID= #{MEM_ID}
+            AND     SYSDATE<RES_DATE_END
+			ORDER BY RES_DATE_START
 		]]>
 
 	</select>
@@ -38,16 +67,19 @@
 				RES_HOST_ID,
 				RES_IDX,
 				RES_BOARD_NO,
-				RES_DATE_START,
-				RES_DATE_END,
+				B.BOARD_ADDR1 BOARD_ADDR,
+				TO_CHAR(RES_DATE_START,'YYYY/MM/DD') RES_DATE_START,
+				TO_CHAR(RES_DATE_END,'YYYY/MM/DD') RES_DATE_END,
 				RES_CARE_NO,
 				RES_REQ_DETAIL,
-				((RES_DATE_END - RES_DATE_START)+1)*B.BOARD_PRICE PRICE
+				TO_CHAR(((RES_DATE_END - RES_DATE_START)+1)*B.BOARD_PRICE,'FM999,999,999') PRICE
 		
 			FROM	RESERVATION R INNER JOIN BOARD B
 				ON R.RES_BOARD_NO = B.BOARD_NO
-   	    		WHERE RES_CLI_ID=#{MEM_ID}
-    	    		AND RES_LEVEL=3
+   	    		WHERE R.RES_BOARD_MODIFY_NO = B.BOARD_MODIFY_NO
+                AND RES_CLI_ID=#{MEM_ID}
+                AND RES_LEVEL IN (3, 4)
+                AND SYSDATE>RES_DATE_END
 		]]>
 
 	</select>
@@ -93,6 +125,7 @@
 	</select>	
 
 
+	<!-- 예약 거절 -->
 	<update id="updateResReject" parameterType="hashmap">
 		UPDATE 
 			RESERVATION
