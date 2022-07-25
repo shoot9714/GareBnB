@@ -35,10 +35,12 @@ public class FileController {
 			Map<String,Object> map = list.get(i);
 			String storedFileName = (String)map.get("FILE_STDNAME");
 			String File_Level = (String)map.get("FILE_LEVEL");
+			String File_Num = (String)map.get("FILE_NUM");
 			
 			byte fileByte[] = FileUtils.readFileToByteArray(new File("/Users/jinkim/Documents/upload/"+storedFileName));
 			returnMap.put("FILE_LEVEL",File_Level);
 			returnMap.put("URL", fileByte);
+			returnMap.put("FILE_NUM",File_Num);
 			returnList.add(returnMap);
 			
 		}
