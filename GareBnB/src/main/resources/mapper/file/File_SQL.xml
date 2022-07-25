@@ -41,7 +41,25 @@
 	]]>
 </update>
 
-<select id="selectFile" parameterType="hashmap" resultType="hashmap">
+<select id="selectFiles" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            FILE_NUM,
+            FILE_BOARD_TYPE,
+            FILE_BOARD_IDX,
+            FILE_ORGNAME,
+            FILE_STDNAME,
+            FILE_SIZE,
+            DEL_GB,
+            FILE_LEVEL
+        FROM     INPUT_FILE
+        WHERE     FILE_BOARD_TYPE = #{FILE_BOARD_TYPE}
+        AND    FILE_BOARD_IDX = #{FILE_BOARD_IDX}
+        AND    DEL_GB=0
+    ]]>
+</select>
+
+<select id="selectOneFile" parameterType="hashmap" resultType="hashmap">
     <![CDATA[
         SELECT
             FILE_NUM,
@@ -57,6 +75,7 @@
         AND    FILE_BOARD_IDX = #{FILE_BOARD_IDX}
         AND    FILE_LEVEL = #{FILE_LEVEL}
         AND    DEL_GB=0
+        AND	   FILE_LEVEL = 0
     ]]>
 </select>
 
