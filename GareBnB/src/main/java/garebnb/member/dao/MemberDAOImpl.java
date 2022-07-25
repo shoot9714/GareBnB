@@ -24,11 +24,18 @@ public class MemberDAOImpl implements MemberDAO{
 		}
 	}
 	
-	@Override
+	@Override // 일반 회원 상세 보기 
 	public int selectMemberDetail(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("member.selectMemberDetail", map); 
 	
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> selectMemDetail(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return (Map<String, Object>) sqlSession.selectOne("member.selectMemDetail", map);
 	}
 
 	@Override

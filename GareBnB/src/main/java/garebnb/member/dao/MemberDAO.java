@@ -7,6 +7,8 @@ import java.util.Map;
 public interface MemberDAO {
 	
 	public int selectMemberDetail(Map<String,Object> map) throws Exception; 
+	
+	public Map<String, Object> selectMemDetail(Map<String,Object> map) throws Exception;  // 일반 회원 상세 보기 
 
 	public void insertMember(Map<String,Object> map) throws Exception;
 
@@ -25,5 +27,7 @@ public interface MemberDAO {
 	public void updateHostConfirm(Map<String,Object> map) throws Exception; 
 	
 	public void updateHostDeny(Map<String,Object> map) throws Exception; 
-
+	
+	
+	
 }

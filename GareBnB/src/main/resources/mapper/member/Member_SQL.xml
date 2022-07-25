@@ -15,6 +15,25 @@
 ]]>
 </select>
 
+<!-- selectMemDetail (회원 상세 보기) -->
+<select id="selectMemDetail" parameterType="hashmap" resultType="hashmap">
+		
+		<![CDATA[
+			SELECT
+			MEM_IDX,
+				MEM_LEVEL,
+				MEM_NAME,
+				MEM_ID,
+				MEM_PW,
+				MEM_PHONE
+			FROM
+				MEMBER
+			WHERE
+				MEM_IDX = #{MEM_IDX}
+		
+		]]>
+</select>
+
 
 <!-- insertMember (회원가입 성공기능) -->
 <insert id="insertMember" parameterType="hashmap">
@@ -39,7 +58,7 @@
 			#{MEM_PHONE}
 		)
 ]]>
-</insert>
+</insert>  
 
 
 <!-- updateOneMember (회원정보 수정 기능(일반회원)) -->
@@ -52,10 +71,9 @@
 		MEM_NAME = #{MEM_NAME},
 		MEM_PHONE = #{MEM_PHONE}
 	WHERE
-		MEM_IDX = #{MEM_IDX}
+		MEM_ID = #{MEM_ID}
 ]]>
 </update>
-
 
 <!-- updateOneMemberDelete (회원 탈퇴) -->
 <update id="updateOneMemberDelete" parameterType="hashmap">

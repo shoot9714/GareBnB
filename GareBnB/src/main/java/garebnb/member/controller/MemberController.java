@@ -34,6 +34,12 @@ public class MemberController {
         return idCheck; // idCheck = 1이면 id 중복 있음. 0이면 id 중복 없음 
 
     }
+	@ResponseBody 
+	@RequestMapping(value= "/mypage/MemDetail") // 일반 회원 상세 보기  
+	public Map<String, Object> selectMemDetail(CommandMap commandMap) throws Exception {
+    	return memberService.selectMemDetail(commandMap.getMap());
+	}
+	
 	
 	@ResponseBody
 	@RequestMapping(value= "/joinSuccess") // 회원가입 성공 
