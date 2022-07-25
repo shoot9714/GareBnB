@@ -52,7 +52,7 @@
 		MEM_NAME = #{MEM_NAME},
 		MEM_PHONE = #{MEM_PHONE}
 	WHERE
-		MEM_ID = #{MEM_ID}
+		MEM_IDX = #{MEM_IDX}
 ]]>
 </update>
 
