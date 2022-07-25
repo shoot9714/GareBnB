@@ -10,13 +10,14 @@
 		MEM_LEVEL,
 		MEM_IDX,
 		MEM_ID,
-		MEM_PW,
-		MEM_NAME,
-		MEM_PHONE
+		MEM_PW
+		
 	FROM 
 		MEMBER
 	WHERE 
 		MEM_LEVEL IN (1,2,3,4)
+		AND
+		MEM_ID = #{MEM_ID}
 ]]>
 </select>
 
@@ -51,6 +52,18 @@
 		MEM_PHONE = #{MEM_PHONE}
 		AND
 		MEM_LEVEL IN (1,2,3,4)
+]]>
+</select>
+
+<!-- selectAuth (아이디로 레벨리턴) -->
+<select id="selectAuth" parameterType="hashmap" resultType="hashmap">
+<![CDATA[
+	SELECT 
+		MEM_LEVEL
+	FROM 
+		MEMBER
+	WHERE 
+		MEM_ID = #{MEM_ID}
 ]]>
 </select>
 </mapper>

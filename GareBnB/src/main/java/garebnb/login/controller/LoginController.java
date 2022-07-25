@@ -53,6 +53,13 @@ public class LoginController {
         }
     }
 	
+	@ResponseBody
+    @RequestMapping(value={"/Auth"}) // 비밀번호 찾기, 비밀번호 찾기 결과 
+    public Map<String, Object> selectAuth(CommandMap commandMap) throws Exception{
+        return loginService.selectAuth(commandMap.getMap());
+
+    }
+	
 
 	
 
