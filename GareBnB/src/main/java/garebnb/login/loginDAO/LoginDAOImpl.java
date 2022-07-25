@@ -28,21 +28,28 @@ public class LoginDAOImpl implements LoginDAO {
 	@Override
 	public Map<String, Object> selectOneId(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return (Map<String, Object>) sqlSession.selectOne("member.selectOneId", map); 
+		return (Map<String, Object>) sqlSession.selectOne("login.selectOneId", map); 
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> selectOnePw(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return (Map<String, Object>) sqlSession.selectOne("member.selectOnePw", map); 
+		return (Map<String, Object>) sqlSession.selectOne("login.selectOnePw", map); 
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> selectId(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return (Map<String, Object>) sqlSession.selectOne("member.selectId", map); 
+		return (Map<String, Object>) sqlSession.selectOne("login.selectId", map); 
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> selectAuth(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return (Map<String, Object>) sqlSession.selectOne("login.selectAuth", map); 
 	}
 
 }
