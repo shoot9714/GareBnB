@@ -43,6 +43,7 @@
 	
 	</insert>
 	
+
 	
 	<!-- deleteReview (리뷰 삭제) -->
 	<delete id="deleteReview" parameterType="hashmap">
