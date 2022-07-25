@@ -111,7 +111,7 @@
 		UPDATE
 			MEMBER
 		SET
-			MEM_LEVEL = '2'
+			MEM_LEVEL = '1'
 		WHERE 
 			MEM_IDX = #{MEM_IDX}
 		]]>
