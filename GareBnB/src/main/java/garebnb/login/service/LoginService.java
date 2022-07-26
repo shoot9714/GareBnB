@@ -14,4 +14,6 @@ public interface LoginService {
 	Map<String, Object> selectId(Map<String, Object> map) throws Exception;
 	
 	Map<String, Object> selectAuth(Map<String, Object> map) throws Exception;
+	
+	Map<String, Object> selectIDCheck(Map<String, Object> map) throws Exception;
 }

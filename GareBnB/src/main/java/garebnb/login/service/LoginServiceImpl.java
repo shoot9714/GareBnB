@@ -43,6 +43,12 @@ public class LoginServiceImpl implements LoginService{
 		return loginDAO.selectAuth(map);
 	}
 	
+	@Override
+	public Map<String, Object> selectIDCheck(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return loginDAO.selectIDCheck(map);
+	}
+	
 	
 
 
