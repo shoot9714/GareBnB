@@ -50,7 +50,7 @@
 			ON 	    R.RES_BOARD_NO=B.BOARD_NO
             WHERE   R.RES_BOARD_MODIFY_NO = B.BOARD_MODIFY_NO
             AND     RES_CLI_ID= #{MEM_ID}
-            AND     SYSDATE<RES_DATE_END
+            AND     RES_LEVEL IN (0, 1, 2, 3, 4)
 			ORDER BY RES_DATE_START
 		]]>
 
