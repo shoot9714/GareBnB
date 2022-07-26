@@ -43,9 +43,9 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value= "/joinSuccess") // 회원가입 성공 
-	public void insertMember(CommandMap commandMap) throws Exception {
+	public String insertMember(CommandMap commandMap) throws Exception {
     	memberService.insertMember(commandMap.getMap());
-    	
+    	return "1"; 
 	}
 	
 	@ResponseBody

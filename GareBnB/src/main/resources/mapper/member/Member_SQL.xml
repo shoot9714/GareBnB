@@ -36,7 +36,10 @@
 
 
 <!-- insertMember (회원가입 성공기능) -->
-<insert id="insertMember" parameterType="hashmap">
+<insert id="insertMember" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
+<selectKey keyProperty="MEM_IDX" resultType="string" order="BEFORE">
+			SELECT MEM_IDX_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
 <![CDATA[
 	INSERT INTO
 		MEMBER
