@@ -11,4 +11,6 @@ public interface LoginDAO {
 	public Map<String, Object> selectId(Map<String,Object> map) throws Exception;
 	
 	public Map<String, Object> selectAuth(Map<String,Object> map) throws Exception;
+	
+	public Map<String, Object> selectIDCheck(Map<String,Object> map) throws Exception;
 }

@@ -66,4 +66,16 @@
 		MEM_ID = #{MEM_ID}
 ]]>
 </select>
+
+<!-- selectIDCheck (아이디로 레벨리턴) -->
+<select id="selectIDCheck" parameterType="hashmap" resultType="hashmap">
+<![CDATA[
+	SELECT 
+		MEM_ID
+	FROM 
+		MEMBER
+	WHERE 
+		MEM_ID = #{MEM_ID}
+]]>
+</select>
 </mapper>

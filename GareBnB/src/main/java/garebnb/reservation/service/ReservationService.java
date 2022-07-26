@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
-@Service("ReservationService")
+@Service("reservationService")
 public interface ReservationService {
 	
 	List<Map<String, Object>> selectMemReserveList(Map<String, Object> map) throws Exception;
