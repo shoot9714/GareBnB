@@ -15,6 +15,25 @@
 ]]>
 </select>
 
+<!-- selectMemDetail (회원 상세 보기) -->
+<select id="selectMemDetail" parameterType="hashmap" resultType="hashmap">
+		
+		<![CDATA[
+			SELECT
+			MEM_IDX,
+				MEM_LEVEL,
+				MEM_NAME,
+				MEM_ID,
+				MEM_PW,
+				MEM_PHONE
+			FROM
+				MEMBER
+			WHERE
+				MEM_IDX = #{MEM_IDX}
+		
+		]]>
+</select>
+
 
 <!-- insertMember (회원가입 성공기능) -->
 <insert id="insertMember" parameterType="hashmap">
@@ -39,7 +58,7 @@
 			#{MEM_PHONE}
 		)
 ]]>
-</insert>
+</insert>  
 
 
 <!-- updateOneMember (회원정보 수정 기능(일반회원)) -->
@@ -56,7 +75,6 @@
 ]]>
 </update>
 
-
 <!-- updateOneMemberDelete (회원 탈퇴) -->
 <update id="updateOneMemberDelete" parameterType="hashmap">
 <![CDATA[
@@ -69,6 +87,40 @@
 ]]>
 </update>
 
+	<!-- 호스트 전환 -->
+	<insert id="insertHostMem" parameterType="hashmap">
+
+	<![CDATA[
+		INSERT INTO HOST_MEMBER
+		(
+			MEM_IDX,
+			HOST_EMAIL,
+			HOST_POSTCODE,
+			HOST_ADDR1,
+			HOST_ADDR2,
+			HOST_JUMIN1,
+			HOST_JUMIN2,
+			HOST_INTRO,
+			HOST_ACCOUNT,
+			HOST_BANK
+		)
+		VALUES
+		(
+			#{MEM_IDX},
+			#{HOST_EMAIL},
+			#{HOST_POST},
+			#{HOST_ADDR1},
+			#{HOST_ADDR2},
+			#{HOST_JUMIN1},
+			#{HOST_JUMIN2},
+			#{HOST_INTRO},
+			#{HOST_ACCOUNT},
+			#{HOST_BANK}
+		)
+	]]>
+	</insert>
+	
+	
 <!-- selectMemberList (전체 회원 리스트) -->
 <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[

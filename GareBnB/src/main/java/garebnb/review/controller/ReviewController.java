@@ -39,6 +39,19 @@ public class ReviewController {
 		reviewService.insertReview(commandMap.getMap());
 	}
 	
+	//리뷰 수정
+	@ResponseBody
+	@RequestMapping(value="/mypage/reviewModify")
+	public void reviewModify(CommandMap commandMap) throws Exception{
+		reviewService.updatemyReview(commandMap.getMap());
+	}
+	
+	//관리자-리뷰 삭제
+	@ResponseBody
+	@RequestMapping(value="/mypage/deleteReview")
+	public void deleteMyreview(CommandMap commandMap) throws Exception{
+		reviewService.deleteReview(commandMap.getMap());
+	}	
 	
 	//리뷰 리스트
 	@ResponseBody

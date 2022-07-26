@@ -21,6 +21,21 @@ public class ReservationController {
 	@Resource(name="ReservationService")
 	private ReservationService reservationService;
 	
+	
+	//클라이언트 예약취소
+	@ResponseBody
+	@RequestMapping(value="/mypage/ResCancel") 
+	public void resCancel(CommandMap commandMap) throws Exception {
+		reservationService.updateResCancel(commandMap.getMap());
+	}
+	
+	//클라이언트 예약확정
+	@ResponseBody
+	@RequestMapping(value= "/mypage/ResConfirm") 
+	public void resConfirm(CommandMap commandMap) throws Exception {
+		reservationService.updateResConfirm(commandMap.getMap());
+	}
+	
 	//클라이언트가 보는 예약내역 조회
 	@ResponseBody
 	@RequestMapping(value="/mypage/memReserveList")

@@ -21,6 +21,20 @@ public class ReservationServiceImpl implements ReservationService{
 	@Resource(name="ReservationDAO")
 	private ReservationDAO reservationDAO;
 	
+	
+	
+	@Override
+	public void updateResCancel(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		reservationDAO.updateResCancel(map);
+	}
+
+	@Override
+	public void updateResConfirm(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		reservationDAO.updateResConfirm(map);
+	}
+
 	@Override
 	public List<Map<String, Object>> selectMemReserveList(Map<String, Object> map) throws Exception {
 		return reservationDAO.selectMemReserveList(map);

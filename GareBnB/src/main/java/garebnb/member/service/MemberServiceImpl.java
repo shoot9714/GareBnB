@@ -24,6 +24,13 @@ public class MemberServiceImpl implements MemberService {
 		memberDAO.insertMember(map);
 		
 	}
+	
+	@Override
+	public Map<String, Object> selectMemDetail(Map<String, Object> map) throws Exception { // 일반 회원 상세 보기 
+		// TODO Auto-generated method stub
+		return memberDAO.selectMemDetail(map);
+	}
+
 
 	@Override
 	public int selectMemberDetail(Map<String, Object> map) throws Exception {

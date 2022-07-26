@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 @Service("reservationService")
 public interface ReservationService {
+
+	void updateResCancel(Map<String, Object> map);
+
+	void updateResConfirm(Map<String, Object> map);
 	
 	List<Map<String, Object>> selectMemReserveList(Map<String, Object> map) throws Exception;
 
@@ -21,5 +25,6 @@ public interface ReservationService {
 	void insertOneReserve(Map<String, Object> map) throws Exception;
 
 	Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception;
+
 
 }

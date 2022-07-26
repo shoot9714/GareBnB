@@ -23,6 +23,31 @@ public class ReservationDAOImpl implements ReservationDAO{
 			log.debug("\t QueryId \t:  " + queryId);
 		}
 	}
+	
+	
+	
+	
+	//클라이언트 예약 취소
+	@Override
+	public void updateResCancel(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("reservation.updateResCancel", map);
+	}
+
+
+
+
+	//클라이언트 예약확정
+	@Override
+	public void updateResConfirm(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("reservation.updateResConfirm", map);
+	}
+
+
+
+
+
 	//클라이언트가 보는 예약내역조회
 	 @Override
 	    public List<Map<String, Object>> selectMemReserveList(Map<String, Object> map) throws Exception {

@@ -1,5 +1,6 @@
 package garebnb.host.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.logging.Log;
@@ -23,30 +24,48 @@ public class HostDAOImpl implements HostDAO {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> selectHostDetail(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return (Map<String , Object>) sqlSession.selectOne("host_member.selectOneHost", map);
+		return sqlSession.selectOne("host_member.selectOneHost", map);
 	}
 
 	@Override
-	public void insertHost(Map<String, Object> map) throws Exception {
-		// TODO Auto-generated method stub
-		sqlSession.insert("host_member.insertHostMem",map);
-	}
-
-	@Override
-	public void updateHost(Map<String, Object> map) throws Exception {
+	public void updateOneHost(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.update("host_member.updateOneHost",map);
 	}
 
 	@Override
-	public void deleteHost(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectHostConfrimList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		sqlSession.update("host_member.updateOneHostDelete", map);
+		return sqlSession.selectList("host_member.selectHostConfirmList", map);
 	}
 
+	@Override
+	public void updateOneMemberDelete(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("host_member.updateOneMemberDelete",map);
+	}
+
+	@Override
+	public Map<String, Object> selectConfrimMemberDetail(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("host_member.selectConfirmMemberDetail", map);
+	}
+
+	@Override
+	public void updateHostConfirm(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("host_member.updateHostConfirm",map);
+	}
+
+	@Override
+	public void updateHostDeny(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("host_member.updateHostDeny",map);
+	}
+
+	
 	
 }
