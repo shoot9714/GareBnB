@@ -20,16 +20,6 @@ public class QnaServiceImpl implements QnaService{ //서비스 인터페이스�
 	@Resource(name="qnaDAO") //서비스에서 DAO 접근
 	private QnaDAO qnaDAO;
 	
-	
-//	 @Override
-//	 public List<Map<String, Object>> selectOneQnaList(Map<String, Object> map) throws Exception {
-//		 Map<String , Object> resultMap = new HashMap<String, Object>();
-//		 Map<String, Object> tempMap = qnaDAO.selectOneQnaList(map);	
-//		 
-//		 resultMap.put("map", tempMap);
-//		 return resultMap;
-//	 	}
-	
 	 @Override
 	 public List<Map<String, Object>> selectOneQnaList(Map<String, Object> map) throws Exception {
 		 return qnaDAO.selectOneQnaList(map);
@@ -62,6 +52,12 @@ public class QnaServiceImpl implements QnaService{ //서비스 인터페이스�
 	public void updateQNAComment(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		qnaDAO.updateQNAComment(map);
+	}
+
+	@Override
+	public Map<String, Object> selectDetailQna(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return qnaDAO.selectDetailQna(map);
 	}
 
 }

@@ -28,70 +28,77 @@ public class QnaController {
 	
 	//1. 일반회원 + 호스트회원
 	//Qna 리스트 + 입력폼 - 일반회원 --- 페이징기능 추가?
+//	@ResponseBody 
+//	@RequestMapping(value="/mypage/memQna.do")
+//	public Map<String, Object> memQna(CommandMap commandMap) throws Exception{
+//		Map<String, Object> Json = new HashMap<String, Object>();
+//		
+//	HttpSession session = request.getSession(); //, HttpServletRequest request
+//	String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
+//	commandMap.put("USER_MEM_ID", id);
+	
+//        List<Map<String, Object>> resultMap = qnaService.selectOneQnaList(commandMap.getMap());
+//        Json.put("map", resultMap);
+//
+//        return Json;
+//	}
+
 	@ResponseBody 
 	@RequestMapping(value="/mypage/memQna.do")
-	public Map<String, Object> memQna(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
-		commandMap.put("USER_MEM_ID", id);
-		
-        List<Map<String, Object>> resultMap = qnaService.selectOneQnaList(commandMap.getMap());
-        Json.put("map", resultMap);
+	public List<Map<String, Object>> memQna(CommandMap commandMap) throws Exception{
 
-        return Json;
+        return qnaService.selectOneQnaList(commandMap.getMap());
 	}
 	
 	
 	//Qna 리스트 + 입력폼 - 호스트회원
 	@RequestMapping(value="host/mypage/hostQna.do")
 	@ResponseBody 
-	public Map<String, Object> hostQna(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-		
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
-		commandMap.put("USER_MEM_ID", id);
-		
-        List<Map<String, Object>> resultMap = qnaService.selectOneQnaList(commandMap.getMap());
-        Json.put("map", resultMap);
+	public List<Map<String, Object>> hostQna(CommandMap commandMap) throws Exception{
 
-        return Json;
+        return qnaService.selectOneQnaList(commandMap.getMap());
 	}
+	
+	
+	@RequestMapping(value="mypage/memDetailQna.do")
+	@ResponseBody 
+	public Map<String, Object> memDetailQna(CommandMap commandMap) throws Exception{
+
+        return qnaService.selectDetailQna(commandMap.getMap());
+	}
+	
+	
 	
 	
 	//문의하기입력 - 일반회원 입력값  - 세션 추가하기
 	@RequestMapping(value="/mypage/memInsertQna.do")
 	@ResponseBody
-	public Map<String, Object> memInsertQna(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
+	public void memInsertQna(CommandMap commandMap) throws Exception{
 		
 		qnaService.insertOneQna(commandMap.getMap());
-        
-        return Json;
+
 	}
+	
+	
 	
 	
 	//문의하기입력 - 호스트회원 입력값 - 세션 추가하기
 	@RequestMapping(value="/host/mypage/hostInsertQna.do")
 	@ResponseBody 
-	public Map<String, Object> hostInsertQna(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
+	public void hostInsertQna(CommandMap commandMap) throws Exception{
+
         qnaService.insertOneQna(commandMap.getMap());
-        
-        return Json;
+
 	}
 	
 	
 	//문의하기 삭제 - 일반회원 매핑
 	@RequestMapping(value="/mypage/deleteQna.do")
 	@ResponseBody 
-	public Map<String, Object> memDeleteQna(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
+	public void memDeleteQna(CommandMap commandMap) throws Exception{
+		
 		qnaService.deleteQna(commandMap.getMap());
 		
-        return Json;
 	}
 	
 	
@@ -99,12 +106,10 @@ public class QnaController {
 	//문의하기 삭제 - 호스트회원 매핑
 		@RequestMapping(value="host/mypage/deleteQna.do")
 		@ResponseBody 
-		public Map<String, Object> hostDeleteQna(CommandMap commandMap) throws Exception{
-			Map<String, Object> Json = new HashMap<String, Object>();
-			
+		public void hostDeleteQna(CommandMap commandMap) throws Exception{
+						
 			qnaService.deleteQna(commandMap.getMap());
-			
-	        return Json;
+		
 		}
 	
 	

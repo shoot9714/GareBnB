@@ -22,6 +22,9 @@ public interface QnaService { //비즈니스 로직 수행을 위한 메서드�
 	Map<String, Object> selectAdminOneQNA(Map<String, Object> map) throws Exception;
 
 	void updateQNAComment(Map<String, Object> map) throws Exception;
+
+	//QNA Detail
+	Map<String, Object> selectDetailQna(Map<String, Object> map) throws Exception;
 	
 
 }

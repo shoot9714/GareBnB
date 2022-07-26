@@ -29,57 +29,38 @@ public class ReportController {
 	//신고내역 - 일반회원
 	@ResponseBody 
 	@RequestMapping(value="/mypage/memReportList.do")
-	public Map<String, Object> memReportList(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-		
-//		HttpSession session = request.getSession();
-//		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
-//		commandMap.put("QNA_ID", id); //??
-		
-        List<Map<String, Object>> resultMap = reportService.selectOneReportList(commandMap.getMap());
-        Json.put("map", resultMap);
-
-        return Json;
+	public List<Map<String, Object>> memReportList(CommandMap commandMap) throws Exception{
+		System.out.println("컨트롤러 확인");
+        return reportService.selectOneReportList(commandMap.getMap());
 	}
 	
 	//신고내역 - 호스트
 	@ResponseBody 
 	@RequestMapping(value="/host/mypage/hostReportList.do")
-	public Map<String, Object> hostReportList(CommandMap commandMap, HttpServletRequest request) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
+	public List<Map<String, Object>> hostReportList(CommandMap commandMap, HttpServletRequest request) throws Exception{
 		
-//		HttpSession session = request.getSession();
-//		String id = (String) session.getAttribute("MEM_ID"); //세션에서 아이디
-//		commandMap.put("QNA_ID", id); //??
-		
-        List<Map<String, Object>> resultMap = reportService.selectOneReportList(commandMap.getMap());
-        Json.put("map", resultMap);
+        return reportService.selectOneReportList(commandMap.getMap());
 
-        return Json;
 	}
 	
 	
 	//일반회원 -> 호스트회원 신고 - 입력
 	@RequestMapping(value="/mypage/memReportInsert.do")
 	@ResponseBody
-	public Map<String, Object> memReportInsert(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-			
-		reportService.insertReport(commandMap.getMap());
-	        
-	    return Json;
+	public void memReportInsert(CommandMap commandMap) throws Exception{
+		
+	reportService.insertReport(commandMap.getMap());
+
 	}
 	
 	
 	//호스트회원 -> 일반회원 신고 - 입력
 	@RequestMapping(value="host/mypage/hostReportInsert.do")
 	@ResponseBody
-	public Map<String, Object> hostReportInsert(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-			
+	public void hostReportInsert(CommandMap commandMap) throws Exception{
+
 		reportService.insertHostReport(commandMap.getMap());
-	        
-	    return Json;
+
 	}
 	
 	

@@ -61,4 +61,10 @@ public class QnaDAOImpl implements QnaDAO{
 		// TODO Auto-generated method stub
 		sqlSession.update("qna.updateQNAComment", map);
 	}
+
+	@Override
+	public Map<String, Object> selectDetailQna(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("qna.selectDetailQna", map);
+	}
 }

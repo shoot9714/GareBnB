@@ -16,6 +16,8 @@ public interface QnaDAO {
 	public Map<String, Object> selectAdminOneQNA(Map<String, Object> map) throws Exception; //관리자 문의 상세
 
 	public void updateQNAComment(Map<String, Object> map)throws Exception; //관리자 문의 답변
+
+	public Map<String, Object> selectDetailQna(Map<String, Object> map) throws Exception;
 	
 
 }
