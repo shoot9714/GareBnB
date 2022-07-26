@@ -10,6 +10,8 @@ public interface MemberService {
 	
 	int selectMemberDetail(Map<String, Object> map) throws Exception;
 	
+	Map<String, Object> selectMemDetail(Map<String, Object> map) throws Exception; // 일반 회원 상세보기 
+	
 	void insertMember(Map<String, Object> map) throws Exception;
 	
 	

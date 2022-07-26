@@ -1,6 +1,7 @@
 package garebnb.host.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -19,53 +20,87 @@ public class HostController {
 	Logger log = Logger.getLogger(this.getClass());
 
 	@Resource(name="hostService")
-	private HostService HostService;
+	private HostService hostService;
 	
+	
+	//일반-회원정보보기
 	@ResponseBody
 	@RequestMapping(value="/myPage/hostDetail.do" )
     public Map<String, Object> hostDetail(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-    	Map<String , Object> resultMap = HostService.selectHostDetail(commandMap.getMap());
 		
-    	Json.put("map", resultMap);
-    	return Json;
+    	return hostService.selectHostDetail(commandMap.getMap());
     }
 	
+	
+	//호스트-호스트회원정보보기
 	@ResponseBody
-	@RequestMapping(value="/myPage/hostInfo.do" )
+	@RequestMapping(value="/host/myPage/hostInfo.do" )
     public Map<String, Object> hostInfo(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-		
-		
-    	return Json;
+		return hostService.selectHostDetail(commandMap.getMap());
     }
 	
+	
+	/*
+	 * //호스트 회원정보수정폼
+	 * 
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value="/myPage/hostModifyForm.do" ) public Map<String,
+	 * Object> hostModifyForm(CommandMap commandMap) throws Exception{ Map<String,
+	 * Object> Json = new HashMap<String, Object>();
+	 * 
+	 * 
+	 * return Json; }
+	 */
+	
+	
+	//호스트-회원정보수정
 	@ResponseBody
-	@RequestMapping(value="/myPage/hostModifyForm.do" )
-    public Map<String, Object> hostModifyForm(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-    	
-		
-    	return Json;
+	@RequestMapping(value="/host/myPage/hostModify.do" )
+    public void hostModify(CommandMap commandMap) throws Exception{
+		hostService.updateOneHost(commandMap.getMap());
     }
 	
-	@ResponseBody
-	@RequestMapping(value="/myPage/hostModify.do" )
-    public Map<String, Object> hostModify(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-    	
-		
-    	return Json;
-    }
 	
+	//호스트-회원탈퇴
 	@ResponseBody
-	@RequestMapping(value="/myPage/hostDelete.do" )
-    public Map<String, Object> hostModifyDelete(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-    	
+	@RequestMapping(value="/host/mypage/hostDelete.do" )
+	public void hostDelete(CommandMap commandMap) throws Exception{
+		hostService.updateOneMemberDelete(commandMap.getMap());
+	}	
+	
+	
+	//관리자-호스트회원등록요청리스트
+	@ResponseBody
+	@RequestMapping(value="/Admin/hostConfirmList")
+	public List<Map<String,Object>> memberList(CommandMap commandMap) throws Exception{
+		return hostService.selectHostConfrimList(commandMap.getMap());
+
+	}
+	
+	//관리자-호스트회원등록요청상세보기
+	@ResponseBody
+	@RequestMapping(value="/Admin/hostConfirmMemberDetail.do" )
+    public Map<String, Object> hostConfrimDetail(CommandMap commandMap) throws Exception{
 		
-    	return Json;
+    	return hostService.selectConfrimMemberDetail(commandMap.getMap());
     }
+
+	
+	//관리자-호스트등록승인
+	@ResponseBody
+	@RequestMapping(value="/Admin/HostConfirm.do" )
+	public void hostConfirm(CommandMap commandMap) throws Exception{
+		hostService.updateHostConfirm(commandMap.getMap());
+	}	
+	
+	
+	//관리자-호스트등록거절
+	@ResponseBody
+	@RequestMapping(value="/Admin/hostDeny.do" )
+	public void hostDeny(CommandMap commandMap) throws Exception{
+		hostService.updateHostDeny(commandMap.getMap());
+	}	
 	
 	
 }

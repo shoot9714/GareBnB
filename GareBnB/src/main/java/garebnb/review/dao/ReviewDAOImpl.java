@@ -36,7 +36,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 
 
 
-
+    @SuppressWarnings("unchecked")
 	@Override
 	public void insertReview(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
@@ -46,7 +46,7 @@ public class ReviewDAOImpl implements ReviewDAO{
 
 
 
-
+    @SuppressWarnings("unchecked")
 	@Override
 	public void deleteReview(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
@@ -54,9 +54,17 @@ public class ReviewDAOImpl implements ReviewDAO{
 	}
 
 
+    @SuppressWarnings("unchecked")
+    @Override
+	public void updatemyReview(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("review.updatemyReview",map);
+	}
 
 
 
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub

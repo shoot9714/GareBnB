@@ -37,6 +37,13 @@ public class ReviewServiceImpl implements ReviewService{
 		reviewDAO.deleteReview(map);
 	}
 
+	
+	@Override
+	public void updatemyReview(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		reviewDAO.updatemyReview(map);
+	}
+
 	@Override
 	public List<Map<String, Object>> selectReviewList(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub

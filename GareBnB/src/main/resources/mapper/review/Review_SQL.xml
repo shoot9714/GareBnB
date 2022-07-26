@@ -43,6 +43,7 @@
 	
 	</insert>
 	
+
 	
 	<!-- deleteReview (리뷰 삭제) -->
 	<delete id="deleteReview" parameterType="hashmap">
@@ -53,15 +54,26 @@
 	</delete>
 
 
+	<!-- updatemyReview (리뷰 수정) -->
+	<update id="updatemyReview" parameterType="hashmap">
+		<![CDATA[
+			UPDATE REVIEW
+			SET	SCORE=#{SCORE}, REVIEW_CONTENT=#{REVIEW_CONTENT}
+			WHERE REVIEW_IDX=#{REVIEW_IDX}
+			
+		]]>
+	</update>
+
+
 	<!-- selectReviewList: 게시글 하나에 대한 리뷰리스트-->
 	<select id="selectReviewList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 				SELECT
-					REVIEW_IDX
-					BOARD_NO
-					REVIEW_MEM_ID
-					REVIEW_DATE
-					SCORE
+					REVIEW_IDX,
+					BOARD_NO,
+					REVIEW_MEM_ID,
+					TO_CHAR(REVIEW_DATE,'YYYY/MM/DD') REVIEW_DATE,
+					SCORE,
 					REVIEW_CONTENT
 				FROM 
 					REVIEW
