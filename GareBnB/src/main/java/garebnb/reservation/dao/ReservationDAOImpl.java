@@ -49,44 +49,51 @@ public class ReservationDAOImpl implements ReservationDAO{
 
 
 	//클라이언트가 보는 예약내역조회
-	 @Override
-	    public List<Map<String, Object>> selectMemReserveList(Map<String, Object> map) throws Exception {
+	@Override
+	public List<Map<String, Object>> selectMemReserveList(Map<String, Object> map) throws Exception {
 	        // TODO Auto-generated method stub
-	        return sqlSession.selectList("reservation.selectMemReserveList", map);
-	 }
+		 return sqlSession.selectList("reservation.selectMemReserveList", map);
+	}
 	 
-	 //클라이언트가 보는 이용내역
-	 @Override
-	    public List<Map<String, Object>> selectOneResComList(Map<String, Object> map) throws Exception {
+	//클라이언트가 보는 이용내역
+	@Override
+	public List<Map<String, Object>> selectOneResComList(Map<String, Object> map) throws Exception {
 	        // TODO Auto-generated method stub
-	        return sqlSession.selectList("reservation.selectOneResComList", map);
-	    }
+		 return sqlSession.selectList("reservation.selectOneResComList", map);
+	}
 	 
 	 //호스트가 보는 예약내역조회
 	 @Override
-	    public List<Map<String, Object>> selectReserve(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectReserve(Map<String, Object> map) throws Exception {
 	        // TODO Auto-generated method stub
-	        return sqlSession.selectList("reservation.selectReserve", map);
-	    }
+		 return sqlSession.selectList("reservation.selectReserve", map);
+	}
 	 
-	 //예약거절사유 입력
-	 @Override
-	 public void updateResReject(Map<String, Object> map) throws Exception{
-			sqlSession.update("reservation.updateResReject", map);
-		}
+	 //호스트가 예약승인
+	@Override
+	public void updateResApprove(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("reservation.updateResApprove", map);
+	}
+
+	//예약거절사유 입력
+	@Override
+	public void updateResReject(Map<String, Object> map) throws Exception{
+		sqlSession.update("reservation.updateResReject", map);
+	}
 	 
-	 //상세페이지에서 예약요청
-	 public void insertOneReserve(Map<String, Object> map) throws Exception{
-			sqlSession.insert("reservation.insertOneReserve", map);
-		}
+	//상세페이지에서 예약요청
+	public void insertOneReserve(Map<String, Object> map) throws Exception{
+		sqlSession.insert("reservation.insertOneReserve", map);
+	}
 	 
-	 //예약요청전 상세보기
-	 @SuppressWarnings("unchecked")
-	    @Override
-	    public Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception {
+	//예약요청전 상세보기
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception {
 	        // TODO Auto-generated method stub
-	        return (Map<String , Object>) sqlSession.selectList("reservation.selectReserveDetail", map);
-	    }
+		return (Map<String , Object>) sqlSession.selectList("reservation.selectReserveDetail", map);
+	}
 
 
 
@@ -99,7 +106,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 
 
 
-
+	//결제 정보 입력
 	@Override
 	public void insertPayInfo(Map<String, Object> map) {
 		// TODO Auto-generated method stub
@@ -108,7 +115,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 
 
 
-
+	//결제정보리스트
 	@Override
 	public List<Map<String, Object>> selectPayList(Map<String, Object> map) {
 		// TODO Auto-generated method stub

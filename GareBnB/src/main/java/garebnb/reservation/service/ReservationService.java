@@ -20,6 +20,8 @@ public interface ReservationService {
 	
 	List<Map<String, Object>> selectReserve(Map<String, Object> map) throws Exception;
 
+	void updateResApprove(Map<String, Object> map) throws Exception;
+	
 	void updateResReject(Map<String, Object> map) throws Exception;
 
 	void insertOneReserve(Map<String, Object> map) throws Exception;
@@ -29,6 +31,8 @@ public interface ReservationService {
 	void resPay(Map<String, Object> map) throws Exception;
 
 	List<Map<String, Object>> selectPayList(Map<String, Object> map);
+
+
 
 
 }

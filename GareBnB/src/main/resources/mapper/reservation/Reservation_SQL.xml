@@ -58,6 +58,7 @@
 	</select>
 
 	
+	<!-- 이용완료리스트 -->
 	<select id="selectOneResComList" parameterType="hashmap" resultType="hashmap">
 	
 		<![CDATA[
@@ -85,6 +86,7 @@
 
 	</select>
 	
+	<!-- 호스트가 보는 예약리스트 -->
 	<select id="selectReserve" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
@@ -114,6 +116,19 @@
 		]]>
 	</select>
 	
+	
+	<!-- 호스트 예약승인 -->
+	<update id="updateResApprove" parameterType="hashmap">
+		UPDATE 
+			RESERVATION
+		SET
+			RES_LEVEL=1
+		WHERE 
+			RES_IDX = #{RES_IDX}
+	</update>
+	
+	
+	<!-- 예약요청 전 상세보기 -->
 	<select id="selectReserveDetail" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT

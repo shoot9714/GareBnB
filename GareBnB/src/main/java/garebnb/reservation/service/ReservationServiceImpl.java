@@ -50,6 +50,13 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDAO.selectReserve(map);
 	}
 	
+	
+	@Override
+	public void updateResApprove(Map<String, Object> map) throws Exception {
+		reservationDAO.updateResApprove(map);
+		
+	}
+
 	@Override
 	public void updateResReject(Map<String, Object> map) throws Exception{
 		reservationDAO.updateResReject(map);

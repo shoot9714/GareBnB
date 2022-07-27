@@ -58,6 +58,14 @@ public class ReservationController {
 		return reservationService.selectReserve(commandMap.getMap());
 	}
 	
+	
+	//호스트가 예약승인
+	@ResponseBody
+	@RequestMapping(value= "/host/mypage/resApprove") 
+	public void resApprove(CommandMap commandMap) throws Exception {
+		reservationService.updateResApprove(commandMap.getMap());
+	}	
+	
 	//호스트가 예약거절사유입력
 	@ResponseBody
     @RequestMapping(value= "/host/mypage/resRejectPut") 
