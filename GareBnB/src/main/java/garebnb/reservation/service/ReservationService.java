@@ -26,5 +26,9 @@ public interface ReservationService {
 
 	Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception;
 
+	void resPay(Map<String, Object> map) throws Exception;
+
+	List<Map<String, Object>> selectPayList(Map<String, Object> map);
+
 
 }

@@ -88,4 +88,32 @@ public class ReservationDAOImpl implements ReservationDAO{
 	        return (Map<String , Object>) sqlSession.selectList("reservation.selectReserveDetail", map);
 	    }
 
+
+
+	 //결제_예약완료 상태로 변경
+	@Override
+	public void updateResCompl(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("reservation.updateResCompl", map);
+	}
+
+
+
+
+	@Override
+	public void insertPayInfo(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("reservation.insertPayInfo", map);
+	}
+
+
+
+
+	@Override
+	public List<Map<String, Object>> selectPayList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("reservation.selectPayList", map);
+	}
+	 
+
 }

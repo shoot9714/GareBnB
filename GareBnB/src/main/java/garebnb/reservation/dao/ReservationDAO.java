@@ -21,5 +21,11 @@ public interface ReservationDAO {
 
 	public Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception; //예약요청전 상세보기
 
+	public void updateResCompl(Map<String, Object> map); //결제+예약완료
+
+	public void insertPayInfo(Map<String, Object> map);	//결제 정보 입력 
+
+	public List<Map<String, Object>> selectPayList(Map<String, Object> map);
+
 
 }

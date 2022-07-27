@@ -65,18 +65,37 @@ public class ReservationController {
         reservationService.updateResReject(commandMap.getMap());
     }
 	
+	//게시판 상세페이지에서 예약 요청
 	@ResponseBody
     @RequestMapping(value= "/mypage/resRequest") 
     public void resRequest(CommandMap commandMap) throws Exception {
         reservationService.insertOneReserve(commandMap.getMap());
     }
 	
+	//예약요청전 상세보기
 	@ResponseBody
 	@RequestMapping(value="/mypage/resRequestDetail")
 	public Map<String, Object> resRequestDetail(CommandMap commandMap) throws Exception{
 		
     	return reservationService.selectReserveDetail(commandMap.getMap());
 	}
+	
+	
+	//예약상태 결제/예약완료로 변경,결제정보 insert
+	@ResponseBody
+    @RequestMapping(value= "/mypage/resRequest") 
+    public void resPay(CommandMap commandMap) throws Exception {
+        reservationService.resPay(commandMap.getMap());
+    }
+	
+	//결제 리스트 조회
+	@ResponseBody
+	@RequestMapping(value="/mypage/memuseList")
+	public List<Map<String,Object>> payList(CommandMap commandMap) throws Exception{
+		return reservationService.selectPayList(commandMap.getMap());
+
+	}
+	
 }
 
 

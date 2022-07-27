@@ -63,4 +63,19 @@ public class ReservationServiceImpl implements ReservationService{
 	public Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception {
 		return reservationDAO.selectReserveDetail(map);
 	}
+
+	@Override
+	public void resPay(Map<String, Object> map) throws Exception {
+		reservationDAO.updateResCompl(map);
+		reservationDAO.insertPayInfo(map);
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> selectPayList(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return reservationDAO.selectPayList(map);
+	}
+	
+	
 }

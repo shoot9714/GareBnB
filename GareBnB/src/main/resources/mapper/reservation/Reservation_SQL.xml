@@ -79,7 +79,7 @@
 				ON R.RES_BOARD_NO = B.BOARD_NO
    	    		WHERE R.RES_BOARD_MODIFY_NO = B.BOARD_MODIFY_NO
                 AND RES_CLI_ID=#{MEM_ID}
-                AND RES_LEVEL IN (3, 4)
+                AND RES_LEVEL =5
                 AND SYSDATE>RES_DATE_END
 		]]>
 
@@ -167,5 +167,60 @@
 		]]>
 	</insert>
 
+
+	<!-- 결제/예약완료 -->
+	<update id="updateResCompl" parameterType="hashmap">
+		UPDATE 
+			RESERVATION
+		SET
+			RES_LEVEL = 3
+		WHERE 
+			RES_IDX = #{RES_IDX}
+	</update>
+	
+	
+	<!-- 결제정보입력 -->
+	<insert id="insertPayInfo" parameterType="hashmap">	
+
+		<![CDATA[
+			INSERT INTO PAYMENT
+			(
+				RES_IDX,
+				PAY_DATE,
+				PAY_LEVEL,
+				PG,
+				PAY_PRICE
+			)
+			VALUES
+			(
+				#{RES_IDX}, 
+				#{PAY_DATE},
+				#{PAY_LEVEL},
+				#{PG},
+				#{PAY_PRICE}
+			)
+		]]>
+	</insert>
+	
+	
+	<!-- 총 결제 리스트 -->
+	<select id="selectPayList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				P.RES_IDX,
+				RES_CLI_ID,
+				PG,
+				PAY_PRICE,
+				PAY_DATE,
+				RES_HOST_ID,
+				PAY_LEVEL
+						
+			FROM
+				PAYMENT P, RESERVATION R
+			WHERE P.RES_IDX = R.RES_IDX
+				
+		]]>
+	</select>
+	
 
 </mapper>
