@@ -98,6 +98,13 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		sqlSession.update("member.updateHostDeny", map);
 	}
+	
+	@Override
+	public void insertHostMem(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.insert("member.insertHostMem", map);
+	}
+
 }
 	
 	

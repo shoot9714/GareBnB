@@ -28,6 +28,6 @@ public interface MemberDAO {
 	
 	public void updateHostDeny(Map<String,Object> map) throws Exception; 
 	
-	
+	public void insertHostMem (Map<String,Object> map) throws Exception; // 호스트 전환 
 	
 }

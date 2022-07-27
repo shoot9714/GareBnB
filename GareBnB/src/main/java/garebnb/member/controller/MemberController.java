@@ -97,5 +97,11 @@ public class MemberController {
 	public Map<String, Object> selectConfirmMemberDetail(CommandMap commandMap) throws Exception {
     	return memberService.selectConfirmMemberDetail(commandMap.getMap());
 	}
+	
+	@ResponseBody
+	@RequestMapping(value= "/mypage/memChange") // 호스트 전환하기 
+	public void insertHostMem(CommandMap commandMap) throws Exception {
+		memberService.insertHostMem(commandMap.getMap());
+	}
 
 }

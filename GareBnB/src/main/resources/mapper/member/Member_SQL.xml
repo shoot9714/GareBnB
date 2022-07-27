@@ -90,10 +90,10 @@
 ]]>
 </update>
 
-	<!-- 호스트 전환 -->
-	<insert id="insertHostMem" parameterType="hashmap">
+<!-- 호스트 전환 -->
+<insert id="insertHostMem" parameterType="hashmap">
 
-	<![CDATA[
+<![CDATA[
 		INSERT INTO HOST_MEMBER
 		(
 			MEM_IDX,
