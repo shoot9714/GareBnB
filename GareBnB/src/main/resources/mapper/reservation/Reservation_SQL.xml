@@ -88,6 +88,7 @@
 	<select id="selectReserve" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
+				M.MEM_ID,
 				M.MEM_NAME,
 				M.MEM_PHONE,
 				R.RES_DATE_START,
@@ -97,11 +98,15 @@
 				R.RES_REQ_DETAIL,
 				R.RES_REJ,
 				R.RES_IDX,
-				R.RES_BOARD_NO
+				R.RES_BOARD_NO,
+                R.RES_BOARD_MODIFY_NO,
+				TO_CHAR(((R.RES_DATE_END - R.RES_DATE_START)+1)*B.BOARD_PRICE,'FM999,999,999') PRICE
 			FROM
 				MEMBER M INNER JOIN RESERVATION R
 			ON
-				M.MEM_IDX = R.RES_CLI_ID
+				M.MEM_ID = R.RES_CLI_ID
+			INNER JOIN BOARD B
+			ON	R.RES_BOARD_NO = B.BOARD_NO AND R.RES_BOARD_MODIFY_NO = B.BOARD_MODIFY_NO
 			WHERE
 				R.RES_HOST_ID = #{MEM_ID}
 				
