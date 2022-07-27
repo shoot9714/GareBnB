@@ -83,14 +83,14 @@ public class ReservationController {
 	
 	//예약상태 결제/예약완료로 변경,결제정보 insert
 	@ResponseBody
-    @RequestMapping(value= "/mypage/resRequest") 
+    @RequestMapping(value= "/mypage/resPay") 
     public void resPay(CommandMap commandMap) throws Exception {
         reservationService.resPay(commandMap.getMap());
     }
 	
 	//결제 리스트 조회
 	@ResponseBody
-	@RequestMapping(value="/mypage/memuseList")
+	@RequestMapping(value="/Admin/payList")
 	public List<Map<String,Object>> payList(CommandMap commandMap) throws Exception{
 		return reservationService.selectPayList(commandMap.getMap());
 

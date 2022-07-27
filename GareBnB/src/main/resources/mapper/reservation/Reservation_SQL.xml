@@ -195,7 +195,7 @@
 			(
 				#{RES_IDX}, 
 				#{PAY_DATE},
-				#{PAY_LEVEL},
+				0,
 				#{PG},
 				#{PAY_PRICE}
 			)
@@ -213,7 +213,12 @@
 				PAY_PRICE,
 				PAY_DATE,
 				RES_HOST_ID,
-				PAY_LEVEL
+				(CASE
+						WHEN RES_LEVEL = '3' THEN 0
+						WHEN RES_LEVEL = '5' THEN 1
+                       
+				END)
+				AS PAY_LEVEL
 						
 			FROM
 				PAYMENT P, RESERVATION R
