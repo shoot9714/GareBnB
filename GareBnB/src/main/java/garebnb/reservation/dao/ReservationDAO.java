@@ -15,7 +15,9 @@ public interface ReservationDAO {
 	
 	public List<Map<String, Object>> selectReserve (Map<String,Object> map) throws Exception; //호스트가 보는 예약내역조회
 	
-	public void updateResApprove(Map<String, Object> map); //예약승인
+	public List<Map<String, Object>> selectResFinish(Map<String, Object> map) throws Exception; //호스트가 보는 이용내역
+	
+	public void updateResApprove(Map<String, Object> map) throws Exception;  //예약승인
 
 	public void updateResReject(Map<String, Object> map) throws Exception; //예약거절사유 입력
 
@@ -23,11 +25,13 @@ public interface ReservationDAO {
 
 	public Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception; //예약요청전 상세보기
 
-	public void updateResCompl(Map<String, Object> map); //결제+예약완료
+	public void updateResCompl(Map<String, Object> map) throws Exception;  //결제+예약완료
 
-	public void insertPayInfo(Map<String, Object> map);	//결제 정보 입력 
+	public void insertPayInfo(Map<String, Object> map) throws Exception; 	//결제 정보 입력 
 
-	public List<Map<String, Object>> selectPayList(Map<String, Object> map);	//결제리스트
+	public List<Map<String, Object>> selectPayList(Map<String, Object> map) throws Exception; 	//결제리스트
+
+
 
 
 

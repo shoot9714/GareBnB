@@ -58,6 +58,12 @@ public class ReservationController {
 		return reservationService.selectReserve(commandMap.getMap());
 	}
 	
+	//호스트가 보는 이용내역 조회(호스트한테 돈이 들어온상태)
+	@ResponseBody
+	@RequestMapping(value="/host/mypage/resFinishList")
+	public List<Map<String,Object>> resFinishList(CommandMap commandMap) throws Exception{
+		return reservationService.selectResFinish(commandMap.getMap());
+	}
 	
 	//호스트가 예약승인
 	@ResponseBody

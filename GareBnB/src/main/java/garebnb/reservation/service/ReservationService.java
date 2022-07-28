@@ -30,7 +30,9 @@ public interface ReservationService {
 
 	void resPay(Map<String, Object> map) throws Exception;
 
-	List<Map<String, Object>> selectPayList(Map<String, Object> map);
+	List<Map<String, Object>> selectPayList(Map<String, Object> map) throws Exception;
+
+	List<Map<String, Object>> selectResFinish(Map<String, Object> map) throws Exception;
 
 
 

@@ -69,7 +69,18 @@ public class ReservationDAOImpl implements ReservationDAO{
 		 return sqlSession.selectList("reservation.selectReserve", map);
 	}
 	 
-	 //호스트가 예약승인
+	
+	//호스트가 보는 이용내역
+	@Override
+	public List<Map<String, Object>> selectResFinish(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("reservation.selectResFinish", map);
+	}
+
+
+
+
+	//호스트가 예약승인
 	@Override
 	public void updateResApprove(Map<String, Object> map) {
 		// TODO Auto-generated method stub
