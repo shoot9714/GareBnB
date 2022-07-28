@@ -3,7 +3,7 @@
 
 <mapper namespace = "report">
 
-<!-- 신고내역보기 - MEM_ID 세션에서 -->
+<!-- 신고내역보기 - MEM_ID 세션에서,, 줄여도됨.,,-->
 <select id="selectOneReportList" parameterType="hashmap" resultType="hashmap">
 <![CDATA[
 	SELECT
@@ -21,6 +21,28 @@
 	WHERE 
 		REPORT_ID = #{MEM_ID}
 ]]>
+</select>
+
+
+<!-- 신고내역 상세보기 -->
+<select id="selectDetailReport" parameterType="hashmap" resultType="hashmap">
+<![CDATA[
+	SELECT
+		REPORT_IDX,
+		REPORT_TITLE,
+		REPORT_ID,
+		REPORT_CONTENT,
+		REPORT_DATE,
+		REPORT_STATE,
+		REPORT_COMMENT,
+		REPORT_MEM_IDX,
+		REPORT_RES_NO
+	FROM 
+		REPORT
+	WHERE 
+		REPORT_IDX = #{REPORT_IDX}
+]]>
+
 </select>
 
 
@@ -141,5 +163,14 @@
 			REPORT_IDX = #{REPORT_IDX}
 	]]>
 </update>
+
+
+<!-- 문의 삭제  -->
+<delete id ="deleteReport" parameterType ="hashmap">
+	<![CDATA[
+		DELETE FROM REPORT
+			WHERE REPORT_IDX = #{REPORT_IDX}
+	]]>	
+</delete>
 
 </mapper>

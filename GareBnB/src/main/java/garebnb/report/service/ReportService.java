@@ -23,6 +23,11 @@ public interface ReportService {
 	//Admin report comment
 	void updateReportComment(Map<String, Object> map) throws Exception;
 
+	//Detail report
+	Map<String, Object> selectDetailReport(Map<String, Object> map) throws Exception;
+
+	void deleteReport(Map<String, Object> map) throws Exception;
+
 	
 
 

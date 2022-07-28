@@ -66,5 +66,19 @@ public class ReportDAOImpl implements ReportDAO{
 		sqlSession.update("report.updateReportComment", map);
 	}
 
+	//일반, 호스트 신고 상세보기
+	@Override
+	public Map<String, Object> selectDetailReport(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("report.selectDetailReport", map);
+	}
+
+	//일반, 호스트 신고글 삭제하기
+	@Override
+	public void deleteReport(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.delete("report.deleteReport",map);
+	}
+
 
 }

@@ -17,4 +17,8 @@ public interface ReportDAO {
 
 	public void updateReportComment(Map<String, Object> map) throws Exception;
 
+	public Map<String, Object> selectDetailReport(Map<String, Object> map) throws Exception;
+
+	public void deleteReport(Map<String, Object> map) throws Exception;
+
 }

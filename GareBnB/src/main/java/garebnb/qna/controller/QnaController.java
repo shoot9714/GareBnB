@@ -60,6 +60,7 @@ public class QnaController {
 	}
 	
 	
+	//Qna 상세보기
 	@RequestMapping(value="mypage/memDetailQna.do")
 	@ResponseBody 
 	public Map<String, Object> memDetailQna(CommandMap commandMap) throws Exception{

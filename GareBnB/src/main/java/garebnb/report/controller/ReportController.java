@@ -44,6 +44,25 @@ public class ReportController {
 	}
 	
 	
+	//신고내역 - 상세보기
+	@RequestMapping(value="mypage/memDetailReport.do")
+	@ResponseBody 
+	public Map<String, Object> memDetailReport(CommandMap commandMap) throws Exception{
+
+        return reportService.selectDetailReport(commandMap.getMap());
+	}
+	
+	
+	//신고내역 - 호스트
+	@RequestMapping(value="/host/mypage/hostDetailReport.do")
+	@ResponseBody 
+	public Map<String, Object> hostDetailReport(CommandMap commandMap) throws Exception{
+
+        return reportService.selectDetailReport(commandMap.getMap());
+	}
+	
+	
+	
 	//일반회원 -> 호스트회원 신고 - 입력
 	@RequestMapping(value="/mypage/memReportInsert.do")
 	@ResponseBody
@@ -90,12 +109,31 @@ public class ReportController {
 	}
 	
 	//신고 답변
-	@RequestMapping(value="/Admin/reportComment.do")
-	@ResponseBody 
-	public Map<String, Object> reportComment(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
-        reportService.updateReportComment(commandMap.getMap());
-	        
-	        return Json;
-		}	
+		@RequestMapping(value="/Admin/reportComment.do")
+		@ResponseBody 
+		public Map<String, Object> reportComment(CommandMap commandMap) throws Exception{
+			Map<String, Object> Json = new HashMap<String, Object>();
+	        reportService.updateReportComment(commandMap.getMap());
+		        
+		        return Json;
+			}
+		
+		
+	//신고하기 삭제 - 일반회원 매핑
+		@RequestMapping(value="/mypage/deleteReport.do")
+		@ResponseBody 
+		public void memDeleteReport(CommandMap commandMap) throws Exception{
+			
+			reportService.deleteReport(commandMap.getMap());
+			
+		}
+		
+	//신고하기 삭제 - 호스트회원 매핑
+		@RequestMapping(value="/host/mypage/deleteReport.do")
+		@ResponseBody 
+		public void hostDeleteReport(CommandMap commandMap) throws Exception{
+			
+			reportService.deleteReport(commandMap.getMap());
+			
+		}
 }

@@ -58,5 +58,20 @@ public class ReportServiceImpl implements ReportService{
 	}
 
 
+	@Override
+	public Map<String, Object> selectDetailReport(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return reportDAO.selectDetailReport(map);
+	}
+
+
+	@Override
+	public void deleteReport(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		reportDAO.deleteReport(map);
+		
+	}
+
+
 
 }
