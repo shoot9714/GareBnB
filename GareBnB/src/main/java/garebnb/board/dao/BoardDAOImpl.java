@@ -37,12 +37,14 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	  
 	@Override 
-	public void insertOneBoard(Map<String, Object> map) throws Exception { // TODO Auto-generated method stub
-		  sqlSession.insert("board.insertOneBoard",map); 
+	public Map<String, Object> insertOneBoard(Map<String, Object> map) throws Exception { // TODO Auto-generated method stub
+		sqlSession.insert("board.insertOneBoard",map);
+		return map;
 	  }
 	
 	
 
+	@SuppressWarnings("unchecked")
 	@Override 
 	public Map<String, Object> selectOneBoard(Map<String, Object> map)throws Exception { // TODO Auto-generated method stub 
 		  return (Map<String ,Object>) sqlSession.selectOne("board.selectOneBoard", map); 
@@ -73,7 +75,6 @@ public class BoardDAOImpl implements BoardDAO{
 		  return (Map<String, Object>) sqlSession.selectOne("board.selectBoardDetail", map); 
 	}
 	  
-	@SuppressWarnings("unchecked")
 	@Override 
 	public List<Map<String, Object>> selectHostBoardList(Map<String, Object>map) throws Exception { 
 		// TODO Auto-generated method stub 

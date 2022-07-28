@@ -1,17 +1,12 @@
 
 package garebnb.board.service;
   
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
   
 import javax.annotation.Resource; 
-import javax.servlet.http.HttpServletRequest;
-  
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-
 import garebnb.board.dao.BoardDAO;
 
   
@@ -41,9 +36,9 @@ public class BoardServiceImpl implements BoardService{
 
 	//게시글 등록
 	@Override
-	public void insertOneBoard(Map<String, Object> map) throws Exception {
+	public Map<String, Object> insertOneBoard(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		boardDAO.insertOneBoard(map);
+		return boardDAO.insertOneBoard(map);
 	}
 
 

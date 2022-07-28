@@ -1,6 +1,5 @@
 package garebnb.board.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,8 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
 import garebnb.board.service.BoardService;
 import garebnb.common.common.CommandMap;
 
@@ -42,9 +39,9 @@ public class BoardController {
 	//호스트 나의 게시글 등록
 	@ResponseBody
     @RequestMapping(value= "/host/mypage/myboardPut") 
-    public void myboardPut(CommandMap commandMap) throws Exception {
+    public Map<String, Object> myboardPut(CommandMap commandMap) throws Exception {
      
-        boardService.insertOneBoard(commandMap.getMap());
+        return boardService.insertOneBoard(commandMap.getMap());
     }
 	
 	//호스트 나의게시글 상세보기(삭제 안된것만 보여주기)
