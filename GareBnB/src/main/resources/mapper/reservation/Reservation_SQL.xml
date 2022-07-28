@@ -187,7 +187,8 @@
 		UPDATE 
 			RESERVATION
 		SET
-			RES_REJ = #{RES_REJ}
+			RES_REJ = #{RES_REJ},
+			RES_LEVEL = 4
 		WHERE 
 			RES_IDX = #{RES_IDX}
 	</update>
