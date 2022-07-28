@@ -54,9 +54,26 @@ public class LoginController {
     }
 	
 	@ResponseBody
-    @RequestMapping(value={"/Auth"}) // 비밀번호 찾기, 비밀번호 찾기 결과 
+    @RequestMapping(value={"/Auth"}) // 인증 
     public Map<String, Object> selectAuth(CommandMap commandMap) throws Exception{
         return loginService.selectAuth(commandMap.getMap());
+
+    }
+	
+	@ResponseBody
+    @RequestMapping(value={"/login/IDCheck"}) // ID중복체크
+    public Map<String, Object> selectIDCheck(CommandMap commandMap) throws Exception{
+		String inputID = (String)commandMap.getMap().get("MEM_ID");
+		if(loginService.selectIDCheck(commandMap.getMap()) == null) {
+        	return null;
+        } else {
+			String realID = (String)loginService.selectIDCheck(commandMap.getMap()).get("MEM_ID");
+	        if(inputID.equals(realID)) {
+				return loginService.selectIDCheck(commandMap.getMap());
+	        } 
+	        else 
+	        	return null;
+        }
 
     }
 	

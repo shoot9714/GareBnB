@@ -50,6 +50,19 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDAO.selectReserve(map);
 	}
 	
+	
+	@Override
+	public List<Map<String, Object>> selectResFinish(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return reservationDAO.selectResFinish(map);
+	}
+
+	@Override
+	public void updateResApprove(Map<String, Object> map) throws Exception {
+		reservationDAO.updateResApprove(map);
+		
+	}
+
 	@Override
 	public void updateResReject(Map<String, Object> map) throws Exception{
 		reservationDAO.updateResReject(map);
@@ -63,4 +76,19 @@ public class ReservationServiceImpl implements ReservationService{
 	public Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception {
 		return reservationDAO.selectReserveDetail(map);
 	}
+
+	@Override
+	public void resPay(Map<String, Object> map) throws Exception {
+		reservationDAO.updateResCompl(map);
+		reservationDAO.insertPayInfo(map);
+		
+	}
+
+	@Override
+	public List<Map<String, Object>> selectPayList(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return reservationDAO.selectPayList(map);
+	}
+	
+	
 }

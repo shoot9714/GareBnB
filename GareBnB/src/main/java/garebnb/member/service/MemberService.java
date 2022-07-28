@@ -14,7 +14,6 @@ public interface MemberService {
 	
 	void insertMember(Map<String, Object> map) throws Exception;
 	
-	
 	void updateOneMember(Map<String, Object> map) throws Exception;
 
 	void updateOneMemberDelete(Map<String, Object> map) throws Exception;
@@ -30,5 +29,7 @@ public interface MemberService {
 	void updateHostConfirm(Map<String, Object> map) throws Exception;
 	
 	void updateHostDeny(Map<String, Object> map) throws Exception;
+	
+	void insertHostMem(Map<String, Object> map) throws Exception;
 	
 }

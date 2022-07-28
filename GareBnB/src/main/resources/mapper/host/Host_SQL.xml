@@ -51,7 +51,7 @@
 		HOST_INTRO = #{HOST_INTRO},
 		HOST_ACCOUNT = #{HOST_ACCOUNT},
 		HOST_BANK = #{HOST_BANK}
-	WHERE 	MEM_IDX = #{MEM_IDX}
+	WHERE 	MEM_ID = #{MEM_ID}
 	]]>
 </update>
 	

@@ -4,7 +4,6 @@ package garebnb.board.service;
 import java.util.List;
 import java.util.Map;
   
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,7 @@ public interface BoardService {
   
 	List<Map<String, Object>> selectOneBoardList(Map<String, Object> map) throws Exception;
 	void updateOneBoardDelete(Map<String,Object> map) throws Exception;
-	void insertOneBoard(Map<String,Object> map) throws Exception; 
+	Map<String, Object> insertOneBoard(Map<String,Object> map) throws Exception; 
 	Map<String,Object> selectOneBoard(Map<String,Object>map) throws Exception;
 	void insertOneBoardModify(Map<String, Object> map) throws Exception;
 	void updateOneBoardModifyCancel(Map<String, Object> map) throws Exception;

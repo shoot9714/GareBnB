@@ -51,5 +51,12 @@ public class LoginDAOImpl implements LoginDAO {
 		// TODO Auto-generated method stub
 		return (Map<String, Object>) sqlSession.selectOne("login.selectAuth", map); 
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> selectIDCheck(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return (Map<String, Object>) sqlSession.selectOne("login.selectIDCheck", map); 
+	}
 
 }

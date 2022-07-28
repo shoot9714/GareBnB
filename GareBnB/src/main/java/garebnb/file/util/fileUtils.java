@@ -33,18 +33,14 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         Map<String, Object> listMap = null; 
         
         String fileBoardIdx = null;
-        String fileBoardLevel = "0";
         String fileBoardType = (String)map.get("FILE_BOARD_TYPE");
         
-        if(map.get("BOARD_IDX")==null) {
+        if(map.get("BOARD_NO")==null) {
         	fileBoardIdx = (String)map.get("MEM_IDX");
         } else {
-        	fileBoardIdx = (String)map.get("BOARD_IDX");
+        	fileBoardIdx = (String)map.get("BOARD_NO");
         }
         
-        if(map.get("FILE_LEVEL") != null) {
-        	fileBoardLevel = (String)map.get("FILE_LEVEL");
-        }
         
         
         File file = new File(filePath);
@@ -64,7 +60,6 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         		
         		listMap = new HashMap<String,Object>();
         		listMap.put("FILE_BOARD_IDX", fileBoardIdx);
-        		listMap.put("FILE_LEVEL", fileBoardLevel);
         		listMap.put("FILE_BOARD_TYPE", fileBoardType);
         		listMap.put("FILE_ORGNAME", originalFileName);
         		listMap.put("FILE_STDNAME", storedFileName);
@@ -88,18 +83,14 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         Map<String, Object> listMap = null; 
         
         String fileBoardIdx = null;
-        String fileBoardLevel = "0";
         String fileBoardType = (String)map.get("FILE_BOARD_TYPE");
         
-        if(map.get("BOARD_IDX")==null) {
+        if(map.get("BOARD_NO")==null) {
         	fileBoardIdx = (String)map.get("MEM_IDX");
         } else {
-        	fileBoardIdx = (String)map.get("BOARD_IDX");
+        	fileBoardIdx = (String)map.get("BOARD_NO");
         }
         
-        if(map.get("FILE_LEVEL") != null) {
-        	fileBoardLevel = (String)map.get("FILE_LEVEL");
-        }
         
         
         String requestName = null;
@@ -118,7 +109,6 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         		listMap = new HashMap<String,Object>();
         		listMap.put("IS_NEW", "Y");
         		listMap.put("FILE_BOARD_IDX", fileBoardIdx);
-        		listMap.put("FILE_LEVEL", fileBoardLevel);
         		listMap.put("FILE_BOARD_TYPE", fileBoardType);
         		listMap.put("FILE_ORGNAME", originalFileName);
         		listMap.put("FILE_STDNAME", storedFileName);

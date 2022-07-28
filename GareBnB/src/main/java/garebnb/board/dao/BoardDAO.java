@@ -9,7 +9,7 @@ public interface BoardDAO {
   //호스트 
 	public List<Map<String, Object>> selectOneBoardList (Map<String,Object> map) throws Exception; //호스트-내 게시글리스트 
 	public void updateOneBoardDelete(Map<String,Object> map) throws Exception; //호스트-내 게시글 삭제 
-	public void insertOneBoard (Map<String,Object> map) throws Exception; //호스트-게시글 등록 
+	public Map<String, Object> insertOneBoard (Map<String,Object> map) throws Exception; //호스트-게시글 등록 
 	public Map<String, Object> selectOneBoard (Map<String,Object> map) throws Exception;//호스트-내 게시글
 	public void insertOneBoardModify (Map<String,Object> map) throws Exception; //호스트-게시글 수정 등록
 	public void updateOneBoardModifyCancel (Map<String,Object> map) throws Exception; //게시글 수정 취소

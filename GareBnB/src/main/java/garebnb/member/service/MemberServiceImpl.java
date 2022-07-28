@@ -88,5 +88,12 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		memberDAO.updateHostDeny(map);
 	}
+	
+	@Override
+	public void insertHostMem(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		memberDAO.insertHostMem(map);
+		
+	}
 
 }
