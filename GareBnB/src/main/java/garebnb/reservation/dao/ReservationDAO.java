@@ -29,10 +29,9 @@ public interface ReservationDAO {
 
 	public void insertPayInfo(Map<String, Object> map) throws Exception; 	//결제 정보 입력 
 
-	public List<Map<String, Object>> selectPayList(Map<String, Object> map) throws Exception; 	//결제리스트
+	public List<Map<String, Object>> selectAllresList(Map<String, Object> map);
 
-
-
+	public Map<String, Object> selectresInfo(Map<String, Object> map);
 
 
 

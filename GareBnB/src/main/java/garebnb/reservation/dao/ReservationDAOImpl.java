@@ -126,12 +126,23 @@ public class ReservationDAOImpl implements ReservationDAO{
 
 
 
-	//결제정보리스트
+	//모든 예약 리스트 출력
 	@Override
-	public List<Map<String, Object>> selectPayList(Map<String, Object> map) {
+	public List<Map<String, Object>> selectAllresList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("reservation.selectPayList", map);
+		return sqlSession.selectList("reservation.selectAllresList",map);
 	}
-	 
+
+
+
+	//하나의 예약 정보 출력
+	@Override
+	public Map<String, Object> selectresInfo(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("reservation.selectresInfo",map);
+	}
+
+
+	
 
 }

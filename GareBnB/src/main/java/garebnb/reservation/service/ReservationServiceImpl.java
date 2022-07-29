@@ -85,10 +85,17 @@ public class ReservationServiceImpl implements ReservationService{
 	}
 
 	@Override
-	public List<Map<String, Object>> selectPayList(Map<String, Object> map) throws Exception {
+	public List<Map<String, Object>> selectAllresList(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return reservationDAO.selectPayList(map);
+		return reservationDAO.selectAllresList(map);
 	}
+
+	@Override
+	public Map<String, Object> selectresInfo(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return reservationDAO.selectresInfo(map);
+	}
+
 	
 	
 }

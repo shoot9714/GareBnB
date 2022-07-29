@@ -101,14 +101,23 @@ public class ReservationController {
     public void resPay(CommandMap commandMap) throws Exception {
         reservationService.resPay(commandMap.getMap());
     }
-	
-	//결제 리스트 조회
+
+	//모든 예약 리스트
 	@ResponseBody
-	@RequestMapping(value="/Admin/payList")
-	public List<Map<String,Object>> payList(CommandMap commandMap) throws Exception{
-		return reservationService.selectPayList(commandMap.getMap());
+	@RequestMapping(value="/Admin/allresList")
+	public List<Map<String,Object>> allresList(CommandMap commandMap) throws Exception{
+		return reservationService.selectAllresList(commandMap.getMap());
 
 	}
+	
+	//하나의 예약정보
+	@ResponseBody
+	@RequestMapping(value="/Admin/resInfo")
+	public Map<String, Object> resInfo(CommandMap commandMap) throws Exception{
+			
+		return reservationService.selectresInfo(commandMap.getMap());
+	}
+	
 	
 }
 

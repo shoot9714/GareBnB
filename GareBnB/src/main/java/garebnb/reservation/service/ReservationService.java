@@ -30,11 +30,12 @@ public interface ReservationService {
 
 	void resPay(Map<String, Object> map) throws Exception;
 
-	List<Map<String, Object>> selectPayList(Map<String, Object> map) throws Exception;
-
 	List<Map<String, Object>> selectResFinish(Map<String, Object> map) throws Exception;
 
+	List<Map<String, Object>> selectAllresList(Map<String, Object> map) throws Exception;	//전체 예약 리스트
 
+	Map<String, Object> selectresInfo(Map<String, Object> map) throws Exception;	//하나의 예약 정보
+	
 
 
 }

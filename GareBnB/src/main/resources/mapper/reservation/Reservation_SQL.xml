@@ -251,7 +251,7 @@
 			(
 				#{RES_IDX}, 
 				#{PAY_DATE},
-				0,
+				3,
 				#{PG},
 				#{PAY_PRICE}
 			)
@@ -259,29 +259,48 @@
 	</insert>
 	
 	
-	<!-- 총 결제 리스트 -->
-	<select id="selectPayList" parameterType="hashmap" resultType="hashmap">
+	<!-- 관리자 - 모든 예약 리스트 -->
+	<select id="selectAllresList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-				P.RES_IDX,
-				RES_CLI_ID,
-				PG,
-				PAY_PRICE,
-				PAY_DATE,
-				RES_HOST_ID,
-				(CASE
-						WHEN RES_LEVEL = '3' THEN 0
-						WHEN RES_LEVEL = '5' THEN 1
-                       
-				END)
-				AS PAY_LEVEL
-						
+					RES_IDX,
+					RES_CLI_ID,
+					RES_HOST_ID,
+					RES_BOARD_NO,
+					RES_BOARD_MODIFY_NO,
+					RES_LEVEL				
 			FROM
-				PAYMENT P, RESERVATION R
-			WHERE P.RES_IDX = R.RES_IDX
+					RESERVATION
 				
 		]]>
 	</select>
+	
+	
+	<!-- 관리자 - 예약정보보기 -->
+	<select id="selectAllresList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+					R.RES_IDX,
+					RES_LEVEL,
+					RES_CLI_ID,
+					RES_HOST_ID,
+					RES_BOARD_NO,
+					RES_BOARD_MODIFY_NO,
+					
+					RES_CARE_NO,
+					RES_REQ_DETAIL,
+					RES_REJ,
+					PG,
+					PAY_METHOD,
+					PAY_PRICE,
+					PAY_DATE
+			FROM
+					RESERVATION R INNER JOIN PAYMENT P
+			ON		R.RES_IDX = P.RES_IDX
+			WHERE	R.RES_IDX = #{RES_IDX}
+				
+		]]>
+	</select>		
 	
 
 </mapper>
