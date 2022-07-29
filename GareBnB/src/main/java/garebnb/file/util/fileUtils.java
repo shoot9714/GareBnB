@@ -23,11 +23,11 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
 	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
     	Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
-    	
     	MultipartFile multipartFile = null;
     	String originalFileName = null;
     	String originalFileExtension = null;
     	String storedFileName = null;
+    	
     	
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 
@@ -41,6 +41,7 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         	fileBoardIdx = (String)map.get("BOARD_NO");
         }
         
+        String file_level = (String)map.get("FILE_LEVEL");
         
         
         File file = new File(filePath);
@@ -59,12 +60,14 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         		multipartFile.transferTo(file);
         		
         		listMap = new HashMap<String,Object>();
+        		listMap.put("FILE_LEVEL", file_level);
         		listMap.put("FILE_BOARD_IDX", fileBoardIdx);
         		listMap.put("FILE_BOARD_TYPE", fileBoardType);
         		listMap.put("FILE_ORGNAME", originalFileName);
         		listMap.put("FILE_STDNAME", storedFileName);
         		listMap.put("FILE_SIZE", multipartFile.getSize());
         		list.add(listMap);
+        		
         	}
         }
 		return list;
@@ -91,7 +94,7 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         	fileBoardIdx = (String)map.get("BOARD_NO");
         }
         
-        
+        String file_level = (String)map.get("FILE_LEVEL");
         
         String requestName = null;
         String idx = null;
@@ -108,6 +111,7 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         		
         		listMap = new HashMap<String,Object>();
         		listMap.put("IS_NEW", "Y");
+        		listMap.put("FILE_LEVEL", file_level);
         		listMap.put("FILE_BOARD_IDX", fileBoardIdx);
         		listMap.put("FILE_BOARD_TYPE", fileBoardType);
         		listMap.put("FILE_ORGNAME", originalFileName);
@@ -121,6 +125,7 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
             	if(map.containsKey(idx) == true && map.get(idx) != null){
             		listMap = new HashMap<String,Object>();
             		listMap.put("IS_NEW", "N");
+            		listMap.put("FILE_LEVEL", file_level);
             		listMap.put("FILE_IDX", map.get(idx));
             		list.add(listMap);
             	}
