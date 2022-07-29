@@ -139,7 +139,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 	@Override
 	public Map<String, Object> selectresInfo(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("reservation.selectresInfo",map);
+		return (Map<String , Object>)sqlSession.selectOne("reservation.selectresInfo",map);
 	}
 
 
