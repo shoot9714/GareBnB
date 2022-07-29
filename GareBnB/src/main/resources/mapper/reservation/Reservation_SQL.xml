@@ -277,7 +277,7 @@
 	
 	
 	<!-- 관리자 - 예약정보보기 -->
-	<select id="selectAllresList" parameterType="hashmap" resultType="hashmap">
+	<select id="selectresInfo" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
 					R.RES_IDX,
