@@ -2,39 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="host_member">
-
-
-	<insert id="insertHostMem" parameterType="hashmap">
-
-	<![CDATA[
-		INSERT INTO HOST_MEMBER
-		(
-			MEM_IDX,
-			HOST_EMAIL,
-			HOST_POSTCODE,
-			HOST_ADDR1,
-			HOST_ADDR2,
-			HOST_JUMIN1,
-			HOST_JUMIN2,
-			HOST_INTRO,
-			HOST_ACCOUNT,
-			HOST_BANK
-		)
-		VALUES
-		(
-			#{MEM_IDX},
-			#{HOST_EMAIL},
-			#{HOST_POST},
-			#{HOST_ADDR1},
-			#{HOST_ADDR2},
-			#{HOST_JUMIN1},
-			#{HOST_JUMIN2},
-			#{HOST_INTRO},
-			#{HOST_ACCOUNT},
-			#{HOST_BANK}
-		)
-	]]>
-	</insert>
 	
 	
 <!-- 호스트 정보 수정 -->
