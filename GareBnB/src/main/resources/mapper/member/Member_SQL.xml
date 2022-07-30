@@ -20,14 +20,24 @@
 		
 		<![CDATA[
 			SELECT
-			MEM_IDX,
-				MEM_LEVEL,
-				MEM_NAME,
-				MEM_ID,
-				MEM_PW,
-				MEM_PHONE
+					MEMBER.MEM_IDX,
+					MEM_LEVEL,
+					MEM_NAME,
+					MEM_ID,
+					MEM_PW,
+					MEM_PHONE,
+					HOST_EMAIL,
+					HOST_POSTCODE,
+					HOST_ADDR1,
+					HOST_ADDR2,
+					HOST_JUMIN1,
+					HOST_JUMIN2,
+					HOST_INTRO,
+					HOST_ACCOUNT,
+					HOST_BANK
 			FROM
-				MEMBER
+				MEMBER LEFT JOIN HOST_MEMBER
+			ON	MEMBER.MEM_IDX = HOST_MEMBER.MEM_IDX
 			WHERE
 				MEM_IDX = #{MEM_IDX}
 		
@@ -128,24 +138,14 @@
 <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-				MEMBER.MEM_IDX,
+				MEM_IDX,
 				MEM_LEVEL,
 				MEM_NAME,
 				MEM_ID,
 				MEM_PW,
-				MEM_PHONE,
-				HOST_EMAIL,
-				HOST_POSTCODE,
-				HOST_ADDR1,
-				HOST_ADDR2,
-				HOST_JUMIN1,
-				HOST_JUMIN2,
-				HOST_INTRO,
-				HOST_ACCOUNT,
-				HOST_BANK
+				MEM_PHONE
 			FROM
-				MEMBER LEFT JOIN HOST_MEMBER
-			ON MEMBER.MEM_IDX = HOST_MEMBER.MEM_IDX
+				MEMBER
             ORDER BY
                 MEM_IDX DESC	
 		]]>

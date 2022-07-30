@@ -46,9 +46,9 @@ public class ReviewController {
 		reviewService.updatemyReview(commandMap.getMap());
 	}
 	
-	//나의 리뷰 삭제
+	//리뷰 삭제
 	@ResponseBody
-	@RequestMapping(value="/mypage/deleteReview")
+	@RequestMapping(value={"/mypage/deleteReview","/Admin/deleteReview"})
 	public void deleteMyreview(CommandMap commandMap) throws Exception{
 		reviewService.deleteReview(commandMap.getMap());
 	}	
@@ -61,14 +61,5 @@ public class ReviewController {
 
 	}
 	
-	
-	//관리자-리뷰 삭제
-	@ResponseBody
-	@RequestMapping(value="/Admin/deleteReview")
-	public void reviewDelete(CommandMap commandMap) throws Exception{
-		reviewService.deleteReview(commandMap.getMap());
-	}
-	
-	
-	
+		
 }
