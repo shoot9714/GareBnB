@@ -39,21 +39,6 @@ public class HostController {
 		return hostService.selectHostDetail(commandMap.getMap());
     }
 	
-	
-	/*
-	 * //호스트 회원정보수정폼
-	 * 
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value="/myPage/hostModifyForm.do" ) public Map<String,
-	 * Object> hostModifyForm(CommandMap commandMap) throws Exception{ Map<String,
-	 * Object> Json = new HashMap<String, Object>();
-	 * 
-	 * 
-	 * return Json; }
-	 */
-	
-	
 	//호스트-회원정보수정
 	@ResponseBody
 	@RequestMapping(value="/host/myPage/hostModify.do" )
@@ -107,6 +92,8 @@ public class HostController {
 	public void hostDeny(CommandMap commandMap) throws Exception{
 		hostService.updateHostDeny(commandMap.getMap());
 	}	
+	
+	
 	
 	
 	

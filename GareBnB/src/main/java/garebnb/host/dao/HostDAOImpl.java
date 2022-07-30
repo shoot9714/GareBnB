@@ -27,7 +27,7 @@ public class HostDAOImpl implements HostDAO {
 	@Override
 	public Map<String, Object> selectHostDetail(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("host_member.selectOneHost", map);
+		return sqlSession.selectOne("host_member.selectHostDetail", map);
 	}
 
 	@Override

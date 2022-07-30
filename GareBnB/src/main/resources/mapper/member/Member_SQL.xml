@@ -27,7 +27,7 @@
 					MEM_PW,
 					MEM_PHONE,
 					HOST_EMAIL,
-					HOST_POSTCODE,
+					HOST_POST,
 					HOST_ADDR1,
 					HOST_ADDR2,
 					HOST_JUMIN1,
@@ -108,7 +108,7 @@
 		(
 			MEM_IDX,
 			HOST_EMAIL,
-			HOST_POSTCODE,
+			HOST_POST,
 			HOST_ADDR1,
 			HOST_ADDR2,
 			HOST_JUMIN1,
