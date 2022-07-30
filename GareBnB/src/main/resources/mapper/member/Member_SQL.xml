@@ -128,14 +128,24 @@
 <select id="selectMemberList" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-				MEM_IDX,
+				MEMBER.MEM_IDX,
 				MEM_LEVEL,
 				MEM_NAME,
 				MEM_ID,
 				MEM_PW,
-				MEM_PHONE
+				MEM_PHONE,
+				HOST_EMAIL,
+				HOST_POSTCODE,
+				HOST_ADDR1,
+				HOST_ADDR2,
+				HOST_JUMIN1,
+				HOST_JUMIN2,
+				HOST_INTRO,
+				HOST_ACCOUNT,
+				HOST_BANK
 			FROM
-				MEMBER
+				MEMBER LEFT JOIN HOST_MEMBER
+			ON MEMBER.MEM_IDX = HOST_MEMBER.MEM_IDX
             ORDER BY
                 MEM_IDX DESC	
 		]]>
