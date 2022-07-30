@@ -35,14 +35,14 @@ public class HostController {
 	//호스트-호스트회원정보보기
 	@ResponseBody
 	@RequestMapping(value="/host/myPage/hostInfo.do" )
-    public Map<String, Object> hostInfo(CommandMap commandMap) throws Exception{
+    public Map<String, Object> selectHostDetail(CommandMap commandMap) throws Exception{
 		return hostService.selectHostDetail(commandMap.getMap());
     }
 	
 	//호스트-회원정보수정
 	@ResponseBody
 	@RequestMapping(value="/host/myPage/hostModify.do" )
-    public void hostModify(CommandMap commandMap) throws Exception{
+    public void updateOneHost(CommandMap commandMap) throws Exception{
 		hostService.updateOneHost(commandMap.getMap());
     }
 	
