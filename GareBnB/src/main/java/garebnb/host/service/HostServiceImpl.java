@@ -24,6 +24,13 @@ public class HostServiceImpl implements HostService{
 		// TODO Auto-generated method stub
 		return hostDAO.selectHostDetail(map);
 	}
+	
+	@Override
+	public void insertHostMem(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		hostDAO.insertHostMem(map);
+		
+	}
 
 	@Override
 	public void updateOneHost(Map<String, Object> map) throws Exception {
@@ -32,9 +39,9 @@ public class HostServiceImpl implements HostService{
 	}
 
 	@Override
-	public List<Map<String, Object>> selectHostConfrimList(Map<String, Object> map) {
+	public List<Map<String, Object>> selectHostConfirmList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return hostDAO.selectHostConfrimList(map);
+		return hostDAO.selectHostConfirmList(map);
 	}
 
 	
@@ -45,9 +52,9 @@ public class HostServiceImpl implements HostService{
 	}
 
 	@Override
-	public Map<String, Object> selectConfrimMemberDetail(Map<String, Object> map) {
+	public Map<String, Object> selectConfirmMemberDetail(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return hostDAO.selectConfrimMemberDetail(map);
+		return hostDAO.selectConfirmMemberDetail(map);
 	}
 
 	@Override

@@ -69,21 +69,27 @@ public class HostController {
 		hostService.updateOneMemberDelete(commandMap.getMap());
 	}	
 	
+	// 호스트 전환하기 
+		@ResponseBody
+		@RequestMapping(value= "/mypage/memChange") 
+		public void insertHostMem(CommandMap commandMap) throws Exception {
+			hostService.insertHostMem(commandMap.getMap());
+		}
 	
 	//관리자-호스트회원등록요청리스트
 	@ResponseBody
 	@RequestMapping(value="/Admin/hostConfirmList")
 	public List<Map<String,Object>> memberList(CommandMap commandMap) throws Exception{
-		return hostService.selectHostConfrimList(commandMap.getMap());
+		return hostService.selectHostConfirmList(commandMap.getMap());
 
 	}
 	
 	//관리자-호스트회원등록요청상세보기
 	@ResponseBody
 	@RequestMapping(value="/Admin/hostConfirmMemberDetail.do" )
-    public Map<String, Object> hostConfrimDetail(CommandMap commandMap) throws Exception{
+    public Map<String, Object> hostConfirmDetail(CommandMap commandMap) throws Exception{
 		
-    	return hostService.selectConfrimMemberDetail(commandMap.getMap());
+    	return hostService.selectConfirmMemberDetail(commandMap.getMap());
     }
 
 	
@@ -97,10 +103,11 @@ public class HostController {
 	
 	//관리자-호스트등록거절
 	@ResponseBody
-	@RequestMapping(value="/Admin/hostDeny.do" )
+	@RequestMapping(value="/Admin/HostDeny.do" )
 	public void hostDeny(CommandMap commandMap) throws Exception{
 		hostService.updateHostDeny(commandMap.getMap());
 	}	
+	
 	
 	
 }

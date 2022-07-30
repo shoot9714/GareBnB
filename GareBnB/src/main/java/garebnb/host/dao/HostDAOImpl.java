@@ -35,9 +35,15 @@ public class HostDAOImpl implements HostDAO {
 		// TODO Auto-generated method stub
 		sqlSession.update("host_member.updateOneHost",map);
 	}
+	
+	@Override
+	public void insertHostMem(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.insert("host_member.insertHostMem", map);
+	}
 
 	@Override
-	public List<Map<String, Object>> selectHostConfrimList(Map<String, Object> map) {
+	public List<Map<String, Object>> selectHostConfirmList(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("host_member.selectHostConfirmList", map);
 	}
@@ -49,7 +55,7 @@ public class HostDAOImpl implements HostDAO {
 	}
 
 	@Override
-	public Map<String, Object> selectConfrimMemberDetail(Map<String, Object> map) {
+	public Map<String, Object> selectConfirmMemberDetail(Map<String, Object> map) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("host_member.selectConfirmMemberDetail", map);
 	}
