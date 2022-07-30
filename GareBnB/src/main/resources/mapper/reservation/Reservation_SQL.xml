@@ -295,10 +295,10 @@
 					PAY_PRICE,
 					PAY_DATE
 			FROM
-					RESERVATION R INNER JOIN PAYMENT P
+					RESERVATION R LEFT JOIN PAYMENT P
 			ON		R.RES_IDX = P.RES_IDX
 			WHERE	R.RES_IDX = #{RES_IDX}
-				
+			
 		]]>
 	</select>		
 	

@@ -22,7 +22,7 @@ public class ReservationController {
 	private ReservationService reservationService;
 	
 	
-	//클라이언트 예약취소
+	//예약취소
 	@ResponseBody
 	@RequestMapping(value="/mypage/ResCancel") 
 	public void resCancel(CommandMap commandMap) throws Exception {
