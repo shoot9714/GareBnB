@@ -120,6 +120,7 @@ public class ReservationController {
 		return reservationService.selectresInfo(commandMap.getMap());
 	}
 	
+	//게시글 예약 기
 	@ResponseBody
 	@RequestMapping(value="/Board/ResList")
 	public List<Map<String, Object>> BoardReserve(CommandMap commandMap) throws Exception{

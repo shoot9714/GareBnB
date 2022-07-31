@@ -86,7 +86,7 @@
 
 	</select>
 	
-		<!-- 게시글에 필요한 예약 내역 -->
+		<!-- 게시글에 필요한 예약 내역  -->
 	<select id="selectBoardReserve" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT

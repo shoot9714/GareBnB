@@ -1,16 +1,11 @@
 package garebnb.reservation.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-
 import garebnb.reservation.dao.ReservationDAO;
 
 @Repository("ReservationService")

@@ -147,6 +147,5 @@ public class ReservationDAOImpl implements ReservationDAO{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("reservation.selectBoardReserve",map);
 	}
-	
 
 }

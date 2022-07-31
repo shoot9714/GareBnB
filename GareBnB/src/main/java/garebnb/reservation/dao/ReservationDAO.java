@@ -36,5 +36,4 @@ public interface ReservationDAO {
 	public List<Map<String, Object>> selectBoardReserve(Map<String, Object> map) throws Exception; //호스트가 보는 이용내역
 
 
-
 }
