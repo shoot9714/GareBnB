@@ -56,8 +56,9 @@ public class BoardController {
 	//호스트 나의게시글 수정 입력
 	@ResponseBody
 	@RequestMapping(value="/host/mypage/myboardModify")
-	public void myboardModify(CommandMap commandMap) throws Exception{
-		boardService.insertOneBoardModify(commandMap.getMap());
+	public Map<String, Object> myboardModify(CommandMap commandMap) throws Exception{
+		
+	 	return boardService.insertOneBoardModify(commandMap.getMap());
 	}
 	 
 	@ResponseBody

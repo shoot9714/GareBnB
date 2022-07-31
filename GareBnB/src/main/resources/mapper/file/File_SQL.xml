@@ -13,7 +13,7 @@
 			#{FILE_ORGNAME},
 			#{FILE_STDNAME},
 			#{FILE_SIZE},
-			0,
+			'0',
 			#{FILE_LEVEL},
 			#{FILE_MODIFY_NO}
 		)

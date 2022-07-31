@@ -14,7 +14,7 @@ public interface BoardService {
 	void updateOneBoardDelete(Map<String,Object> map) throws Exception;
 	Map<String, Object> insertOneBoard(Map<String,Object> map) throws Exception; 
 	Map<String,Object> selectOneBoard(Map<String,Object>map) throws Exception;
-	void insertOneBoardModify(Map<String, Object> map) throws Exception;
+	Map<String, Object> insertOneBoardModify(Map<String, Object> map) throws Exception;
 	void updateOneBoardModifyCancel(Map<String, Object> map) throws Exception;
 	
 	

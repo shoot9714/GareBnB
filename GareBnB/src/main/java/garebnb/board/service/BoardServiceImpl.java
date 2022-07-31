@@ -44,9 +44,9 @@ public class BoardServiceImpl implements BoardService{
 
 	//게시글 수정등록
 	@Override
-	public void insertOneBoardModify(Map<String, Object> map) throws Exception {
+	public Map<String, Object> insertOneBoardModify(Map<String, Object> map) throws Exception {
 			// TODO Auto-generated method stub
-		boardDAO.insertOneBoardModify(map);
+		return boardDAO.insertOneBoardModify(map);
 	}
 
 
