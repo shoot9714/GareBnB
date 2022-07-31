@@ -51,10 +51,11 @@
 <insert id = "insertReport" parameterType="hashmap">
 	
 	<!-- 호스트 아이디 구하기 -->
-	<selectKey keyProperty="RES_MEM_IDX" resultType="string" order="BEFORE">
+	<!-- <selectKey keyProperty="RES_MEM_IDX" resultType="string" order="BEFORE">
 			SELECT RES_HOST_ID FROM RESERVATION
 			WHERE RES_IDX = #{RES_IDX}
-	</selectKey>	
+	</selectKey> -->	
+	
 	<![CDATA[
 		INSERT INTO REPORT
 			(
@@ -75,8 +76,8 @@
 				#{REPORT_CONTENT},
 				SYSDATE,
 			 	0,
-				#{REPORT_MEM_IDX}
-				#{RES_IDX}
+				#{REPORT_MEM_IDX},
+				#{REPORT_RES_NO}
 			)
 		]]>
 </insert>
