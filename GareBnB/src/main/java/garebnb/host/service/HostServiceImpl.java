@@ -35,7 +35,7 @@ public class HostServiceImpl implements HostService{
 	@Override
 	public void updateOneHost(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		hostDAO.updateOneHost(map);
+		hostDAO.updateOneHost(map); 
 	}
 	
 	@Override

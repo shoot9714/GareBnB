@@ -45,7 +45,7 @@ public class HostController {
     public void updateOneHost(CommandMap commandMap) throws Exception{
 		hostService.updateOneHost(commandMap.getMap());
     }
-	
+	 
 	
 	//호스트-회원탈퇴
 	@ResponseBody

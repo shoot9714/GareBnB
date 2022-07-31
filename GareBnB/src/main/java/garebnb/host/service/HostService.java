@@ -37,10 +37,4 @@ public interface HostService {
 
 	//관리자-호스트등록거절
 	void updateHostDeny(Map<String, Object> map);
-	
-	
-	
-	
-	
-
 }
