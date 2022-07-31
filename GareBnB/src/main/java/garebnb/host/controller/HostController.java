@@ -23,7 +23,7 @@ public class HostController {
 	private HostService hostService;
 	
 	
-	//일반-회원정보보기
+	//일반-호스트회원정보보기
 	@ResponseBody
 	@RequestMapping(value="/myPage/hostDetail.do" )
     public Map<String, Object> hostDetail(CommandMap commandMap) throws Exception{
@@ -55,11 +55,11 @@ public class HostController {
 	}	
 	
 	// 호스트 전환하기 
-		@ResponseBody
-		@RequestMapping(value= "/mypage/memChange") 
-		public void insertHostMem(CommandMap commandMap) throws Exception {
-			hostService.insertHostMem(commandMap.getMap());
-		}
+	@ResponseBody
+	@RequestMapping(value= "/mypage/memChange") 
+	public void insertHostMem(CommandMap commandMap) throws Exception {
+	hostService.insertHostMem(commandMap.getMap());
+	}
 	
 	//관리자-호스트회원등록요청리스트
 	@ResponseBody
