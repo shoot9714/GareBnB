@@ -26,8 +26,7 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	
-	//1. 일반회원 + 호스트회원
-	//Qna 리스트 + 입력폼 - 일반회원 --- 페이징기능 추가?
+	
 //	@ResponseBody 
 //	@RequestMapping(value="/mypage/memQna.do")
 //	public Map<String, Object> memQna(CommandMap commandMap) throws Exception{
@@ -43,6 +42,9 @@ public class QnaController {
 //        return Json;
 //	}
 
+	
+	//1. 일반회원 + 호스트회원
+	//Qna 리스트 + 입력폼 - 일반회원 --- 페이징기능 추가?
 	@ResponseBody 
 	@RequestMapping(value="/mypage/memQna.do")
 	public List<Map<String, Object>> memQna(CommandMap commandMap) throws Exception{
@@ -120,25 +122,19 @@ public class QnaController {
 	// 관리자 문의 리스트보기	
 	@ResponseBody 
 	@RequestMapping(value="/Admin/qnaList.do")
-	public Map<String, Object> qnaList(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
+	public List<Map<String, Object>> qnaList(CommandMap commandMap) throws Exception{
 		
-        List<Map<String, Object>> resultMap = qnaService.selectQNAList(commandMap.getMap());
-        Json.put("map", resultMap);
-
-        return Json;
+        return qnaService.selectQNAList(commandMap.getMap());
+        
 	}
 	
 	
 	// 관리자 문의 상세페이지
 	@RequestMapping(value="/Admin/qnaDetail.do")
 	public Map<String, Object> qnaDetail(CommandMap commandMap) throws Exception {
-		Map<String, Object> Json = new HashMap<String, Object>();
 		
-        Map<String, Object> resultMap = qnaService.selectAdminOneQNA(commandMap.getMap());
-        Json.put("map", resultMap);
-
-        return Json;
+        return qnaService.selectAdminOneQNA(commandMap.getMap());
+        
 	}
 	
 	

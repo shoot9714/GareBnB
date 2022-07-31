@@ -53,7 +53,7 @@ public class ReportController {
 	}
 	
 	
-	//신고내역 - 호스트
+	//신고내역 - 호스트    ---- 호스트랑 중복이라 빼기 
 	@RequestMapping(value="/host/mypage/hostDetailReport.do")
 	@ResponseBody 
 	public Map<String, Object> hostDetailReport(CommandMap commandMap) throws Exception{

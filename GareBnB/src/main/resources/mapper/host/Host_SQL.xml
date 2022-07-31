@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="host_member">
+<mapper namespace="host_member"> 
 
 	
 <!-- 호스트 정보 수정 -->
@@ -49,12 +49,26 @@
 			#{HOST_ADDR2},
 			#{HOST_JUMIN1},
 			#{HOST_JUMIN2},
-			#{HOST_INTRO},
+			#{HOST_INTRO}, 
 			#{HOST_ACCOUNT},
 			#{HOST_BANK}
 		)
 	]]>
 	</insert>
+	
+	<!--호스트 전환 레벨 업데이트--> 
+<update id="updateHostMem" parameterType="hashmap">
+<![CDATA[
+	UPDATE
+		MEMBER
+	SET 
+		MEM_LEVEL = 3
+	WHERE
+		MEM_IDX = #{MEM_IDX}
+]]>
+</update>
+
+	
 	
 
 	

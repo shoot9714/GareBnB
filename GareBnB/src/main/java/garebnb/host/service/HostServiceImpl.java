@@ -15,7 +15,7 @@ import garebnb.host.dao.HostDAO;
 public class HostServiceImpl implements HostService{
 	
 	Logger log = Logger.getLogger(this.getClass());
-
+ 
 	@Resource(name="hostDAO")
 	private HostDAO hostDAO;
 
@@ -35,8 +35,15 @@ public class HostServiceImpl implements HostService{
 	@Override
 	public void updateOneHost(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		hostDAO.updateOneHost(map);
+		hostDAO.updateOneHost(map); 
 	}
+	
+	@Override
+	public void updateHostMem(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		hostDAO.updateHostMem(map);
+	}
+
 
 	@Override
 	public List<Map<String, Object>> selectHostConfirmList(Map<String, Object> map) {

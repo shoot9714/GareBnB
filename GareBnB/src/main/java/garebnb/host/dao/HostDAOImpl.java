@@ -17,8 +17,8 @@ public class HostDAOImpl implements HostDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
-	protected void printQueryId(String queryId) {
+	 
+	protected void printQueryId(String queryId) { 
 		if(log.isDebugEnabled()) {
 			log.debug("\t QueryId \t:  " + queryId);
 		}
@@ -34,6 +34,12 @@ public class HostDAOImpl implements HostDAO {
 	public void updateOneHost(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.update("host_member.updateOneHost",map);
+	}
+	
+	@Override
+	public void updateHostMem(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("host_member.updateHostMem",map);
 	}
 	
 	@Override

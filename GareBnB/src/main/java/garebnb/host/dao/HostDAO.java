@@ -3,13 +3,15 @@ package garebnb.host.dao;
 import java.util.List;
 import java.util.Map;
 
-public interface HostDAO {
+public interface HostDAO { 
 	
 	public Map<String, Object> selectHostDetail(Map<String,Object> map) throws Exception;
 	
 	// 호스트 전환 
 	public void insertHostMem (Map<String,Object> map) throws Exception;
 	
+	// 호스트 전환 (레벨3으로 업데이트)
+	public void updateHostMem(Map<String, Object> map); 
 	//호스트회원정보수정
 	public void updateOneHost(Map<String,Object> map) throws Exception;
 	

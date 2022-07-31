@@ -35,7 +35,8 @@
 					RES_CLI_ID CLI_ID,
 	      			RES_HOST_ID HOST_ID,
 					RES_IDX RES_IDX,        	--예약 번호
-	                RES_BOARD_NO,    	--예약된 게시글번호
+	                RES_BOARD_NO,    		--예약된 게시글번호
+	                RES_BOARD_MODIFY_NO,	--예약된 게시글 수정번호
 	 				BOARD_ADDR1 ADDR1,
 					BOARD_ADDR2 ADDR2,
 					TO_CHAR(RES_DATE_START,'YYYY/MM/DD') RES_DATE_START,
@@ -69,6 +70,7 @@
 				RES_HOST_ID,
 				RES_IDX,
 				RES_BOARD_NO,
+				RES_BOARD_MODIFY_NO,
 				B.BOARD_ADDR1 BOARD_ADDR,
 				TO_CHAR(RES_DATE_START,'YYYY/MM/DD') RES_DATE_START,
 				TO_CHAR(RES_DATE_END,'YYYY/MM/DD') RES_DATE_END,
