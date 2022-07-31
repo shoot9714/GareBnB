@@ -37,6 +37,12 @@ public class HostDAOImpl implements HostDAO {
 	}
 	
 	@Override
+	public void updateHostMem(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		sqlSession.update("host_member.updateHostMem",map);
+	}
+	
+	@Override
 	public void insertHostMem(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.insert("host_member.insertHostMem", map);

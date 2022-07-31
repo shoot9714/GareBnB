@@ -10,6 +10,9 @@ public interface HostDAO {
 	// 호스트 전환 
 	public void insertHostMem (Map<String,Object> map) throws Exception;
 	
+	// 호스트 전환 (레벨3으로 업데이트)
+	public void updateHostMem(Map<String, Object> map);
+	
 	//호스트회원정보수정
 	public void updateOneHost(Map<String,Object> map) throws Exception;
 	

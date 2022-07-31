@@ -56,6 +56,20 @@
 	]]>
 	</insert>
 	
+	<!--호스트 전환 레벨 업데이트--> 
+<update id="updateHostMem" parameterType="hashmap">
+<![CDATA[
+	UPDATE
+		MEMBER
+	SET 
+		MEM_LEVEL = 3
+	WHERE
+		MEM_IDX = #{MEM_IDX}
+]]>
+</update>
+
+	
+	
 
 	
 <!-- updateOneMemberDelete (회원 탈퇴) -->

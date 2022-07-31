@@ -61,6 +61,14 @@ public class HostController {
 	hostService.insertHostMem(commandMap.getMap());
 	}
 	
+	// 호스트 전환 (레벨 3으로 업데이트)
+	@ResponseBody
+	@RequestMapping(value="/mypage/updateHostMem.do" )
+	public void updateHostMem(CommandMap commandMap) throws Exception{
+	hostService.updateHostDeny(commandMap.getMap());
+	}	
+		
+	
 	//관리자-호스트회원등록요청리스트
 	@ResponseBody
 	@RequestMapping(value="/Admin/hostConfirmList")
