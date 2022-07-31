@@ -99,11 +99,10 @@ public class ReservationDAOImpl implements ReservationDAO{
 	}
 	 
 	//예약요청전 상세보기
-	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> selectReserveDetail(Map<String, Object> map) throws Exception {
 	        // TODO Auto-generated method stub
-		return (Map<String , Object>) sqlSession.selectList("reservation.selectReserveDetail", map);
+		return sqlSession.selectOne("reservation.selectReserveDetail", map);
 	}
 
 
@@ -139,7 +138,7 @@ public class ReservationDAOImpl implements ReservationDAO{
 	@Override
 	public Map<String, Object> selectresInfo(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return (Map<String , Object>)sqlSession.selectOne("reservation.selectresInfo",map);
+		return sqlSession.selectOne("reservation.selectresInfo",map);
 	}
 
 

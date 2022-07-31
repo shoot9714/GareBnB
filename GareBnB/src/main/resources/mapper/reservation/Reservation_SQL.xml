@@ -176,6 +176,7 @@
 				M.MEM_IDX = B.BOARD_HOST_IDX
 			WHERE
 				B.BOARD_NO = #{BOARD_NO}
+			AND	B.BOARD_MODIFY_NO = #{BOARD_MODIFY_NO}
 				
 		]]>
 	</select>	

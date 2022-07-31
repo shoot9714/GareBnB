@@ -14,6 +14,9 @@
 				BOARD_HOST_IDX,
 				BOARD_TITLE,
 				BOARD_ADDR1,
+				BOARD_ADDR2,
+				BOARD_MODIFY_NO,
+				BOARD_POST,
 				BOARD_PRICE,
 				BOARD_CARE_NO,
 				TO_CHAR(BOARD_DATE_START,'YYYY/MM/DD') BOARD_DATE_START,
@@ -40,6 +43,8 @@
 			UPDATE	BOARD
 			SET	BOARD_CONFIRM = 4
 			WHERE	BOARD_NO=#{BOARD_NO}
+			AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO}
+			
 		]]>
 	</update>
 	
@@ -65,7 +70,8 @@
 				BOARD_CARE_NO,
 				BOARD_DATE_START,
 				BOARD_DATE_END,
-				BOARD_CONFIRM
+				BOARD_CONFIRM,
+				BOARD_MODIFY_NO
 			)
 			VALUES
 			(
@@ -81,6 +87,7 @@
 				#{BOARD_CARE_NO},
 				#{BOARD_DATE_START},
 				#{BOARD_DATE_END},
+				0,
 				0
 			)
 		]]>
@@ -163,6 +170,7 @@
 				BOARD_PRICE,
 				BOARD_CARE_NO,
 				BOARD_DATE_START,
+				BOARD_MODIFY_NO,
 				BOARD_DATE_END,
 				(CASE
 						WHEN BOARD_CONFIRM = '0' THEN '등록요청'
@@ -193,6 +201,7 @@
 					BOARD_POST,
 					BOARD_PRICE,
 					BOARD_CARE_NO,
+					BOARD_MODIFY_NO,
 					BOARD_DATE_START,
 					BOARD_DATE_END,
 					BOARD_CONFIRM
@@ -231,6 +240,8 @@
 					
 				FROM	BOARD
 				WHERE	BOARD_NO=#{BOARD_NO}
+				AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO}
+				
 		]]>
 
 	</select>
@@ -243,14 +254,9 @@
 				SELECT
 					BOARD_NO,
 					BOARD_HOST_ID,
+					BOARD_MODIFY_NO,
 					BOARD_TITLE,
-					(CASE
-						WHEN BOARD_CONFIRM = '0' THEN '등록요청'
-						WHEN BOARD_CONFIRM = '1' THEN '등록완료'
-						WHEN BOARD_CONFIRM = '3' THEN '수정요청'
-						WHEN BOARD_CONFIRM = '4' THEN '삭제완료'
-						END)
-					AS BOARD_CONFIRM
+					BOARD_CONFIRM
 				FROM 
 					BOARD	
 		]]>
@@ -266,12 +272,12 @@
 				SET
 						BOARD_CONFIRM = 4
 				WHERE
-						BOARD_NO = #{BOARD_NO};
+						BOARD_NO = #{BOARD_NO}
 	
 				UPDATE	BOARD
 				SET		BOARD_CONFIRM = 1
 				WHERE	BOARD_NO=#{BOARD_NO}
-				AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO};
+				AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO}
 			END;
 		]]>
 	</update>
@@ -286,6 +292,8 @@
 				BOARD_CONFIRM = '2'      
 			WHERE 
 				BOARD_NO = #{BOARD_NO}
+			AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO}
+				
 				]]>
 	</update>
 </mapper>

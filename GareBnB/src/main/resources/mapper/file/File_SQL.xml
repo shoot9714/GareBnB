@@ -14,7 +14,8 @@
 			#{FILE_STDNAME},
 			#{FILE_SIZE},
 			0,
-			#{FILE_LEVEL}
+			#{FILE_LEVEL},
+			#{FILE_MODIFY_NO}
 		)
 	]]>
 </insert>
@@ -26,7 +27,7 @@
 		DEL_GB=1
 	WHERE 	FILE_BOARD_TYPE = #{FILE_BOARD_TYPE}
 	AND	FILE_BOARD_IDX = #{FILE_BOARD_IDX}	
-	AND	FILE_LEVEL = #{FILE_LEVEL}
+	AND FILE_MODIFY_NO =#{FILE_MODIFY_NO}
 	]]>
 </update>
 
@@ -56,6 +57,7 @@
         WHERE     FILE_BOARD_TYPE = #{FILE_BOARD_TYPE}
         AND    FILE_BOARD_IDX = #{FILE_BOARD_IDX}
         AND    DEL_GB=0
+        AND    FILE_MODIFY_NO = #{FILE_MODIFY_NO}
     ]]>
 </select>
 
@@ -74,6 +76,7 @@
         WHERE     FILE_BOARD_TYPE = #{FILE_BOARD_TYPE}
         AND    FILE_BOARD_IDX = #{FILE_BOARD_IDX}
         AND    FILE_LEVEL = #{FILE_LEVEL}
+        AND	   FILE_MODIFY_NO = #{FILE_MODIFY_NO}
         AND    DEL_GB=0
         AND	   FILE_LEVEL = 0
     ]]>

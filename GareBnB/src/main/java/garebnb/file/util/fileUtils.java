@@ -34,6 +34,7 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         
         String fileBoardIdx = null;
         String fileBoardType = (String)map.get("FILE_BOARD_TYPE");
+        String fileModifyNo = (String)map.get("FILE_MODIFY_NO");
         
         if(map.get("BOARD_NO")==null) {
         	fileBoardIdx = (String)map.get("MEM_IDX");
@@ -66,6 +67,7 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         		listMap.put("FILE_ORGNAME", originalFileName);
         		listMap.put("FILE_STDNAME", storedFileName);
         		listMap.put("FILE_SIZE", multipartFile.getSize());
+        		listMap.put("FILE_MODIFY_NO", fileModifyNo);
         		list.add(listMap);
         		
         	}
