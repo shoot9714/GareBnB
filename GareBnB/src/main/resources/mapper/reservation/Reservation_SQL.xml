@@ -86,6 +86,24 @@
 
 	</select>
 	
+		<!-- 게시글에 필요한 예약 내역 -->
+	<select id="selectBoardReserve" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+				RES_DATE_START,
+				RES_DATE_END
+
+			FROM
+				RESERVATION 
+
+			WHERE
+				RES_BOARD_NO = #{RES_BOARD_NO}
+			AND RES_LEVEL IN (0, 1, 2, 3)
+
+				
+		]]>
+	</select>
+	
 	<!-- 호스트가 보는 예약리스트 -->
 	<select id="selectReserve" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[

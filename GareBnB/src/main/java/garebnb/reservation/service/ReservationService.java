@@ -36,6 +36,6 @@ public interface ReservationService {
 
 	Map<String, Object> selectresInfo(Map<String, Object> map) throws Exception;	//하나의 예약 정보
 	
-
+	List<Map<String,Object>> selectBoardReserve(Map<String,Object> map) throws Exception;
 
 }

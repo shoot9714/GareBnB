@@ -96,6 +96,10 @@ public class ReservationServiceImpl implements ReservationService{
 		return reservationDAO.selectresInfo(map);
 	}
 
-	
+	@Override
+	public List<Map<String, Object>> selectBoardReserve(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return reservationDAO.selectBoardReserve(map);
+	}
 	
 }

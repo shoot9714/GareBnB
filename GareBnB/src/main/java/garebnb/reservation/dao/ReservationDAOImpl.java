@@ -142,6 +142,11 @@ public class ReservationDAOImpl implements ReservationDAO{
 	}
 
 
+	@Override
+	public List<Map<String, Object>> selectBoardReserve(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("reservation.selectBoardReserve",map);
+	}
 	
 
 }
