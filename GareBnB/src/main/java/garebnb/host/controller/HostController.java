@@ -61,7 +61,7 @@ public class HostController {
 	hostService.insertHostMem(commandMap.getMap());
 	}
 	
-	// 호스트 전환 (레벨 3으로 업데이트)
+	// 호스트 전환 (레벨 3으로 업데이트) 
 	@ResponseBody
 	@RequestMapping(value="/mypage/updateHostMem.do" )
 	public void updateHostMem(CommandMap commandMap) throws Exception{

@@ -49,7 +49,7 @@
 			#{HOST_ADDR2},
 			#{HOST_JUMIN1},
 			#{HOST_JUMIN2},
-			#{HOST_INTRO},
+			#{HOST_INTRO}, 
 			#{HOST_ACCOUNT},
 			#{HOST_BANK}
 		)

@@ -15,7 +15,7 @@ import garebnb.host.dao.HostDAO;
 public class HostServiceImpl implements HostService{
 	
 	Logger log = Logger.getLogger(this.getClass());
-
+ 
 	@Resource(name="hostDAO")
 	private HostDAO hostDAO;
 

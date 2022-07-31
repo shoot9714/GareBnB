@@ -18,7 +18,7 @@ public class HostDAOImpl implements HostDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	protected void printQueryId(String queryId) {
+	protected void printQueryId(String queryId) { 
 		if(log.isDebugEnabled()) {
 			log.debug("\t QueryId \t:  " + queryId);
 		}
