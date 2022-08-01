@@ -8,10 +8,12 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import garebnb.common.common.CommandMap;
 import garebnb.member.service.MemberService;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Controller
 public class MemberController {
@@ -98,6 +100,11 @@ public class MemberController {
     	return memberService.selectConfirmMemberDetail(commandMap.getMap());
 	}
 	
-
+	
+	@ResponseBody
+	@RequestMapping(value= "/PhoneNumberCheck") // 호스트 회원 등록 요청 상세 
+	public Map<String, Object> PhoneNumberCheck(CommandMap commandMap) throws Exception {
+    	return memberService.PhoneNumberCheck(commandMap.getMap());
+	}    
 
 }

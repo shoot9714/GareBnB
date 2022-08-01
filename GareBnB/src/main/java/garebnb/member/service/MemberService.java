@@ -5,6 +5,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
 @Service("memberService")
 public interface MemberService {
 	
@@ -31,5 +33,7 @@ public interface MemberService {
 	void updateHostDeny(Map<String, Object> map) throws Exception;
 	
 	void insertHostMem(Map<String, Object> map) throws Exception;
+	
+	Map<String, Object> PhoneNumberCheck(Map<String, Object> map) throws CoolsmsException;
 	
 }

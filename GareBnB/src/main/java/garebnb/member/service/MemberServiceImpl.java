@@ -1,7 +1,9 @@
 package garebnb.member.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.annotation.Resource;
 
@@ -9,6 +11,8 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import garebnb.member.dao.MemberDAO;
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Repository("memberService")
 public class MemberServiceImpl implements MemberService {
@@ -94,6 +98,38 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		memberDAO.insertHostMem(map);
 		
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public Map<String, Object> PhoneNumberCheck(Map<String, Object> map) throws CoolsmsException{
+		String api_key = "NCSWHNPKBBLTIWD0";
+		String api_secret = "9H10HPRT8SJXAAAJGLKCISBHRPWTOL7F";
+		Message coolsms = new Message(api_key, api_secret);
+			
+		
+		Random rand = new Random(); 
+		String numStr = "";
+		Map<String, Object> m1 = new HashMap<String, Object>(); //1. 맵 선언
+
+		for(int i=0; i<4; i++) {
+			String ran = Integer.toString(rand.nextInt(10)); 
+			numStr += ran;
+		}
+		m1.put("1", numStr);
+		  
+		HashMap<String, String> params = new HashMap<String, String>();
+	    params.put("to", (String)map.get("to"));    // 수신전화번호 (ajax로 view 화면에서 받아온 값으로 넘김)
+	    params.put("from", "01039578057");    // 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
+	    params.put("type", "sms"); 
+	    params.put("text", "[KOO] 인증번호는 [" + numStr + "] 입니다.");
+	    System.out.println(map);
+	    System.out.println(m1);
+	    coolsms.send(params); // 메시지 전송
+			  
+			  
+		return m1;
+		 
 	}
 
 }
