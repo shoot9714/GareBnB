@@ -270,14 +270,14 @@
 				UPDATE 
 						BOARD
 				SET
-						BOARD_CONFIRM = 4
+						BOARD_CONFIRM = '4'
 				WHERE
-						BOARD_NO = #{BOARD_NO}
+						BOARD_NO = #{BOARD_NO};
 	
 				UPDATE	BOARD
-				SET		BOARD_CONFIRM = 1
+				SET		BOARD_CONFIRM = '1'
 				WHERE	BOARD_NO=#{BOARD_NO}
-				AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO}
+				AND		BOARD_MODIFY_NO = #{BOARD_MODIFY_NO};
 			END;
 		]]>
 	</update>
