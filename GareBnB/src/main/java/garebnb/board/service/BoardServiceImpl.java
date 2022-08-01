@@ -1,6 +1,9 @@
 
 package garebnb.board.service;
   
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
   
@@ -8,6 +11,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import garebnb.board.dao.BoardDAO;
+import garebnb.reservation.dao.ReservationDAO;
 
   
 @Repository("boardService") 
@@ -16,6 +20,9 @@ public class BoardServiceImpl implements BoardService{
   
 	@Resource(name ="boardDAO") 
 	private BoardDAO boardDAO;
+	
+	@Resource(name = "ReservationDAO")
+	private ReservationDAO reservationDAO;
 
 	
 	@Override
@@ -70,7 +77,44 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<Map<String, Object>> selectBoardList(Map<String, Object> map) throws Exception  {
 		// TODO Auto-generated method stub
-		return boardDAO.selectBoardList(map);
+		List<Map<String, Object>> boardList = boardDAO.selectBoardList(map);
+		
+		if(map.get("START_DATE") == null) {
+			System.out.println(map.get("START_DATE"));
+			return boardList;
+			
+		} else {
+		
+		List<Map<String,Object>> returnList = new ArrayList<Map<String, Object>>();
+		long c_start_date =  Long.parseLong((String)map.get("START_DATE"));
+		long c_end_date = Long.parseLong((String)map.get("END_DATE"));
+		   
+		for(int i = 0; i < boardList.size(); i++) {
+			int c = 0;
+			Map<String,Object> sample = new HashMap<String, Object>();
+			sample.put("RES_BOARD_NO", boardList.get(i).get("BOARD_NO"));
+		   List<Map<String,Object>> reserve = reservationDAO.selectBoardReserve(sample);
+		   
+		   for(int j = 0; j<reserve.size(); j++) {
+			   
+			   java.sql.Timestamp ts1 = (Timestamp) reserve.get(j).get("RES_DATE_START");
+			   java.sql.Timestamp ts2 = (Timestamp) reserve.get(j).get("RES_DATE_END");
+
+			   long r_start = ts1.getTime();
+			   long r_end = ts2.getTime();
+			   
+			   if((c_end_date<r_start) ^ (c_start_date<r_end)) {
+				   
+				   c = 1;
+			   }
+		   }
+		   
+		   if( c == 0) {
+			   returnList.add(boardList.get(i));
+		   }
+		}
+		return returnList;
+		}
 	}
 
 	@Override

@@ -124,17 +124,9 @@ public class ReservationController {
 	@ResponseBody
 	@RequestMapping(value="/Board/ResList")
 	public List<Map<String, Object>> BoardReserve(CommandMap commandMap) throws Exception{
-		List<Map<String,Object>> returnList = new ArrayList<Map<String, Object>>();
-		Map<String,Object> dateMap = new HashMap<String, Object>();
-		List<Map<String,Object>> selectList = reservationService.selectBoardReserve(commandMap.getMap());
-		
-		for( int i = 0; i < selectList.size(); i++) {
-			dateMap.put("start", selectList.get(i).get("RES_DATE_START"));
-			dateMap.put("end", selectList.get(i).get("RES_DATE_END"));
-			returnList.add(dateMap);
-		}
-		
-		return returnList;
+
+		return reservationService.selectBoardReserve(commandMap.getMap());
+
 	}
 	
 }
