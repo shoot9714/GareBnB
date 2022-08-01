@@ -213,13 +213,14 @@
 			RES_IDX = #{RES_IDX}
 	</update>
 	
+	<!--클라이언트 예약하기  -->
 	<insert id="insertOneReserve" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX">
 		<selectKey keyProperty="RES_IDX" resultType="string" order="BEFORE">
 			SELECT RES_IDX_SEQ.NEXTVAL FROM DUAL
 		</selectKey>		
 
 		<![CDATA[
-			INSERT INTO BOARD
+			INSERT INTO RESERVATION
 			(
 				RES_IDX,
 				RES_CLI_ID,
