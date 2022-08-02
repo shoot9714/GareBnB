@@ -28,7 +28,7 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
     	String originalFileExtension = null;
     	String storedFileName = null;
     	
-    	
+    	 
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 
         

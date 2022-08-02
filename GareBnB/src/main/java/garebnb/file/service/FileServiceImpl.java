@@ -65,6 +65,6 @@ public class FileServiceImpl implements FileService{
 	public void deleteFile(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		fileDAO.deleteFile(map);
-		
+		 
 	}
 }
