@@ -123,7 +123,7 @@ private static final String filePath = "/Users/a_ram/Desktop/project/image/";
         		listMap.put("FILE_MODIFY_NO", "0");
         		list.add(listMap);
         	}
-        	else{
+        	else{ 
         		requestName = multipartFile.getName();
             	idx = "IDX_"+requestName.substring(requestName.indexOf("_")+1);
             	if(map.containsKey(idx) == true && map.get(idx) != null){

@@ -5,7 +5,7 @@
 
 <insert id="insertFile" parameterType="hashmap">
 	<![CDATA[
-   		INSERT INTO INPUT_FILE 
+   		INSERT INTO INPUT_FILE  
 		VALUES(
 			FILE_NUM_SEQ.NEXTVAL,
 			#{FILE_BOARD_TYPE},	

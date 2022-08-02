@@ -40,7 +40,7 @@ public class FileServiceImpl implements FileService{
 		// TODO Auto-generated method stub
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
 		Map<String,Object> tempMap = null;
-		fileDAO.deleteFile(list.get(0));
+		fileDAO.deleteFile(list.get(0)); 
 		for(int i=0, size=list.size(); i<size; i++){
 			tempMap = list.get(i);
 			fileDAO.insertFile(tempMap);
