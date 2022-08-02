@@ -18,7 +18,7 @@ import garebnb.common.util.CommonUtils;
 @Component("fileUtils")
 public class fileUtils {
 	
-private static final String filePath = "/Users/jinkim/Documents/upload/";
+private static final String filePath = "/Users/a_ram/Desktop/project/image/";
 	
 	public List<Map<String,Object>> parseInsertFileInfo(Map<String,Object> map, HttpServletRequest request) throws Exception{
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
@@ -28,7 +28,7 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
     	String originalFileExtension = null;
     	String storedFileName = null;
     	
-    	
+    	 
     	List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
         Map<String, Object> listMap = null; 
         
@@ -95,7 +95,8 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         } else {
         	fileBoardIdx = (String)map.get("BOARD_NO");
         }
-        
+        System.out.println(map.get("BOARD_NO"));
+        System.out.println(fileBoardIdx);
         String file_level = (String)map.get("FILE_LEVEL");
         
         String requestName = null;
@@ -119,16 +120,19 @@ private static final String filePath = "/Users/jinkim/Documents/upload/";
         		listMap.put("FILE_ORGNAME", originalFileName);
         		listMap.put("FILE_STDNAME", storedFileName);
         		listMap.put("FILE_SIZE", multipartFile.getSize());
+        		listMap.put("FILE_MODIFY_NO", "0");
         		list.add(listMap);
         	}
-        	else{
+        	else{ 
         		requestName = multipartFile.getName();
             	idx = "IDX_"+requestName.substring(requestName.indexOf("_")+1);
             	if(map.containsKey(idx) == true && map.get(idx) != null){
             		listMap = new HashMap<String,Object>();
             		listMap.put("IS_NEW", "N");
+            		listMap.put("FILE_BOARD_TYPE", fileBoardType);
             		listMap.put("FILE_LEVEL", file_level);
-            		listMap.put("FILE_IDX", map.get(idx));
+            		listMap.put("FILE_BOARD_IDX", fileBoardIdx);
+            		listMap.put("FILE_MODIFY_NO", "0");
             		list.add(listMap);
             	}
         	}

@@ -102,7 +102,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Map<String, Object> PhoneNumberCheck(Map<String, Object> map) throws CoolsmsException{
+	public String PhoneNumberCheck(Map<String, Object> map) throws CoolsmsException{
 		String api_key = "NCSWHNPKBBLTIWD0";
 		String api_secret = "9H10HPRT8SJXAAAJGLKCISBHRPWTOL7F";
 		Message coolsms = new Message(api_key, api_secret);
@@ -110,13 +110,11 @@ public class MemberServiceImpl implements MemberService {
 		
 		Random rand = new Random(); 
 		String numStr = "";
-		Map<String, Object> m1 = new HashMap<String, Object>(); //1. 맵 선언
 
 		for(int i=0; i<4; i++) {
 			String ran = Integer.toString(rand.nextInt(10)); 
 			numStr += ran;
 		}
-		m1.put("1", numStr);
 		  
 		HashMap<String, String> params = new HashMap<String, String>();
 	    params.put("to", (String)map.get("to"));    // 수신전화번호 (ajax로 view 화면에서 받아온 값으로 넘김)
@@ -124,11 +122,11 @@ public class MemberServiceImpl implements MemberService {
 	    params.put("type", "sms"); 
 	    params.put("text", "[KOO] 인증번호는 [" + numStr + "] 입니다.");
 	    System.out.println(map);
-	    System.out.println(m1);
 	    coolsms.send(params); // 메시지 전송
 			  
 			  
-		return m1;
+		return numStr;
+		
 		 
 	}
 

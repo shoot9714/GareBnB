@@ -38,17 +38,12 @@ public class FileServiceImpl implements FileService{
 	@Override
 	public void updateFile(Map<String, Object> map ,HttpServletRequest request) throws Exception {
 		// TODO Auto-generated method stub
-		fileDAO.deleteFile(map);
-		List<Map<String,Object>> list = fileUtils.parseUpdateFileInfo(map, request);
+		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
 		Map<String,Object> tempMap = null;
+		fileDAO.deleteFile(list.get(0)); 
 		for(int i=0, size=list.size(); i<size; i++){
 			tempMap = list.get(i);
-			if(tempMap.get("IS_NEW").equals("Y")){
-				fileDAO.insertFile(tempMap);
-			}
-			else{
-				fileDAO.updateFile(tempMap);
-			}
+			fileDAO.insertFile(tempMap);
 		}		
 	}
 

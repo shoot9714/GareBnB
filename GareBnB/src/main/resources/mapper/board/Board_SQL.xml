@@ -190,7 +190,6 @@
 	
 	<!-- 전체 게시글 리스트 -->
 	<select id="selectBoardList" resultType="hashmap">
-		<![CDATA[
 			SELECT	BOARD_NO,
 					BOARD_HOST_ID,
 					BOARD_HOST_IDX,
@@ -207,7 +206,8 @@
 					BOARD_CONFIRM
 			FROM	BOARD
 			WHERE	BOARD_CONFIRM =1
-		]]>
+			AND		BOARD_CARE_NO >= #{BOARD_CARE_NO}
+			AND		BOARD_ADDR1 LIKE '%' || #{BOARD_ADDR1} || '%'
 
 	</select>
 	
@@ -250,7 +250,6 @@
 	
 	<!-- 호스트 글 리스트 -->
 	<select id="selectHostBoardList" parameterType="hashmap" resultType="hashmap">
-		<![CDATA[
 				SELECT
 					BOARD_NO,
 					BOARD_HOST_ID,
@@ -259,9 +258,11 @@
 					BOARD_CONFIRM
 				FROM 
 					BOARD	
-		]]>
+			 	WHERE BOARD_CONFIRM = #{BOARD_CONFIRM}
+				AND		BOARD_CARE_NO > #{BOARD_CARE_NO}
+				AND		BOARD_ADDR1 LIKE '%'||#{BOARD_ADDR1}||'%'
 	</select>
-	
+	 
 	
 	<!-- 호스트 게시글 등록 승인 -->
 	<update id="updateHostBoardConfirm" parameterType="hashmap">

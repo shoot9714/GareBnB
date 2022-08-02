@@ -34,6 +34,6 @@ public interface MemberService {
 	
 	void insertHostMem(Map<String, Object> map) throws Exception;
 	
-	Map<String, Object> PhoneNumberCheck(Map<String, Object> map) throws CoolsmsException;
+	String PhoneNumberCheck(Map<String, Object> map) throws CoolsmsException;
 	
 }

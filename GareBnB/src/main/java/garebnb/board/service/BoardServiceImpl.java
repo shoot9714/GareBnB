@@ -79,7 +79,7 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		List<Map<String, Object>> boardList = boardDAO.selectBoardList(map);
 		
-		if(map.get("START_DATE") == null) {
+		if(map.get("START_DATE") == null || map.get("START_DATE")=="") {
 			System.out.println(map.get("START_DATE"));
 			return boardList;
 			

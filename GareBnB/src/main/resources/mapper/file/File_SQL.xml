@@ -5,7 +5,7 @@
 
 <insert id="insertFile" parameterType="hashmap">
 	<![CDATA[
-   		INSERT INTO INPUT_FILE 
+   		INSERT INTO INPUT_FILE  
 		VALUES(
 			FILE_NUM_SEQ.NEXTVAL,
 			#{FILE_BOARD_TYPE},	
@@ -27,7 +27,6 @@
 		DEL_GB=1
 	WHERE 	FILE_BOARD_TYPE = #{FILE_BOARD_TYPE}
 	AND	FILE_BOARD_IDX = #{FILE_BOARD_IDX}	
-	AND FILE_MODIFY_NO =#{FILE_MODIFY_NO}
 	]]>
 </update>
 
