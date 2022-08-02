@@ -103,7 +103,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value= "/PhoneNumberCheck") // 호스트 회원 등록 요청 상세 
-	public Map<String, Object> PhoneNumberCheck(CommandMap commandMap) throws Exception {
+	public String PhoneNumberCheck(CommandMap commandMap) throws Exception {
     	return memberService.PhoneNumberCheck(commandMap.getMap());
 	}    
 
