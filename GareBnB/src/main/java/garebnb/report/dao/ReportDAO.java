@@ -13,7 +13,7 @@ public interface ReportDAO {
 
 	public List<Map<String, Object>> selectAdminReportList(Map<String, Object> map) throws Exception;
 
-	public List<Map<String, Object>> selectAdminOneReport(Map<String, Object> map) throws Exception;
+	public Map<String, Object> selectAdminOneReport(Map<String, Object> map) throws Exception;
 
 	public void updateReportComment(Map<String, Object> map) throws Exception;
 
