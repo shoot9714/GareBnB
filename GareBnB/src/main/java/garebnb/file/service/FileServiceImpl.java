@@ -1,5 +1,6 @@
 package garebnb.file.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,7 +41,6 @@ public class FileServiceImpl implements FileService{
 		// TODO Auto-generated method stub
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(map, request);
 		Map<String,Object> tempMap = null;
-		fileDAO.deleteFile(list.get(0)); 
 		for(int i=0, size=list.size(); i<size; i++){
 			tempMap = list.get(i);
 			fileDAO.insertFile(tempMap);
@@ -59,7 +59,10 @@ public class FileServiceImpl implements FileService{
 	@Override
 	public void deleteFile(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		fileDAO.deleteFile(map);
+		Map<String , Object> returnMap = new HashMap<String,Object>();
+		returnMap.put("FILE_BOARD_IDX", (String)map.get("BOARD_NO"));
+		returnMap.put("FILE_BOARD_TYPE", (String)map.get("FILE_BOARD_TYPE"));
+		fileDAO.deleteFile(returnMap);
 		
 	}
 }

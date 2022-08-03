@@ -15,7 +15,7 @@
 	FROM 
 		MEMBER
 	WHERE 
-		MEM_LEVEL IN (1,2,3,4)
+		MEM_LEVEL IN (0,1,2,3,4)
 		AND
 		MEM_ID = #{MEM_ID}
 ]]>
@@ -59,7 +59,8 @@
 <select id="selectAuth" parameterType="hashmap" resultType="hashmap">
 <![CDATA[
 	SELECT 
-		MEM_LEVEL
+		MEM_LEVEL,
+		MEM_IDX
 	FROM 
 		MEMBER
 	WHERE 

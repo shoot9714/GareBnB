@@ -65,7 +65,7 @@ public class HostController {
 	@ResponseBody
 	@RequestMapping(value="/mypage/updateHostMem.do" )
 	public void updateHostMem(CommandMap commandMap) throws Exception{
-	hostService.updateHostDeny(commandMap.getMap());
+	hostService.updateHostMem(commandMap.getMap());
 	}	
 		
 	
