@@ -59,7 +59,7 @@
 <select id="selectAuth" parameterType="hashmap" resultType="hashmap">
 <![CDATA[
 	SELECT 
-		MEM_LEVEL
+		MEM_LEVEL,
 		MEM_IDX
 	FROM 
 		MEMBER
