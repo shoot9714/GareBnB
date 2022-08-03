@@ -267,7 +267,8 @@
 				PAY_DATE,
 				PAY_LEVEL,
 				PG,
-				PAY_PRICE
+				PAY_PRICE,
+				PAY_METHOD
 			)
 			VALUES
 			(
@@ -275,7 +276,8 @@
 				#{PAY_DATE},
 				3,
 				#{PG},
-				#{PAY_PRICE}
+				#{PAY_PRICE},
+				#{PAY_METHOD}
 			)
 		]]>
 	</insert>
