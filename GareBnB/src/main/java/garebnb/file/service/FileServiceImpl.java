@@ -60,8 +60,8 @@ public class FileServiceImpl implements FileService{
 	public void deleteFile(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		Map<String , Object> returnMap = new HashMap<String,Object>();
-		returnMap.put("FILE_BOARD_IDX", map.get("BOARD_NO"));
-		returnMap.put("FILE_BOARD_TYPE", map.get("FILE_BOARD_TYPE"));
+		returnMap.put("FILE_BOARD_IDX", (String)map.get("BOARD_NO"));
+		returnMap.put("FILE_BOARD_TYPE", (String)map.get("FILE_BOARD_TYPE"));
 		fileDAO.deleteFile(returnMap);
 		
 	}
