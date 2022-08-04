@@ -145,7 +145,7 @@
 	<select id="selectResFinish" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-				RES_CLI_ID,
+				RES_CLI_ID, 
 				TO_CHAR(RES_DATE_START,'YYYY/MM/DD') RES_DATE_START,
 				TO_CHAR(RES_DATE_END,'YYYY/MM/DD') RES_DATE_END,
 				RES_LEVEL,
