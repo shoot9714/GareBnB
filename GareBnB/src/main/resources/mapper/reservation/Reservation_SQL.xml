@@ -53,7 +53,7 @@
             WHERE   R.RES_BOARD_MODIFY_NO = B.BOARD_MODIFY_NO
             AND     RES_CLI_ID= #{MEM_ID}
             AND     RES_LEVEL IN (0, 1, 2, 3, 4)
-			ORDER BY RES_DATE_START
+			ORDER BY RES_LEVEL,RES_DATE_START
 		]]>
 
 	</select>
@@ -84,6 +84,7 @@
                 AND RES_CLI_ID=#{MEM_ID}
                 AND RES_LEVEL =5
                 AND SYSDATE>RES_DATE_END
+                ORDER BY RES_DATE_END DESC
 		]]>
 
 	</select>
@@ -133,7 +134,7 @@
 			WHERE
 				R.RES_HOST_ID = #{MEM_ID}
 			AND RES_LEVEL IN (0, 1, 2, 3, 4)
-			ORDER BY RES_DATE_START
+			ORDER BY RES_LEVEL,RES_DATE_START
 				
 		]]>
 	</select>
@@ -165,7 +166,7 @@
 			WHERE
 				R.RES_HOST_ID = #{MEM_ID}
 			AND RES_LEVEL = 5
-			ORDER BY RES_DATE_END
+			ORDER BY RES_DATE_END DESC
 				
 		]]>
 	</select>
