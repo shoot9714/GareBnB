@@ -45,7 +45,7 @@
 			AS QNA_STATE, QNA_COMMENT
 		FROM	QNA
 		WHERE	QNA_ID=#{MEM_ID}
-        		ORDER BY QNA_DATE DESC	
+        		ORDER BY QNA_IDX DESC	
 	]]>	
 </select>
 
@@ -89,7 +89,7 @@
 			AS QNA_STATE
 		FROM
 			QNA
-		ORDER BY QNA_DATE DESC		
+		ORDER BY QNA_IDX DESC		
 			]]>	
 		
 </select>	
