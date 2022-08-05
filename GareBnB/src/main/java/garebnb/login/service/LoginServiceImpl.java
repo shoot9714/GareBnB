@@ -25,10 +25,15 @@ public class LoginServiceImpl implements LoginService{
 		return loginDAO.selectOneId(map);
 	}
 	
-	@Override
 	public Map<String, Object> selectOnePw(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return loginDAO.selectOnePw(map);
+	}
+	
+	@Override
+	public void updateOnePw(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		loginDAO.updateOnePw(map);
 	}
 	
 	@Override

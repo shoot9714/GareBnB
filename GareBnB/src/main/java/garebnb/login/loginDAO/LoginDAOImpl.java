@@ -38,6 +38,12 @@ public class LoginDAOImpl implements LoginDAO {
 		return (Map<String, Object>) sqlSession.selectOne("login.selectOnePw", map); 
 	}
 	
+	@Override
+	public void updateOnePw(Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update("login.updateOnePw", map);
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> selectId(Map<String, Object> map) throws Exception {

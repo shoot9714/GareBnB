@@ -21,11 +21,11 @@
 ]]>
 </select>
 
-<!-- selectOneId (아이디 찾기, 아이디 찾기 결과) -->
+<!-- selectOneId (아이디 찾기) -->
 <select id="selectOneId" parameterType="hashmap" resultType="hashmap">
 <![CDATA[
 	SELECT 
-		MEM_IDX, MEM_ID, MEM_PW, MEM_NAME, MEM_PHONE
+		MEM_ID
 	FROM 
 		MEMBER
 	WHERE 
@@ -37,23 +37,36 @@
 ]]>
 </select>
 
-<!-- selectOnePw (비밀번호 찾기, 비밀번호 찾기 결과) -->
 <select id="selectOnePw" parameterType="hashmap" resultType="hashmap">
 <![CDATA[
 	SELECT 
-		MEM_IDX, MEM_ID, MEM_PW, MEM_NAME, MEM_PHONE
+		MEM_ID
 	FROM 
 		MEMBER
 	WHERE 
-		MEM_NAME = #{MEM_NAME}
-		AND
 		MEM_ID = #{MEM_ID}
+		AND
+		MEM_NAME = #{MEM_NAME}
 		AND
 		MEM_PHONE = #{MEM_PHONE}
 		AND
 		MEM_LEVEL IN (1,2,3,4)
 ]]>
 </select>
+
+<!-- updateOnePw (비밀번호 찾기) -->
+<update id="updateOnePw" parameterType="hashmap">
+<![CDATA[
+	UPDATE
+		MEMBER
+	SET
+		MEM_PW = #{MEM_PW}
+	WHERE 
+		MEM_ID = #{MEM_ID}
+		AND
+		MEM_LEVEL IN (1,2,3,4)
+]]>
+</update>
 
 <!-- selectAuth (아이디로 레벨리턴) -->
 <select id="selectAuth" parameterType="hashmap" resultType="hashmap">

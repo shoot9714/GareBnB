@@ -24,18 +24,24 @@ public class LoginController {
 	private LoginService loginService;
 	
 	@ResponseBody
-    @RequestMapping(value={"/login/findId", "/login/findIdResult"}) // 아이디 찾기, 아이디 찾기 결과  
+    @RequestMapping(value={"/login/findId"}) // 아이디 찾기, 아이디 찾기 결과  
     public Map<String, Object> selectOneId(CommandMap commandMap) throws Exception{
         return loginService.selectOneId(commandMap.getMap());
 
     }
 	
 	@ResponseBody
-    @RequestMapping(value={"/login/findPw", "/login/findPwResult"}) // 비밀번호 찾기, 비밀번호 찾기 결과 
+    @RequestMapping(value={"/login/findPwOK"}) // 아이디 찾기, 아이디 찾기 결과  
     public Map<String, Object> selectOnePw(CommandMap commandMap) throws Exception{
         return loginService.selectOnePw(commandMap.getMap());
 
     }
+	
+	@ResponseBody
+	@RequestMapping(value= "/login/findPw") // 회원정보 수정 
+	public void updateOneMember(CommandMap commandMap) throws Exception {
+    	loginService.updateOnePw(commandMap.getMap());
+	}
 	
 	@ResponseBody
     @RequestMapping(value={"/login/login"}) // 로그인 
