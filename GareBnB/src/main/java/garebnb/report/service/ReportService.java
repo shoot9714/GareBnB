@@ -18,7 +18,7 @@ public interface ReportService {
 	List<Map<String, Object>> selectAdminReportList(Map<String, Object> map) throws Exception;
 	
 	//Admin report detail
-	List<Map<String, Object>> selectAdminOneReport(Map<String, Object> map) throws Exception;
+	Map<String, Object> selectAdminOneReport(Map<String, Object> map) throws Exception;
 
 	//Admin report comment
 	void updateReportComment(Map<String, Object> map) throws Exception;

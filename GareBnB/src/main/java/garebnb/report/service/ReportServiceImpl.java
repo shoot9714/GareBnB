@@ -45,7 +45,7 @@ public class ReportServiceImpl implements ReportService{
 	}
 
 	@Override
-	public List<Map<String, Object>> selectAdminOneReport(Map<String, Object> map) throws Exception {
+	public Map<String, Object> selectAdminOneReport(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
 		return reportDAO.selectAdminOneReport(map);
 	}

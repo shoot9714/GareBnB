@@ -53,7 +53,7 @@
             WHERE   R.RES_BOARD_MODIFY_NO = B.BOARD_MODIFY_NO
             AND     RES_CLI_ID= #{MEM_ID}
             AND     RES_LEVEL IN (0, 1, 2, 3, 4)
-			ORDER BY RES_DATE_START
+			ORDER BY RES_LEVEL,RES_DATE_START
 		]]>
 
 	</select>
@@ -84,6 +84,7 @@
                 AND RES_CLI_ID=#{MEM_ID}
                 AND RES_LEVEL =5
                 AND SYSDATE>RES_DATE_END
+                ORDER BY RES_DATE_END DESC
 		]]>
 
 	</select>
@@ -123,6 +124,7 @@
 				RES_BOARD_NO,
                 RES_BOARD_MODIFY_NO,
 				TO_CHAR(((R.RES_DATE_END - R.RES_DATE_START)+1)*B.BOARD_PRICE,'FM999,999,999') PRICE,
+				R.RES_CLI_ID,
 				BOARD_TITLE
 			FROM
 				MEMBER M INNER JOIN RESERVATION R
@@ -133,7 +135,7 @@
 			WHERE
 				R.RES_HOST_ID = #{MEM_ID}
 			AND RES_LEVEL IN (0, 1, 2, 3, 4)
-			ORDER BY RES_DATE_START
+			ORDER BY RES_LEVEL,RES_DATE_START
 				
 		]]>
 	</select>
@@ -143,7 +145,7 @@
 	<select id="selectResFinish" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
-				RES_CLI_ID,
+				RES_CLI_ID, 
 				TO_CHAR(RES_DATE_START,'YYYY/MM/DD') RES_DATE_START,
 				TO_CHAR(RES_DATE_END,'YYYY/MM/DD') RES_DATE_END,
 				RES_LEVEL,
@@ -165,7 +167,7 @@
 			WHERE
 				R.RES_HOST_ID = #{MEM_ID}
 			AND RES_LEVEL = 5
-			ORDER BY RES_DATE_END
+			ORDER BY RES_DATE_END DESC
 				
 		]]>
 	</select>

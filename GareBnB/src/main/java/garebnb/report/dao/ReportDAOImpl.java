@@ -54,9 +54,9 @@ public class ReportDAOImpl implements ReportDAO{
 
 	//관리자 - 신고 디테일
 	@Override
-	public List<Map<String, Object>> selectAdminOneReport(Map<String, Object> map) throws Exception {
+	public Map<String, Object> selectAdminOneReport(Map<String, Object> map) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("report.selectAdminOneReport", map);
+		return sqlSession.selectOne("report.selectAdminOneReport", map);
 	}
 
 	//관리자 - 신고 답글

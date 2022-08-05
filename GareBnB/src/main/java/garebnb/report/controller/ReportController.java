@@ -87,35 +87,27 @@ public class ReportController {
 	//신고 내역 리스트
 	@ResponseBody 
 	@RequestMapping(value="/Admin/reportList.do")
-	public Map<String, Object> reportList(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
+	public List<Map<String, Object>> reportList(CommandMap commandMap) throws Exception{
 		
-        List<Map<String, Object>> resultMap = reportService.selectAdminReportList(commandMap.getMap());
-        Json.put("map", resultMap);
-
-        return Json;
+        return reportService.selectAdminReportList(commandMap.getMap());
+        
 	}
 	
 	//신고 내역 디테일
 	@ResponseBody 
 	@RequestMapping(value="/Admin/reportDetail.do")
 	public Map<String, Object> reportDetail(CommandMap commandMap) throws Exception{
-		Map<String, Object> Json = new HashMap<String, Object>();
 		
-        List<Map<String, Object>> resultMap = reportService.selectAdminOneReport(commandMap.getMap());
-        Json.put("map", resultMap);
-
-        return Json;
+        return reportService.selectAdminOneReport(commandMap.getMap());  
 	}
+	
 	
 	//신고 답변
 		@RequestMapping(value="/Admin/reportComment.do")
 		@ResponseBody 
-		public Map<String, Object> reportComment(CommandMap commandMap) throws Exception{
-			Map<String, Object> Json = new HashMap<String, Object>();
+		public void reportComment(CommandMap commandMap) throws Exception{
+			
 	        reportService.updateReportComment(commandMap.getMap());
-		        
-		        return Json;
 			}
 		
 		
