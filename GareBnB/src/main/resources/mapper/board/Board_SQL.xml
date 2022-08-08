@@ -191,8 +191,8 @@
 					BOARD_DATE_START,
 					BOARD_DATE_END,
 					BOARD_CONFIRM,
-                    AVG_SCORE,
-                    RES_COUNT
+                    NVL(AVG_SCORE,0) as AVG_SCORE,
+                    NVL(RES_COUNT,0) as RES_COUNT
 			FROM	BOARD 
             LEFT JOIN (SELECT AVG(NVL(SCORE, 0))AS AVG_SCORE, BOARD_NO FROM REVIEW GROUP BY BOARD_NO) REVIEW
             ON      BOARD.BOARD_NO = REVIEW.BOARD_NO
