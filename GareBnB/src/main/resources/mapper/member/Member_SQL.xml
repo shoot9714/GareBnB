@@ -187,12 +187,22 @@
 <!-- updateMemberDeny (회원 정지 확인) -->
 <update id="updateMemberDeny" parameterType="hashmap">
 		<![CDATA[
+		BEGIN
 			UPDATE
 				MEMBER
 			SET
 				MEM_LEVEL = '5'	
 			WHERE
-				MEM_IDX = #{MEM_IDX}
+				MEM_IDX = #{MEM_IDX};
+				
+			UPDATE
+				BOARD
+			SET
+				BOARD_CONFIRM ='4'
+			WHERE
+				BOARD_HOST_IDX =#{MEM_IDX};
+				
+		END;
 		]]>
 </update>
 
