@@ -205,6 +205,7 @@
 			AND		BOARD_CARE_NO >= #{BOARD_CARE_NO}
 			AND		BOARD_ADDR1 LIKE '%' || #{BOARD_ADDR1} || '%'
 
+
 	</select>
 	
 	
