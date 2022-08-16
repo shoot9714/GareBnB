@@ -1,0 +1,1 @@
+# GareBnB component = main
